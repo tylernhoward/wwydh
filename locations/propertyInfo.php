@@ -6,10 +6,11 @@
 		//$password = "nzqbzNU3drDhVsgHsP4f";
 
 		//$conn = new mysqli($servername, $username, $password, "wwydh");
-		$theQuery = "SELECT * FROM locations WHERE id='$id' ");
+		$theQuery = "SELECT * FROM locations WHERE `id`='{$_GET["id"]}'";
 		$result = $conn->query($theQuery);
 		$rowcount = mysqli_num_rows($result);
-		$row = @mysqli_fetch_array($result);
+		//$row = @mysqli_fetch_array($result);
+		$row = $result->fetch_assoc();
   ?>
 
 <!DOCTYPE html>
