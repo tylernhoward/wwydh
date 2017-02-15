@@ -152,7 +152,7 @@
 				<?php
 				foreach($locations as $row) {
 					if (isset($row["features"])) $row["features"] = implode(" | ", explode("[-]", $row["features"])); ?>
-					<a href="propertyInfo.php?id=<?php echo $row["id"] ?>">
+					<a href="..propertyInfo.php?id=<?php echo $row["id"] ?>">View full location</a>
 						<div class="location">
 							<div class="grid-item">
 								<?php if ($row["ideas"] > 0) { ?>

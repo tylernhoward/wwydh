@@ -9,8 +9,7 @@
 		$theQuery = "SELECT * FROM locations WHERE `id`='{$_GET["id"]}'";
 		$result = $conn->query($theQuery);
 		$rowcount = mysqli_num_rows($result);
-		//$row = @mysqli_fetch_array($result);
-		$row = $result->fetch_assoc();
+		$row = @mysqli_fetch_array($result);
   ?>
 
 <!DOCTYPE html>
