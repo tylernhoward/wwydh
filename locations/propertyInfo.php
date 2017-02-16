@@ -27,6 +27,13 @@
 			 <div class="features"><?php echo $row["features"] ?></div>
        <div class="info">
           <div class="generalInfo">
+						<div class="description">
+									<br>
+									<!-- <h1>Description </h1> -->
+										<p>This section includes a general description about this specific lot and </p>
+										<p>will include details provided by the creator of this location's page. </p>
+									</br>
+								</div>
 						<br>
 		           	<h1>Lot Information</h1>
           	<ul>
@@ -40,7 +47,6 @@
 							<li><b>Council District: </b><?php echo $row["council_district"] ?></li>
           	</ul>
 					</br>
-
 					<br>
 						<h1>Owner Information</h1>
 						<ul>
@@ -48,7 +54,6 @@
 							<li><b>Owner Mailing Address: </b> <?php echo $row["mailing_address"] ?></li>
 						</ul>
 					</br>
-					</div>
 					<!-- <div class="specInfo">
 						<br>
 						<h1>Specific Property Information</h1>
@@ -62,14 +67,7 @@
               	<li><b>Latitude: </b><?php echo $row["latitude"] ?></li>
             	</ul>
 						</br>
-						</div>
-            <div class= "description">
-              <br>
-              <h1>Description </h1>
-              	<p>This section includes a general description about this specific lot and </p>
-              	<p>will include details provided by the creator of this location's page. </p>
-              </br>
-            </div>
+					</div>
 						<div style="clear: both;"></div>
           </div>
     </body>

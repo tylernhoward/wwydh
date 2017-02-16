@@ -144,7 +144,7 @@ ul{
 }
 
 .name{
-  text-indent:900px;
+  text-indent:50px;
   font-family: "New Courier", Courier, monospace;
   font-size: 50px;
   border-bottom: 2px solid black;
@@ -152,7 +152,6 @@ ul{
 
 .generalInfo{
   float:left;
-  text-transform: capitalize;
   padding-left: 50px;
   padding-right: 50px;
   display: block;
@@ -173,8 +172,9 @@ ul{
 
 .description{
   float: left;
-  padding-right: 20px;
-  text-align: center;
+  padding-left: 50px
+  padding-right: 50px;
+  text-align: left;
   display: block;
   width: 100%;
 }
