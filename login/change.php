@@ -14,10 +14,11 @@ if (isset($_POST["ForgotPassword"])) {
 	}
 
 	// Check to see if a user exists with this e-mail
-	$query = $conn->prepare('SELECT email FROM users WHERE email = :email');
-	$query->bindParam(':email', $email);
-	$query->execute();
-	$userExists = $query->fetch(PDO::FETCH_ASSOC);
+	$q = $conn->prepare("SELECT * FROM users WHERE email=?");
+    $q->bind_param("s", $email);
+	$q->execute();
+	$result = $q->get_result();
+	$userExists = $result->fetch_array(MYSQLI_ASSOC);
 	$conn = null;
 	
 	if ($userExists["email"])
@@ -30,10 +31,11 @@ if (isset($_POST["ForgotPassword"])) {
 
 		// Create a url which we will direct them to reset their password
 		$pwrurl = "http://wwydh-2017.herokuapp.com/login/reset_password.php?q=".$password;
-		
-		// Mail them their key
+		$headers =  'MIME-Version: 1.0' . "\r\n"; 
+		$headers .= 'From: Your name <info@address.com>' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";		// Mail them their key
 		$mailbody = "Dear user,\n\nIf this e-mail does not apply to you please ignore it. It appears that you have requested a password reset at our website www.wwydh.com\n\nTo reset your password, please click the link below. If you cannot click it, please paste it into your web browser's address bar.\n\n" . $pwrurl . "\n\nThanks,\nThe Administration";
-		mail($userExists["email"], "www.wwydh.com - Password Reset", $mailbody);
+		mail("alecdavid95@comcast.net", "www.wwydh.com - Password Reset", $mailbody, $headers);
 		echo "Your password recovery key has been sent to your e-mail address.";
 		
 	}
