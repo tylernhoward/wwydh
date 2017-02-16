@@ -90,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <div id="forget_style">
+        <div id="signin">
             <div class="title">Sign in to WWYDH</div>
                <form method="post" action="#" name="loginform" onsubmit="return checkFilled();">
                     <input type="text" placeholder="username"  name="username" id="vname" class="form-size" />
