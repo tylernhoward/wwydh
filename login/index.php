@@ -90,13 +90,14 @@
                 </div>
             </div>
         </div>
-        <div id="signin">
+        <div id="forget_style">
             <div class="title">Sign in to WWYDH</div>
                <form method="post" action="#" name="loginform" onsubmit="return checkFilled();">
                     <input type="text" placeholder="username"  name="username" id="vname" class="form-size" />
                     <input type="password" placeholder="password"  name="password" class="form-size" id="password"/>
                     <input name="login-submit" type="submit" id="enter" class="form-size" value="Sign In">
                 </form>
+				<a href="forgot_password.php"><p style="text-align:center; font-size: 13px;" >Forgot Password</a>
         </div>
         <div id="footer">
             <div class="grid-inner">
