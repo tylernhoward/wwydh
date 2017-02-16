@@ -161,9 +161,7 @@
 								<div class="location_image" style="background-image: url(../helpers/location_images/<?php if (isset($row['image'])) echo $row['image']; else echo "no_image.jpg";?>);"></div>
 								<div class="location_desc">
 									<div class="address"><?php echo $row["mailing_address"] ?></div>
-									<div class="features">
-										<?php echo $row["features"] ?>
-									</div>
+									<div class="features"><?php echo $row["features"] ?></div>
 								</div>
 							</div>
 						</div>

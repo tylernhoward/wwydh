@@ -24,38 +24,40 @@
 		<body>
 	     <div class="imgViewer" style="background-image: url(../helpers/location_images/<?php echo $row["image"] ?>)";></div>
        <div class="name"><?php echo $row["building_address"] ?></div>
+			 <div class="features"><?php echo $row["features"] ?></div>
        <div class="info">
           <div class="generalInfo">
 						<br>
-		           	<h1>General City Information</h1>
+		           	<h1>Lot Information</h1>
           	<ul>
-		          	<li><b>City: </b><?php echo $row["city"] ?></li>
-              	<li><b>Neighborhood: </b><?php echo $row["neighborhood"] ?></li>
-              	<li><b>Police District: </b><?php echo $row["police_district"] ?></li>
+							<li><b>Type: </b><?php echo $row["use"] ?></li>
+		          <li><b>City: </b><?php echo $row["city"] ?></li>
+							<li><b>Zip Code: </b><?php echo $row["zip_code"] ?></li>
+              <li><b>Neighborhood: </b><?php echo $row["neighborhood"] ?></li>
+							<li><b>Block: </b><?php echo $row["block"] ?></li>
+							<li><b>Lot: </b><?php echo $row["lot"] ?></li>
+              <li><b>Police District: </b><?php echo $row["police_district"] ?></li>
+							<li><b>Council District: </b><?php echo $row["council_district"] ?></li>
           	</ul>
 					</br>
+
 					<br>
-						<h1>Current Use Information</h1>
+						<h1>Owner Information</h1>
 						<ul>
-							<li><b>Owner: </b><?php echo $row["owner"] ?></li>
-							<li><b>What It Is Being Used As: </b><?php echo $row["use"] ?></li>
-							<li><b>Mailing Address: </b> <?php echo $row["mailing_address"] ?></li>
+							<li><b>Lot Owner: </b><?php echo $row["owner"] ?></li>
+							<li><b>Owner Mailing Address: </b> <?php echo $row["mailing_address"] ?></li>
 						</ul>
 					</br>
 					</div>
-					<div class="specInfo">
+					<!-- <div class="specInfo">
 						<br>
 						<h1>Specific Property Information</h1>
 								<ul>
-              	<li> <b>Block: </b><?php echo $row["block"] ?></li>
-              	<li> <b>Lot: </b><?php echo $row["lot"] ?></li>
-              	<li> <b>Zip Code: </b><?php echo $row["zip_code"] ?></li>
           		</ul>
-						</br>
+						</br> -->
             <br>
-            	<h1>Other</h1>
+            	<h1>Coordinates</h1>
             	<ul>
-              	<li><b>Council District: </b><?php echo $row["council_district"] ?></li>
               	<li><b>Longitude: </b><?php echo $row["longitude"] ?></li>
               	<li><b>Latitude: </b><?php echo $row["latitude"] ?></li>
             	</ul>
