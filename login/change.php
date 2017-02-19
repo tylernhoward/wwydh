@@ -24,7 +24,7 @@ if (isset($_POST["ForgotPassword"])) {
 	
 	if ($userExists["email"])
 	{
-		/*
+		
 		// Create a unique salt. This will never leave PHP unencrypted.
 		$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
 
@@ -33,18 +33,11 @@ if (isset($_POST["ForgotPassword"])) {
 
 		// Create a url which we will direct them to reset their password
 		$pwrurl = "http://wwydh-2017.herokuapp.com/login/reset_password.php?q=".$password;
-		$headers =  'MIME-Version: 1.0' . "\r\n"; 
-		$headers .= 'From: Your name <info@address.com>' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";		// Mail them their key
-		$mailbody = "Dear user,\n\nIf this e-mail does not apply to you please ignore it. It appears that you have requested a password reset at our website www.wwydh.com\n\nTo reset your password, please click the link below. If you cannot click it, please paste it into your web browser's address bar.\n\n" . $pwrurl . "\n\nThanks,\nThe Administration";
-		mail("alecdavid95@comcast.net", "www.wwydh.com - Password Reset", $mailbody, $headers);
-		echo "Your password recovery key has been sent to your e-mail address.";
-		*/
 		
-		$from = new SendGrid\Email("Example User", "test@example.com");
-		$subject = "Sending with SendGrid is Fun";
-		$to = new SendGrid\Email("Example User", "amyers24@students.towson.edu");
-		$content = new SendGrid\Content("text/plain", "and easy to do anywhere, even with PHP");
+		$from = new SendGrid\Email("WWYDH", "test@example.com");
+		$subject = "Password Reset";
+		$to = new SendGrid\Email("Example User", $userExists["email"]);
+		$content = new SendGrid\Content("text/plain", "Dear user,\n\nIf this e-mail does not apply to you please ignore it. It appears that you have requested a password reset at our website www.wwydh.com\n\nTo reset your password, please click the link below. If you cannot click it, please paste it into your web browser's address bar.\n\n" . $pwrurl . "\n\nThanks,\nThe Administration");
 		$mail = new SendGrid\Mail($from, $subject, $to, $content);
 		$apiKey = getenv('SENDGRID_API_KEY');
 		$sg = new \SendGrid($apiKey);
@@ -52,7 +45,7 @@ if (isset($_POST["ForgotPassword"])) {
 		echo $response->statusCode();
 		echo $response->headers();
 		echo $response->body();
-		
+		echo "Your password recovery key has been sent to your e-mail address.";
 	}
 	else
 		echo "No user with that e-mail address exists.";
