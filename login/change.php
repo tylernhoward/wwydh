@@ -43,7 +43,7 @@ if (isset($_POST["ForgotPassword"])) {
 		
 		$from = new SendGrid\Email("Example User", "test@example.com");
 		$subject = "Sending with SendGrid is Fun";
-		$to = new SendGrid\Email("Example User", "test@example.com");
+		$to = new SendGrid\Email("Example User", "amyers24@students.towson.edu");
 		$content = new SendGrid\Content("text/plain", "and easy to do anywhere, even with PHP");
 		$mail = new SendGrid\Mail($from, $subject, $to, $content);
 		$apiKey = getenv('SENDGRID_API_KEY');
