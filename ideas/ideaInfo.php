@@ -8,7 +8,6 @@
 		//$conn = new mysqli($servername, $username, $password, "wwydh");
 		$theQuery = "SELECT * FROM idea WHERE `id`='{$_GET["id"]}'";
 		$result = $conn->query($theQuery);
-		$rowcount = mysqli_num_rows($result);
 		$row = @mysqli_fetch_array($result);
   ?>
 
@@ -22,8 +21,9 @@
     </head>
 
 		<body>
-	     <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php echo $row["image"] ?>)";></div>
+	     <!-- <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php echo $row["image"] ?>)";></div> -->
        <div class="name"><?php echo $row["title"] ?></div>
+			 <div class ="name"><<?php echo $row["owner"] ?>
        <div class="postedDate"><?php echo $row["timestamp"] ?></div>
        <div class="info">
           <div class="generalInfo">
