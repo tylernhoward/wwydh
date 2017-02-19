@@ -1,7 +1,7 @@
 <?php
 
 include("../helpers/conn.php");
-require("C:/xampp/htdocs/412/wwydh_first/wwydh/helpers/sendgrid-php/sendgrid-php");
+//require("C:/xampp/htdocs/412/wwydh_first/wwydh/helpers/sendgrid-php/sendgrid-php");
 // Was the form submitted?
 if (isset($_POST["ForgotPassword"])) {
 	
