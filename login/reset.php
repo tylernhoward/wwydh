@@ -23,9 +23,7 @@ if (isset($_POST["ResetPasswordForm"]))
 		{
 
 			// Update the user's password
-				$query = $conn->prepare('UPDATE users SET password = :password WHERE email = :email');
-				$query->bindParam(':password', $password);
-				$query->bindParam(':email', $email);
+				$query = $conn->prepare('UPDATE users SET password = ' . $password . ' WHERE email = ' .$email);
 				$query->execute();
 				$conn = null;
 			echo "Your password has been successfully reset.";
