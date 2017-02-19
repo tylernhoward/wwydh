@@ -163,3 +163,46 @@
     font-size: 14px;
     color: #418040;
 }
+
+.name{
+  text-indent:50px;
+  font-family: "New Courier", Courier, monospace;
+  font-size: 50px;
+  border-bottom: 2px solid black;
+}
+
+.postedDate{
+  text-align: right;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  font-size: 12px
+}
+
+.generalInfo{
+  float:left;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  width: 80%;
+  color: white;
+  font-size: 20px;
+}
+
+.specInfo{
+  float:left;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  width: 80%;
+  color: white;
+  font-size: 20px;
+}
+
+.description{
+  float: left;
+  padding-right: 50px;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
