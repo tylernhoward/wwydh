@@ -7,7 +7,7 @@ if (isset($_POST["ResetPasswordForm"]))
 	// Gather the post data
 	$email = $_POST["email"];
 	$password = md5($_POST["password"]);
-	$confirmpassword = $_POST["confirmpassword"];
+	$confirmpassword = md5($_POST["confirmpassword"]);
 	$hash = $_POST["q"];
 
 	// Use the same salt from the forgot_password.php file
