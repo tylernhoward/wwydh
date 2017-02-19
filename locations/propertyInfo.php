@@ -24,7 +24,6 @@
 		<body>
 	     <div class="imgViewer" style="background-image: url(../helpers/location_images/<?php echo $row["image"] ?>)";></div>
        <div class="name"><?php echo $row["building_address"] ?></div>
-			 <div class="features"><?php echo $row["features"] ?></div>
        <div class="info">
           <div class="generalInfo">
 						<div class="description">
