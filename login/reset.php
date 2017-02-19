@@ -6,7 +6,7 @@ if (isset($_POST["ResetPasswordForm"]))
 {
 	// Gather the post data
 	$email = $_POST["email"];
-	$password = $_POST["password"];
+	$password = md5($_POST["password"]);
 	$confirmpassword = $_POST["confirmpassword"];
 	$hash = $_POST["q"];
 
@@ -21,8 +21,6 @@ if (isset($_POST["ResetPasswordForm"]))
 	{
 		if ($password == $confirmpassword)
 		{
-			//has and secure the password
-			$password = hash('sha512', $salt.$password);
 
 			// Update the user's password
 				$query = $conn->prepare('UPDATE users SET password = :password WHERE email = :email');
@@ -38,5 +36,7 @@ if (isset($_POST["ResetPasswordForm"]))
 	else
 		echo "Your password reset key is invalid.";
 }
+else
+	echo "Form error";
 
 ?>
