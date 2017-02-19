@@ -22,7 +22,7 @@
     </head>
 
 		<body>
-	     <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php echo $row["image"] ?>)";></div>
+			 <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php if (isset($row['image'])) echo $row['image']; else echo "no_image.jpg";?>);"></div>
        <div class="name"><?php echo $row["title"] ?></div>
        <div class="postedDate"><?php echo $row["timestamp"] ?></div>
        <div class="info">
