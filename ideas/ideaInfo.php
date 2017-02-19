@@ -37,13 +37,7 @@
 							<li><b>Example 3</li>
           	</ul>
 					</br>
-					<br>
-						<h1>Owner Information</h1>
-						<ul>
-							<li><b>Lot Owner: </b><?php echo $row["owner"] ?></li>
-							<li><b>Owner Mailing Address: </b> <?php echo $row["mailing_address"] ?></li>
-						</ul>
-					</br>
+
 					</div>
 						<div style="clear: both;"></div>
           </div>
