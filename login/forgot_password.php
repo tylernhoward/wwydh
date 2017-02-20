@@ -12,8 +12,10 @@
 		<div id="signin">
 			<div class="title">Enter Email for Password Reset Email</div>
 				<form action="change.php" method="POST">
+				<fieldset style="background-color: #4CAF50;">
 				E-mail Address: <input type="text" name="email" size="20" /> 
 				<input type="submit" name="ForgotPassword" value=" Request Reset " />
+				</fieldset>
 				</form>
 			</div>
 		</div>

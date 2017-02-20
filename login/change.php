@@ -42,9 +42,9 @@ if (isset($_POST["ForgotPassword"])) {
 		$apiKey = getenv('SENDGRID_API_KEY');
 		$sg = new \SendGrid($apiKey);
 		$response = $sg->client->mail()->send()->post($mail);
-		echo $response->statusCode();
-		echo $response->headers();
-		echo $response->body();
+		//echo $response->statusCode();
+		//echo $response->headers();
+		//echo $response->body();
 		echo "Your password recovery key has been sent to your e-mail address.";
 	}
 	else
