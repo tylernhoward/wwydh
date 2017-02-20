@@ -8,8 +8,8 @@
     } else if (!empty($_POST['username']) && !empty($_POST['password'])) {
         include "../helpers/makeUser.php";
 
-        $q = $conn->prepare("SELECT * FROM users WHERE login=?");
-        $q->bind_param("s", $pass);
+        $q = $conn->prepare("SELECT * FROM users WHERE login=? AND username=?");
+        $q->bind_param("ss", $pass, $user);
         $q->execute();
         $result = $q->get_result();
 
