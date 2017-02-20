@@ -5,6 +5,13 @@
     padding: 80px 0px;
 }
 
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 #contact_name {
     color: white;
     margin-top: 25px;
