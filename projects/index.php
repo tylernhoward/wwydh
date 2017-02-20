@@ -168,7 +168,7 @@ echo "<table width=1>";
 	                    <?php if (!isset($_SESSION["user"])) { ?>
 	                        <ul>
 	                            <a href="../login"><li>Log in</li></a>
-	                            <a href="#"><li>Sign up</li></a>
+	                            <a href="../signup"><li>Sign up</li></a>
 	                            <a href="../contact"><li>Contact</li></a>
 	                        </ul>
 	                    <?php } else { ?>
@@ -204,7 +204,7 @@ echo "<table width=1>";
 			<div class="splash_content">
 				<h1>Search Projects</h1>
 				<form method="POST">
-					<input type="submit" name="simple_search" value="Search"></input>
+					<input type="submit" name="simple_search" value="Search"/>
 					<input name="search" type="text" placeholder="Enter an address, city, zipcode, or user name" />
 				</form>
 			</div>
