@@ -97,6 +97,7 @@
                     <input type="password" placeholder="password"  name="password" class="form-size" id="password"/>
                     <input name="login-submit" type="submit" id="enter" class="form-size" value="Sign In">
                 </form>
+				<a href="forgot_password.php"><p style="text-align:center; font-size: 13px;" >Forgot Password</a>
         </div>
         <div id="footer">
             <div class="grid-inner">

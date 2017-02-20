@@ -43,14 +43,12 @@ $error="Registration Failed!";
 
 <title>WWYDH Registration</title>
 </head>
-
+<div class="bg">
 <body>
-
-<div id="signup">
 <div class="width">
-    <div id="signupTitle">Registration</div>
-     <div id="form">
-    <form method="post" action="#" name="loginform">
+    <div class="title" style = "color:white; text-align:center; font-size:30px">Registration</div>
+    <form method="post" action="#" name="loginform" style = "display: inline-block; text-align: center;">
+	<fieldset style="background-color: #4CAF50;">
     <input type="text" value="" placeholder="Enter First Name"  name="first" class="form-size" />
 	<input type="text" value="" placeholder="Enter Last Name"  name="last" class="form-size" />
     <input type="text" value="" placeholder="Enter Username"  name="username" class="form-size"/>
@@ -59,8 +57,8 @@ $error="Registration Failed!";
     <input type="text" value="" placeholder="Enter Address"  name="address" class="form-size" />
     <input type="text" value="" placeholder="Enter Zip Code" name="zipCode" class="form-size" />
    <input type="submit" id="enter" class="form-size" value="Sign Up">
+   </fieldset>
     </form>
-    </div>
     </div>
 </div>
  <div id="footer">
@@ -68,6 +66,7 @@ $error="Registration Failed!";
                 &copy; Copyright WWYDH <?php echo date("Y") ?>
             </div>
     </div>
+</div>
 </body>
 
 </html>
