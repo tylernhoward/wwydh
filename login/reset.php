@@ -23,16 +23,17 @@ if (isset($_POST["ResetPasswordForm"]))
 		{
 
 			// Update the user's password
-				$query = $conn->prepare('UPDATE users SET login = ' . $password . ' WHERE email = ' .$email);
-				$query->execute();
-				$conn = null;
+			$q = $conn->prepare("UPDATE users SET login =? WHERE email =?");
+			$q->bind_param("ss", $password, $email);
+			$q->execute();
+			$result = $q->get_result();
 			echo "Your password has been successfully reset.";
 		}
 		else
 			echo "Your password's do not match.";
 	}
-	else
-		echo "Your password reset key is invalid.";
+    else
+		//echo "Your password reset key is invalid.";
 }
 else
 	echo "Form error";
