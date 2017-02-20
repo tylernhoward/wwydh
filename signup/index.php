@@ -98,7 +98,6 @@ $result=mysqli_query($conn,$sql_query)or die(mysqli_error($conn));
             </div>
         </div>
   </div>
-</div>
 
 <div class="title" style = "color:white; text-align:center; font-size:30px">Registration</div>
     <form method="post" action="#" name="loginform" style = "display: inline-block; text-align: center;">
