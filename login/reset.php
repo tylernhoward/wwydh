@@ -27,7 +27,10 @@ if (isset($_POST["ResetPasswordForm"]))
 			$q->bind_param("ss", $password, $email);
 			$q->execute();
 			$result = $q->get_result();
-			echo "Your password has been successfully reset.";
+			echo "Your password has been successfully reset. ";
+			$link = "../login/index.php";
+			$name = "Return to login";
+			Echo "<a href=$link>$name</a>";
 		}
 		else
 			echo "Your password's do not match.";
