@@ -33,9 +33,7 @@ if (isset($_POST["ResetPasswordForm"]))
 			echo "Your password's do not match.";
 	}
     else
-		//echo "Your password reset key is invalid.";
+		echo "Your password reset key is invalid.";
 }
-else
-	echo "Form error";
 
 ?>
