@@ -23,12 +23,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // If result matched $username and $password, table row must be 1 row
     if($result){
       $_SESSION['login_user']=$username;
-      wait(1);
       header("Location: ../login/index.php");
     }
     else{
       $error="Registration Failed!";
-      wait(1);
       header("Location: ../signup/index.php");
     }
 }
