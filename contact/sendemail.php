@@ -1,6 +1,6 @@
 <?php
 require("../helpers/sendgrid-php/sendgrid-php/sendgrid-php.php");
-
+if (isset($_POST["submit"])) {
 	// Harvest submitted e-mail address
 	if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		$email = $_POST["email"];
@@ -20,5 +20,5 @@ require("../helpers/sendgrid-php/sendgrid-php/sendgrid-php.php");
 		$response = $sg->client->mail()->send()->post($mail);
 		
 		echo "Thank you for contacting the team at WWYDH. \n\n We will get back to you shortly.";
-
+}
 ?>
