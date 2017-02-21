@@ -24,7 +24,7 @@
 	                    <?php if (!isset($_SESSION["user"])) { ?>
 	                        <ul>
 	                            <a href="../login"><li>Log in</li></a>
-	                            <a href="#"><li>Sign up</li></a>
+	                            <a href="../signup"><li>Sign up</li></a>
 	                            <a href="../contact" class="active"><li>Contact</li></a>
 	                        </ul>
 	                    <?php } else { ?>
@@ -60,11 +60,11 @@
       <div class="width">
         <div id="contact_name">CONTACT US</div>
             <div id="form">
-              <form action="#"> <!--BACKEND: Edit this action to wherever the form will submit to -->
+              <form action="sendemail.php" method="POST"> <!--BACKEND: Edit this action to wherever the form will submit to -->
                 <input type="text" name="name" class="form-size" placeholder="Name"><br>
                 <input type="text" name="email" class="form-size" placeholder="Email"><br>
                 <textarea type="text" name="message" class="message" placeholder="Message"></textarea><br>
-                <input type="submit" id="submit" class="form-size" value="Submit">
+                <input type="submit" id="submit" name="submit" class="form-size" value="Submit">
               </form>
             </div>
         </div>
