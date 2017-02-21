@@ -96,12 +96,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="width">
           <div id="reg">REGISTRATION</div>
             <div id="form">
-                <form action="#"> <!--BACKEND: Edit this action to wherever the form will submit to -->
-                  <input type="text" placeholder="First Name"  name="first" class="form-size"><br>
-              	  <input type="text" placeholder="Last Name"  name="last" class="form-size"><br>
-                  <input type="text"  placeholder="Username"  name="username" class="form-size"><br>
-                  <input type="password" placeholder="Password"  name="password" class="form-size"><br>
-                  <input type="text" placeholder="Email"  name="email" class="form-size"><br>
+                <form action="#" onsubmit="return validate();"> <!--BACKEND: Edit this action to wherever the form will submit to -->
+                  <input type="text" placeholder="First Name*"  name="first" id="firstname" class="form-size"><br>
+              	  <input type="text" placeholder="Last Name*"  name="last" id="lastname" class="form-size"><br>
+                  <input type="text"  placeholder="Username*"  name="username" id="vname" class="form-size"><br>
+                  <input type="password" placeholder="Password*"  name="password" id="password" class="form-size"><br>
+                  <input type="text" placeholder="Email*"  name="email" id="email" class="form-size"><br>
                   <input type="text" placeholder="Address"  name="address" class="form-size"><br>
                   <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
                   <input type="submit" id="submit" class="form-size" value="Sign Up">
