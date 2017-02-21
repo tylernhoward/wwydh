@@ -9,9 +9,9 @@ if (isset($_POST["submit"])) {
 	$message=$_POST["message"];
 		
 		$from = new SendGrid\Email($name, $email);
-		$subject = "Contact Form";
+		$subject = "(WWYDH) Contact Message from $name";
 		$to = new SendGrid\Email("WWYDH", "wwydh2017@gmail.com");
-		$content = new SendGrid\Content("text/plain", "You recieved message from " . $name . " It Says: " .$message);
+		$content = new SendGrid\Content("text/plain", "Recieved message from " . $name . " It Says: \n" .$message);
 		$mail = new SendGrid\Mail($from, $subject, $to, $content);
 		$apiKey = getenv('SENDGRID_API_KEY');
 		$sg = new \SendGrid($apiKey);
@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
 		//echo $response->statusCode();
 		//echo $response->headers();
 		//echo $response->body();
-		echo "Your email has been sent to your e-mail address.";
+		echo "Thank you for contacting the team at WWYDH. \n\n We will get back to you shortly.\n";
 		$link = "../home/index.php";
 		$here = "Return to home";
 		Echo "<a href=$link>$here</a>";
