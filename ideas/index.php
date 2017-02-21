@@ -98,7 +98,7 @@
 	                    <?php if (!isset($_SESSION["user"])) { ?>
 	                        <ul>
 	                            <a href="../login"><li>Log in</li></a>
-	                            <a href="#"><li>Sign up</li></a>
+	                            <a href="../signup"><li>Sign up</li></a>
 	                            <a href="../contact"><li>Contact</li></a>
 	                        </ul>
 	                    <?php } else { ?>
@@ -176,7 +176,8 @@
 					<div class="grid-item width">
 						<div class="plan-buttons options btn-group">
 							<div class="btn op-1"><a>Add to plan <i class="fa fa-sort" aria-hidden="true"></i></a></div>
-							<?php if ($row["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $row["id"] ?>">See other plans with this idea</a></div> <?php } ?>
+ 							<div class="btn op-2"><a href="ideaInfo.php?id=<?php echo $row["id"] ?>">More Info</a></div>
+							<?php if ($row["plans"] > 0) { ?> <div class="btn op-3"><a href="../plans?location=<?php echo $row["id"] ?>">See other plans with this idea</a></div> <?php } ?>
 						</div>
 						<div class="add-to-plan">
 							<ul>

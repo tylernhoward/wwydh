@@ -8,8 +8,8 @@
     } else if (!empty($_POST['username']) && !empty($_POST['password'])) {
         include "../helpers/makeUser.php";
 
-        $q = $conn->prepare("SELECT * FROM users WHERE login=?");
-        $q->bind_param("s", $pass);
+        $q = $conn->prepare("SELECT * FROM users WHERE login=? AND username=?");
+        $q->bind_param("ss", $pass, $user);
         $q->execute();
         $result = $q->get_result();
 
@@ -59,7 +59,7 @@
                     <?php if (!isset($_SESSION["user"])) { ?>
                         <ul>
                             <a href="../login" class="active"><li>Log in</li></a>
-                            <a href="#"><li>Sign up</li></a>
+                            <a href="../signup"><li>Sign up</li></a>
                             <a href="../contact"><li>Contact</li></a>
                         </ul>
                     <?php } else { ?>
@@ -97,6 +97,7 @@
                     <input type="password" placeholder="password"  name="password" class="form-size" id="password"/>
                     <input name="login-submit" type="submit" id="enter" class="form-size" value="Sign In">
                 </form>
+				<a href="forgot_password.php"><p style="text-align:center; font-size: 13px;" >Forgot Password</a>
         </div>
         <div id="footer">
             <div class="grid-inner">

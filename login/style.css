@@ -10,6 +10,7 @@
     height: 100%;
 }
 
+
 #footer {
     position: fixed;
     bottom: 0;
@@ -19,8 +20,8 @@
 
 #signin {
     position: absolute;
-    max-width: 350px;
-    height: 260px;
+    max-width: 370px;
+    height: 280px;
     margin: auto;
     border-radius: 2px;
     top: 0;
@@ -59,4 +60,12 @@ input[type="submit"] {
     color: white;
     cursor: pointer;
     margin-top: 10px;
+}
+
+#forget_style{
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
 }

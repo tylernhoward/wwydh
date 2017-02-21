@@ -154,6 +154,7 @@
                 <div class="pane" data-index="-1">
                     <!-- Login Required -->
                     <div class="pane-title">
+			<div class="retreat" data-target="4"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                         <div class="title">Login Required!</div>
                     </div>
                     <div class="pane-content">

@@ -163,3 +163,65 @@
     font-size: 14px;
     color: #418040;
 }
+
+.info {
+  position: relative;
+  padding: 75px 0px;
+  width: 100%;
+  color: white;
+  font-size: 20px;
+  background: #418040; /* Old browsers */
+  background: -moz-linear-gradient(top, #418040 0%, #376837 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #418040 0%,#376837 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #418040 0%,#376837 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.name{
+  text-indent:50px;
+  font-family: "New Courier", Courier, monospace;
+  font-size: 50px;
+  border-bottom: 2px solid black;
+}
+
+.postedDate{
+  text-align: right;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  font-size: 12px
+}
+
+.generalInfo{
+  float:left;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  width: 80%;
+  color: white;
+  font-size: 20px;
+}
+
+.specInfo{
+  float:left;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  width: 80%;
+  color: white;
+  font-size: 20px;
+}
+
+.description{
+  float: left;
+  padding-right: 50px;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+.imgViewer {
+  width: 100%;
+  height: 25em;
+  background-color: #fbffdf;
+  background-repeat: repeat;
+  background-position: left;
+}
