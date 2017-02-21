@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
 
 	$mail = new SendGrid\Email();
 	$mail
-	->addTo('wwydh2017@gmail.com')
+	->addTo('test@example.com')
 	->setFrom($email)
 	->setSubject($name)
 	->setText($message);
