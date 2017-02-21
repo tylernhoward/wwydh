@@ -8,9 +8,9 @@ if (isset($_POST["submit"])) {
 	$name=$_POST["name"];
 	$message=$_POST["message"];
 		
-		$from = new SendGrid\Email("WWYDH", "test@example.com");
+		$from = new SendGrid\Email("WWYDH", $email);
 		$subject = "WE Received your Email";
-		$to = new SendGrid\Email("Example User", $email);
+		$to = new SendGrid\Email("Example User", "wwydh2017@gmail.com");
 		$content = new SendGrid\Content("text/plain", $message);
 		$mail = new SendGrid\Mail($from, $subject, $to, $content);
 		$apiKey = getenv('SENDGRID_API_KEY');
