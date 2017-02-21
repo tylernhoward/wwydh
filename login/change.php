@@ -46,13 +46,10 @@ if (isset($_POST["ForgotPassword"])) {
 		//echo $response->headers();
 		//echo $response->body();
 		echo "Your password recovery key has been sent to your e-mail address.";
-		wait(1);
-		header("Location: ../home/index.php");
 	}
 	else{
 		echo "No user with that e-mail address exists.";
-		wait(1);
-		header("Location: ../home/index.php");
+		
 	}
 }
 ?>
