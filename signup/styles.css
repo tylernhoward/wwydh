@@ -28,6 +28,15 @@
     text-align: center;
 }
 
+#small {
+	color: white;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
 #form {
     width: 400px;
     margin-left: auto;
