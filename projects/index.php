@@ -4,7 +4,7 @@
 
 	include "../helpers/paginate.php";
 	include "../helpers/conn.php";
-
+/*
 	$theQuery = "";
 	$result = null;
 
