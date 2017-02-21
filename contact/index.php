@@ -60,7 +60,7 @@
       <div class="width">
         <div id="contact_name">CONTACT US</div>
             <div id="form">
-              <form action="#"> <!--BACKEND: Edit this action to wherever the form will submit to -->
+              <form action="sendemail.php" method="post"> <!--BACKEND: Edit this action to wherever the form will submit to -->
                 <input type="text" name="name" class="form-size" placeholder="Name"><br>
                 <input type="text" name="email" class="form-size" placeholder="Email"><br>
                 <textarea type="text" name="message" class="message" placeholder="Message"></textarea><br>
