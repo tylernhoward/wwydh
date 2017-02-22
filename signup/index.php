@@ -104,7 +104,7 @@ if($result){
 				 <input type="text" placeholder="Email*"  name="email" id="email" class="form-size"><br>
 				 <input type="text" placeholder="Address"  name="address" class="form-size"><br>
 				 <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
-   				<input type="submit" name="register" id="enter" class="form-size" value="Sign Up">
+   				<input type="submit" name="register" id="submit" class="form-size" value="Sign Up">
     			</form>
 		</div>
 	    </div>
