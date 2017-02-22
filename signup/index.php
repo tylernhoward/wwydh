@@ -95,18 +95,20 @@ if($result){
         <div class="width">
           <div id="reg">REGISTRATION</div>
 		  <div id="small">Required*</div>
-    <form method="post" action="#" name="form" onsubmit="return checkFilled();">
-    <input type="text" placeholder="First Name*"  name="first" id="firstname" class="form-size"><br>
-              	  <input type="text" placeholder="Last Name*"  name="last" id="lastname" class="form-size"><br>
-                  <input type="text"  placeholder="Username*"  name="username" id="vname" class="form-size"><br>
-                  <input type="password" placeholder="Password*"  name="password" id="password" class="form-size"><br>
-                  <input type="text" placeholder="Email*"  name="email" id="email" class="form-size"><br>
-                  <input type="text" placeholder="Address"  name="address" class="form-size"><br>
-                  <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
-   <input type="submit" name="register" id="enter" class="form-size" value="Sign Up">
-    </form>
-    </div>
-</div>
+			<div id ="form">
+    			<form method="post" action="#" name="loginform" onsubmit="return checkFilled();">
+    			<input type="text" placeholder="First Name*"  name="first" id="firstname" class="form-size"><br>
+				<input type="text" placeholder="Last Name*"  name="last" id="lastname" class="form-size"><br>
+				<input type="text"  placeholder="Username*"  name="username" id="vname" class="form-size"><br>
+				 <input type="password" placeholder="Password*"  name="password" id="password" class="form-size"><br>
+				 <input type="text" placeholder="Email*"  name="email" id="email" class="form-size"><br>
+				 <input type="text" placeholder="Address"  name="address" class="form-size"><br>
+				 <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
+   				<input type="submit" name="register" id="enter" class="form-size" value="Sign Up">
+    			</form>
+		</div>
+	    </div>
+	</div>
  <div id="footer">
             <div class="grid-inner">
                 &copy; Copyright WWYDH <?php echo date("Y") ?>
