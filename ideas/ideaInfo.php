@@ -21,13 +21,12 @@
     </head>
 
 		<body>
-	     <!-- <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php echo $row["image"] ?>)";></div> -->
-       <div class="name"><?php echo $row["title"] ?></div>
-			 <div class ="name"><<?php echo $row["owner"] ?>
-       <div class="postedDate"><?php echo $row["timestamp"] ?></div>
+	     <div class="imgViewer" style="background-image: url(../helpers/idea_images/ajhdjwugq.jpg)";></div>
+       <div class="name">Sample name</div>
+       <div class="postedDate">Posted by: User 1 on 01/23/17</div>
        <div class="info">
           <div class="generalInfo">
-						<div class="description"> <?php echo $row["description"] ?></div>
+						<div class="description"> A fun event for all families! </div>
 
 						<br>
 		           	<h1>Requirements:</h1>
