@@ -3,12 +3,12 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font-family: 'Lato', sans-serif;
+
 }
 
 input:focus {
 	outline: 0;
 }
-
 
 #board {
 	width: 95%;
@@ -25,10 +25,7 @@ input:focus {
 	text-align: center;
 	text-transform: uppercase;
 	padding: 5px;
-	background: url("../images/baltimore_bg.jpg");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background-color: #fff;
 }
 
 nav ul,
@@ -114,8 +111,8 @@ nav ul li,
 }
 
 .color_3 {
-	border-color: #FFFFFF;
-	border-top-color: #C07C00;
+	border-color: #CC0000;
+	border-top-color: #CC0000;
 }
 
 .highlight .box {
