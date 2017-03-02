@@ -59,7 +59,7 @@
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="styles_new.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -121,6 +121,10 @@ $( function() {
 					<input name="search" type="text" placeholder="Enter an address, category, or search keywords" />
 				</form>
 			</div>
+			<!--<div class="new-of-type">
+				Add New Plan
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</div> -->
 		</div>
 
 		<div class="grid-inner width">
@@ -146,7 +150,27 @@ $( function() {
 				</div>
 				<div style="clear: both"></div>
 			</div>
-
+			<!--<div class="add-to-plan">
+				<ul>
+					<li class="create">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						<span>Create new plan</span>
+						<div class="plan-title">
+							<form>
+								<input name="plan-title" type="text" placeholder="Plan Title" />
+								<input type="submit" value="Go!" />
+							</form>
+						</div>
+					</li>
+					<?php if (isset($plans)) {
+						 foreach ($plans as $p)  { ?>
+							<?php if ($p["has idea"] == "false") { ?>
+								<li class="existing" data-plan="<?php echo $p["id"] ?>"><?php echo $p["title"] ?></li>
+							<?php } ?>
+					<?php }
+					} ?>
+				</ul>
+			</div> -->
 
 		</div>
 		<div class="grid-inner width">
