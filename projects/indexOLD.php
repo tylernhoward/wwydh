@@ -238,14 +238,6 @@ $loadPage =true;
 						</div>
 					</div>
 				</div>
-				<!--
-			  echo "<tr><td style=\"background-image:url(../helpers/location_images/{$row["image"]})\">
-			 <div class=\"address\">{$row["building_address"]}</div><br/>
-			 <div class=\"neighborhood\">{$row["neighborhood"]}</div><br/>
-			 <div class=\"city\">{$row["city"]}</div><br/>
-			 <div class=\"more\"><a href=\"propertyInfo.php?id={$row["id"]}\">(more)</a></div><br/>
-			 </td></tr>
-			 "; -->
 		</div>
 		<div id="pagination">
 			<div class="grid-inner">
