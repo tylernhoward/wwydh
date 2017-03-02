@@ -151,6 +151,9 @@ $( function() {
 				<div style="clear: both"></div>
 			</div>
 			<!--<div class="add-to-plan">
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 				<ul>
 					<li class="create">
@@ -172,8 +175,11 @@ $( function() {
 					} ?>
 				</ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			</div>
 =======
+=======
+>>>>>>> origin/master
 			</div> -->
 
 		</div>
