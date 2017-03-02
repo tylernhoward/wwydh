@@ -150,7 +150,7 @@ $( function() {
 				</div>
 				<div style="clear: both"></div>
 			</div>
-			<!--<div class="add-to-plan">
+			<div class="add-to-plan">
 				<ul>
 					<li class="create">
 						<i class="fa fa-plus" aria-hidden="true"></i>
