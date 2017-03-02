@@ -1,6 +1,6 @@
 var possibleStates = [
-	'B,Backlog',
-	'A,Analysis',
+	'B,New Tasks',
+	'A,Assigned',
 	'W,Work In Progress',
 	'C,Completed'
 ];
