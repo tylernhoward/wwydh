@@ -12,7 +12,7 @@
 	$result = null;
 
 	// count all records for pagination
-	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM plans i");
+	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM projects i");
 	$q->execute();
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
@@ -34,18 +34,18 @@
 	$q->execute();
 	$data = $q->get_result();
 
-	$plans = [];
+	$projects = [];
 
 	$row = $data->fetch_array(MYSQLI_ASSOC);
-	$plans[$row["idea_id"]] = [];
-	array_push($plans[$row["idea_id"]], $row);
+	$projects[$row["plan_id"]] = [];
+	array_push($projects[$row["plan_id"]], $row);
 
 	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
-		if (array_key_exists($row["idea_id"], $plans)) {
-			array_push($plans[$row["idea_id"]], $row);
+		if (array_key_exists($row["plan_id"], $projects)) {
+			array_push($projects[$row["plan_id"]], $row);
 		} else {
-			$plans[$row["idea_id"]] = [];
-			array_push($plans[$row["idea_id"]], $row);
+			$projects[$row["plan_id"]] = [];
+			array_push($projects[$row["plan_id"]], $row);
 		}
 	}
 >>>>>>> master
@@ -227,7 +227,7 @@ $( function() {
 						</div>
 					</div>
 					<div class="locations">
-						<?php foreach($plan as $location) {
+						<?php foreach($projects as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
 								<div class="vote">
