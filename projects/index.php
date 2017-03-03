@@ -10,41 +10,47 @@
 	$result = null;
 
 	// count all records for pagination
-	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM projects i");
+	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM ideas i");
 	$q->execute();
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
 
+	$id = isset($_SESSION["user"]["id"]) ? $_SESSION["user"]["id"] : 0;
+
+	// set the $_GET variables to appended to links that reload this page
+	$urlExtras = "?";
+	if (isset($_GET["page"])) $urlExtras += "page=".$_GET["page"]."&";
+	if (isset($_GET["sort"])) $urlExtras += "sort=".$_GET["sort"]."&";
+
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	if (isset($_GET["isSearch"])) {
 		$theQuery = "SELECT * FROM `locations` WHERE `building_address` LIKE '%{$_GET["sAddress"]}%' AND `building_address` LIKE '%{$_GET["sAddress"]}%' AND `block` LIKE '%{$_GET["sBlock"]}%' AND `lot` LIKE '%{$_GET["sLot"]}%' AND `zip_code` LIKE '%{$_GET["sZip"]}%' AND `city` LIKE '%{$_GET["sCity"]}%' AND `neighborhood` LIKE '%{$_GET["sNeighborhood"]}%' AND `police_district` LIKE '%{$_GET["sPoliceDistrict"]}%' AND `council_district` LIKE '%{$_GET["sCouncilDistrict"]}%' AND `longitude` LIKE '%{$_GET["sLongitude"]}%' AND `latitude` LIKE '%{$_GET["sLatitude"]}%' AND `owner` LIKE '%{$_GET["sOwner"]}%' AND `use` LIKE '%{$_GET["sUse"]}%' AND `mailing_address` LIKE '%{$_GET["sMailingAddr"]}%'";
-	} else if (isset($_GET["location"])) {
-		$q = $conn->prepare("SELECT u.name AS `name`, i.*, GROUP_CONCAT(cc.description SEPARATOR '[-]') as `checklist`, l.mailing_address, l.image FROM ideas i LEFT JOIN users u ON u.id = i.leader_id
-		LEFT JOIN locations l ON i.location_id = l.id
-		LEFT JOIN checklists c ON c.idea_id = i.id
-		LEFT JOIN checklist_items cc ON cc.checklist_id = c.id
-		WHERE cc.contributer_id IS NULL AND i.location_id = {$_GET["location"]} GROUP BY i.id");
 	} else {
-		$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id LEFT JOIN location_features f ON f.location_id = l.id WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
+		if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc") $sort = "`upvotes` ASC";
+		elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-desc") $sort = "`timestamp` DESC";
+		elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-asc") $sort = "`timestamp` ASC";
+		// dafault case
+		else $sort = "`upvotes` DESC";
+
+		$q = $conn->prepare("SELECT i.*,
+			(SELECT COUNT(up_i.id) FROM upvotes_ideas up_i WHERE up_i.idea_id = i.id) AS `upvotes`,
+			(SELECT COUNT(up_i_u.id) FROM upvotes_ideas up_i_u WHERE up_i_u.user_id = $id AND up_i_u.idea_id = i.id) AS `upvoted`,
+			COUNT(pl.id) AS `plans` FROM ideas i LEFT JOIN plans pl ON pl.idea_id = i.id GROUP BY i.id ORDER BY $sort LIMIT $itemCount OFFSET $offset");
 	}
 
 	$q->execute();
 	$data = $q->get_result();
 
-	$projects = [];
+	// if user is logged in, get users plans and identify whether or not they have an idea attached to them
+	if (isset($_SESSION["user"])) {
+		$q = $conn->prepare("SELECT pl.*, IF(COUNT(i.id) > 0, 'true', 'false') AS `has idea` FROM plans pl LEFT JOIN ideas i ON pl.idea_id = i.id WHERE pl.creator_id = {$_SESSION["user"]["id"]} AND pl.published = 0 GROUP BY pl.id");
+		$q->execute();
 
-	$row = $data->fetch_array(MYSQLI_ASSOC);
-	$projects[$row["plan_id"]] = [];
-	array_push($projects[$row["plan_id"]], $row);
+		$users_plans = $q->get_result();
+		$plans = [];
 
-	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
-		if (array_key_exists($row["plan_id"], $projects)) {
-			array_push($projects[$row["plan_id"]], $row);
-		} else {
-			$projects[$row["plan_id"]] = [];
-			array_push($projects[$row["plan_id"]], $row);
-		}
+		while ($row = $users_plans->fetch_array(MYSQLI_ASSOC)) array_push($plans, $row);
 	}
 ?>
 
