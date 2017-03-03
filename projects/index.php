@@ -150,61 +150,63 @@ $( function() {
 				</div>
 				<div style="clear: both"></div>
 			</div>
-			<!--<div class="add-to-plan">
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-				<ul>
-					<li class="create">
-						<i class="fa fa-plus" aria-hidden="true"></i>
-						<span>Create new plan</span>
-						<div class="plan-title">
-							<form>
-								<input name="plan-title" type="text" placeholder="Plan Title" />
-								<input type="submit" value="Go!" />
-							</form>
-						</div>
-					</li>
-					<?php if (isset($plans)) {
-						 foreach ($plans as $p)  { ?>
-							<?php if ($p["has idea"] == "false") { ?>
-								<li class="existing" data-plan="<?php echo $p["id"] ?>"><?php echo $p["title"] ?></li>
-							<?php } ?>
-					<?php }
-					} ?>
-				</ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-			</div>
-=======
-=======
->>>>>>> origin/master
-			</div> -->
-
-		</div>
-		<div class="grid-inner width">
 			<?php
-			foreach ($projects as $project) {
-				$row = $project[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
-				<div class="idea">
+			while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
+				if (isset($row["checklist"])) $row["checklist"] = explode("[-]", $row["checklist"]); ?>
+
+				<div class="idea
+				<?php if (isset($row["owner"]) && $row["owner"] == $_SESSION["user"]["id"]) echo "mine" ?>"
+				data-idea="<?php echo $row["id"] ?>">
 					<div class="grid-item width">
+						<div class="plan-buttons options btn-group">
+							<div class="btn op-1"><a>Add to plan <i class="fa fa-sort" aria-hidden="true"></i></a></div>
+ 							<div class="btn op-2"><a href="ideaInfo.php?id=<?php echo $row["id"] ?>">More Info</a></div>
+							<?php if ($row["plans"] > 0) { ?> <div class="btn op-3"><a href="../plans?location=<?php echo $row["id"] ?>">See other plans with this idea</a></div> <?php } ?>
+						</div>
+						<div class="add-to-plan">
+							<ul>
+								<li class="create">
+									<i class="fa fa-plus" aria-hidden="true"></i>
+									<span>Create new plan</span>
+									<div class="plan-title">
+										<form>
+											<input name="plan-title" type="text" placeholder="Plan Title" />
+											<input type="submit" value="Go!" />
+										</form>
+									</div>
+								</li>
+								<?php if (isset($plans)) {
+									 foreach ($plans as $p)  { ?>
+										<?php if ($p["has idea"] == "false") { ?>
+											<li class="existing" data-plan="<?php echo $p["id"] ?>"><?php echo $p["title"] ?></li>
+										<?php } ?>
+								<?php }
+								} ?>
+							</ul>
+						</div>
 						<div class="vote">
-							<div class="upvote">
+							<div class="upvote <?php if ($row["upvoted"] == 1) echo "me"; ?>">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+								<div class="vote_count"><?php echo $row["upvotes"] ?></div>
 							</div>
-							<div class="downvote">
+							<div class="downvote <?php if ($row["downvoted"] == 1) echo "me"; ?>">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+								<div class="vote_count"><?php echo $row["downvotes"] ?></div>
 							</div>
+							<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
 						</div>
 						<div class="idea_image_wrapper">
+							<?php if (isset($row["owner"]) && isset($_SESSION["user"]) && $row["owner"] == $_SESSION["user"]["id"]) { ?>
+								<div class="corner-ribbon idea-mine">mine</div>
+							<?php } ?>
 							<i class="fa <?php echo $idea_categories[$row['category']]['fa-icon'] ?>"></i>
 							<div class="overlay"></div>
-							<div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $row["idea image"]?>);"></div>
+							<div class="idea_image" style="background-image: url(../helpers/idea_images/<?php if (isset($row['image'])) echo $row['image']; else echo "no_image.jpg";?>);"></div>
 						</div>
 						<div class="idea_desc">
 							<div class="title"><?php echo $row["title"] ?></div>
-							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
+							<div class="post_date">Posted on:  <span><?php echo date("F j, Y", strtotime($row["timestamp"])) ?></span></div>
+							<div class="category">Category: <span><?php echo $idea_categories[$row['category']]["title"] ?></span></div>
 							<div class="description"><?php echo $row["description"] ?></div>
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
@@ -223,26 +225,7 @@ $( function() {
 							<?php */ ?>
 						</div>
 					</div>
-					<div class="locations">
-						<?php foreach($projects as $location) {
-							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
-							<div class="location">
-								<div class="vote">
-									<div class="upvote">
-										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-									</div>
-									<div class="downvote">
-										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-									</div>
-								</div>
-
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
-								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
-								<div class="location_features"><?php echo $location["features"] ?></div>
-								<div style="clear: both"></div>
-							</div>
-						<?php } ?>
-					</div>
+				</div>
 		 	<?php }
 			?>
 		</div>
