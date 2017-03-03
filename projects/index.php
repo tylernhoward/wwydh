@@ -5,8 +5,6 @@
 	include "../helpers/paginate.php";
 	include "../helpers/vars.php";
 	include "../helpers/conn.php";
-<<<<<<< HEAD
-=======
 
 	$theQuery = "";
 	$result = null;
@@ -48,7 +46,6 @@
 			array_push($projects[$row["plan_id"]], $row);
 		}
 	}
->>>>>>> master
 ?>
 
 <!DOCTYPE html>
@@ -188,8 +185,8 @@ $( function() {
 		</div>
 		<div class="grid-inner width">
 			<?php
-			foreach ($plans as $plan) {
-				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
+			foreach ($projects as $project) {
+				$row = $project[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
 					<div class="grid-item width">
 						<div class="vote">
