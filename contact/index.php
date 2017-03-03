@@ -64,7 +64,7 @@
                 <input type="text" name="name" class="form-size" placeholder="Name"><br>
                 <input type="text" name="email" class="form-size" placeholder="Email"><br>
                 <textarea type="text" name="message" class="message" placeholder="Message"></textarea><br>
-                <input type="submit" id="submit" class="form-size" value="Submit">
+                <input type="submit" id="submit" name="submit" class="form-size" value="Submit">
               </form>
             </div>
         </div>

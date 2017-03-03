@@ -185,10 +185,11 @@
 
 .postedDate{
   text-align: right;
-  border-bottom: 2px solid black;
+  /*color: #418040;*/
+  /*border-bottom: 2px solid black;
   border-left: 2px solid black;
-  border-right: 2px solid black;
-  font-size: 12px
+  border-right: 2px solid black;*/
+  font-size: 18px
 }
 
 .generalInfo{

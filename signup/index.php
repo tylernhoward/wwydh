@@ -1,39 +1,37 @@
-<?php
+<?php 
 include("../helpers/conn.php");
 session_start();
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // username and password received from loginform
-    $first=mysqli_real_escape_string($conn,$_POST['first']);
-    $last=mysqli_real_escape_string($conn,$_POST['last']);
-    $username=mysqli_real_escape_string($conn,$_POST['username']);
-    $password=md5(mysqli_real_escape_string($conn,$_POST['password']));
-    $email=mysqli_real_escape_string($conn,$_POST['email']);
-    $address=mysqli_real_escape_string($conn,$_POST['address']);
-    $sID = "";
-    $zipCode=mysqli_real_escape_string($conn,$_POST['zipCode']);
+if(isset($_POST["register"]))
+ {
+// username and password received from loginform 
+$first= $_POST['first'];
+$last= $_POST['last'];
+$username=$_POST['username'];
+$password=md5($_POST['password']);
+$email=$_POST['email'];
+$address=$_POST['address'];
+$sID = "";
+$zipCode=$_POST['zipCode'];
 
 
 
-    $sql_query="INSERT INTO users(id,first, last, username,email,login,address,zipCode) VALUES('sID','$first','$last','$username','$email','$password','$address','$zipCode')";
-    $result=mysqli_query($conn,$sql_query)or die(mysqli_error($conn));
+$q="INSERT INTO users(id,first, last, username,email,login,address,zipCode) VALUES('sID','$first','$last','$username','$email','$password','$address','$zipCode')";
+$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
 //$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 //$count=mysqli_num_rows($result);
 
 
 // If result matched $username and $password, table row must be 1 row
-    if($result){
+if($result){
       $_SESSION['login_user']=$username;
-      wait(1);
       header("Location: ../login/index.php");
     }
     else{
       $error="Registration Failed!";
-      wait(1);
       header("Location: ../signup/index.php");
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../helpers/globals.js" type="text/javascript"></script>
     <script src="scripts.js" type="text/javascript"></script>
+	<script type="text/JavaScript" src="check.js"></script>
   </head>
   <body>
     <div class="width">
@@ -95,24 +94,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div id="registration">
         <div class="width">
           <div id="reg">REGISTRATION</div>
-            <div id="form">
-                <form action="#"> <!--BACKEND: Edit this action to wherever the form will submit to -->
-                  <input type="text" placeholder="First Name"  name="first" class="form-size"><br>
-              	  <input type="text" placeholder="Last Name"  name="last" class="form-size"><br>
-                  <input type="text"  placeholder="Username"  name="username" class="form-size"><br>
-                  <input type="password" placeholder="Password"  name="password" class="form-size"><br>
-                  <input type="text" placeholder="Email"  name="email" class="form-size"><br>
-                  <input type="text" placeholder="Address"  name="address" class="form-size"><br>
-                  <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
-                  <input type="submit" id="submit" class="form-size" value="Sign Up">
-              </form>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
+		  <div id="small">Required*</div>
+			<div id ="form">
+    			<form method="post" action="#" name="loginform" onsubmit="return checkFilled();">
+    			<input type="text" placeholder="First Name*"  name="first" id="firstname" class="form-size"><br>
+				<input type="text" placeholder="Last Name*"  name="last" id="lastname" class="form-size"><br>
+				<input type="text"  placeholder="Username*"  name="username" id="vname" class="form-size"><br>
+				 <input type="password" placeholder="Password*"  name="password" id="password" class="form-size"><br>
+				 <input type="text" placeholder="Email*"  name="email" id="email" class="form-size"><br>
+				 <input type="text" placeholder="Address"  name="address" class="form-size"><br>
+				 <input type="text" placeholder="Zip Code" name="zipCode" class="form-size"><br>
+   				<input type="submit" name="register" id="submit" class="form-size" value="Sign Up">
+    			</form>
+		</div>
+	    </div>
+	</div>
+ <div id="footer">
             <div class="grid-inner">
                 &copy; Copyright WWYDH <?php echo date("Y") ?>
             </div>
     </div>
+</div>
 </body>
+
 </html>
