@@ -24,7 +24,7 @@
 		    <title><?php echo $row["building_address"] ?></title>
     </head>
 		<body>
-	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
+	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=1200x600&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">

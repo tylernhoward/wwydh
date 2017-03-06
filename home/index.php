@@ -122,8 +122,8 @@
                                 <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
                             </div>
                             <?php
-                            $str = $row['building_address'];
-                        		$cit = $row['city'];
+                            $str = $l['building_address'];
+                        		$cit = $l['city'];
                         		$addURL = rawurlencode("$str $cit");
                             ?>
                             <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";>
