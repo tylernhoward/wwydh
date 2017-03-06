@@ -164,7 +164,7 @@
 
 								rawurlencode("$row['building_address'] $row['city']")
 								-->
-								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo rawurlencode("$row['building_address'] $row['city']") ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=2041%20W%20NORTH%20AVENUE%20BALTIMORE&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_desc">
 									<div class="address"><?php echo $row["building_address"] ?></div>
 									<div class="features"><?php echo $row["features"] ?></div>
