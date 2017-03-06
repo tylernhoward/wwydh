@@ -159,7 +159,7 @@
 									<div class="ideas_count"><?php echo $row["ideas"] ?></div>
 								<?php } ?>
 								<!-- https://maps.googleapis.com/maps/api/streetview?size=600x300&location=2041 W NORTH AVENUE BALTIMORE&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0-->
-								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location= <?php echo "$row['building_address'] $row['city']&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0"?>);"></div>
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $row['building_address']; echo &nbsp; echo $row['city'];?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_desc">
 									<div class="address"><?php echo $row["building_address"] ?></div>
 									<div class="features"><?php echo $row["features"] ?></div>
