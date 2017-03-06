@@ -121,7 +121,7 @@
                                 <?php if ($l["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $l["id"] ?>">See other Plans here</a></div> <?php } ?>
                                 <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
                             </div>
-                            <div class="location_image" style="background-image: url(../helpers/location_images/<?php if (isset($l['image'])) echo $l['image']; else echo "no_image.jpg";?>);">
+                            <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location= <?php echo "$row['building_address'] $row['city']&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0"?>);">
                                 <?php if ($l["plans"] > 0) { ?>
                                     <div class="ideas_count"><?php echo $l["plans"] ?></div>
                                 <?php } ?>

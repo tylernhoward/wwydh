@@ -22,7 +22,7 @@
     </head>
 
 		<body>
-	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo "$row['building_address'] $row['city']" ?>);"></div>
+	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo "$row['building_address'] $row['city']&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0"?>);"></div>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">
