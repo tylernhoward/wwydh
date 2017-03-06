@@ -96,7 +96,6 @@
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
                 <a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
                 <div id="sideHelp" class="side-button">I Want to Contribute</div>
-                <a href="../contact"><div id="sideContact" class="side-button">Contact Us</div></a>
             </div>
             <div id="map"></div>
             <div id="welcome">
