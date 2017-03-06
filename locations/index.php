@@ -77,7 +77,7 @@
 		</script>
 
 	</head>
-	<body onload="initMap();">
+	<body onload="initMap(); openNav();">
 		<?php if ($loadPage) { ?>
 			<div class="width">
 				<div id="nav">

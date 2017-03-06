@@ -1,5 +1,20 @@
 // alright boys, get ready...
 
+
+
+// open and close functions for home sidemenu
+function openNav() {
+    $(".sidenav").addClass("open");
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+
+
 // Google's MAP function DON'T TOUCH!!
 function initMap() {
     // call my getLocation method

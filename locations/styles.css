@@ -239,20 +239,8 @@ ul{
     padding-left: 35px;
 }
 
-#sideIdea {
-    background-color: #418040;
-}
-
 #sideLocation {
     background-color: #4D8C4C;
-}
-
-#sideHelp {
-    background-color: #559454;
-}
-
-#sideContact {
-    background-color: #609E5F;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
