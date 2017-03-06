@@ -132,7 +132,7 @@
                                 <?php } ?>
                             </div>
                             <div class="location_desc">
-                                <div class="address"><?php echo $l["mailing_address"] ?></div>
+                                <div class="address"><?php echo $l["building_address"] ?></div>
                                 <?php if (isset($l["features"])) { ?>
                                     <div class="features">
                                         <span>Features:</span>

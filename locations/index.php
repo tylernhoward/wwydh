@@ -124,6 +124,10 @@
 		        </div>
 			</div>
 			<div id="mapContainer">
+							<div id="mySidenav" class="sidenav">
+									<div class="sidebar-tools"></div>
+									<a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
+							</div>
 	            <div id="map"></div>
 	        </div>
 			<div class="grid-inner width">
