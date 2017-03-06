@@ -167,7 +167,7 @@
 									$add = rawurlencode("$row['building_address'] $row['city']");
 									$imgURL = "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=" . $add ."&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0";
 								?>
-								<div class="location_image" style="background-image: url(<?php echo $imgURL;?>)";></div>
+								<div class="location_image" style="background-image: url(<?php echo $imgURL ?>)";></div>
 								<div class="location_desc">
 									<div class="address"><?php echo $row["building_address"] ?></div>
 									<div class="features"><?php echo $row["features"] ?></div>
