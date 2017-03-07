@@ -225,8 +225,12 @@ $( function() {
 										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 									</div>
 								</div>
-
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
+								<?php
+								$str = $row['building_address'];
+								$cit = $row['city'];
+								$addURL = rawurlencode("$str $cit");
+								?>
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<div class="location_features"><?php echo $location["features"] ?></div>
 								<div style="clear: both"></div>

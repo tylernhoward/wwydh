@@ -5,6 +5,25 @@ if (isset($_POST["submit"])) {
 
 	$email = $_POST["email"];
 
+<<<<<<< HEAD
+	$name=$POST_["name"];
+	$message=$POST_["message"];
+
+	$apiKey = getenv('SENDGRID_API_KEY');
+	$sg = new SendGrid($apiKey);
+
+	$mail = new SendGrid\Email();
+	$mail
+	->addTo('wwydh2017@gmail.com')
+	->setFrom($email)
+	->setSubject($name)
+	->setText($message);
+
+
+	$sg->send($mail);
+
+	echo "Thank you for contacting the team at WWYDH. \n\n We will get back to you shortly.";
+=======
 	$name=$_POST["name"];
 	$message=$_POST["message"];
 		
@@ -23,5 +42,6 @@ if (isset($_POST["submit"])) {
 		$link = "../home/index.php";
 		$here = "Return to home";
 		Echo "<a href=$link>$here</a>";
+>>>>>>> master
 }
 ?>

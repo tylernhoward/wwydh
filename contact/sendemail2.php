@@ -12,8 +12,13 @@ if (isset($_POST["submit"])) {
 		exit;
 	}
 
+<<<<<<< HEAD
+			$name=$POST_["name"];
+			$message=$POST_["message"];
+=======
 			$name=$_POST_["name"];
 			$message=$_POST["message"];
+>>>>>>> master
 
 			$from = new SendGrid\Email($name, $email);
 			$subject = "Contact from user";

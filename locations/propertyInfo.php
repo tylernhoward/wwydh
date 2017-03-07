@@ -10,6 +10,9 @@
 		$result = $conn->query($theQuery);
 		$rowcount = mysqli_num_rows($result);
 		$row = @mysqli_fetch_array($result);
+		$str = $row['building_address'];
+		$cit = $row['city'];
+		$addURL = rawurlencode("$str $cit");
   ?>
 
 <!DOCTYPE html>
@@ -20,9 +23,8 @@
     <head>
 		    <title><?php echo $row["building_address"] ?></title>
     </head>
-
 		<body>
-	     <div class="imgViewer" style="background-image: url(../helpers/location_images/<?php echo $row["image"] ?>)";></div>
+	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=1200x600&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">

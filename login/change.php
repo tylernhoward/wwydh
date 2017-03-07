@@ -47,7 +47,9 @@ if (isset($_POST["ForgotPassword"])) {
 		//echo $response->body();
 		echo "Your password recovery key has been sent to your e-mail address.";
 	}
-	else
+	else{
 		echo "No user with that e-mail address exists.";
+		
+	}
 }
 ?>
