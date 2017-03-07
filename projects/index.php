@@ -64,7 +64,7 @@
 		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-		<link href="styles.css" type="text/css" rel="stylesheet" />
+		<link href="styles_new.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
