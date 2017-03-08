@@ -231,8 +231,7 @@ $( function() {
 								</div>
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
-								<div class="location_features"><?php echo $location["features"] ?></div>
-								<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+								<div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
 								<div style="clear: both"></div>
 							</div>
 						<?php } ?>

@@ -211,9 +211,11 @@ $( function() {
 					<div class="locations">
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
-							<div class="plan-buttons options btn-group">
-								<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a></div>
+
 							<div class="location">
+								<div class="plan-buttons options btn-group">
+									<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a></div> <!--Insert link here -->
+								</div>
 								<div class="vote">
 									<div class="upvote">
 										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
