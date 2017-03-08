@@ -179,6 +179,7 @@ $( function() {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
 					<div class="grid-item width">
+
 						<div class="vote">
 							<div class="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -196,6 +197,7 @@ $( function() {
 							<div class="title"><?php echo $row["title"] ?></div>
 							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
 							<div class="description"><?php echo $row["description"] ?></div>
+							<div class="date"><?php echo date("F j, Y", strtotime($row["date"])) ?></div>
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
 								<div class="checklist">
@@ -217,6 +219,11 @@ $( function() {
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
+								<div class="plan-buttons options btn-group">
+									<div class="btn op-1"><a>Add to plan <i class="fa fa-sort" aria-hidden="true"></i></a></div>
+		 							<div class="btn op-2"><a>More Info</a></div>
+									<div class="btn op-3"><a>See other plans with this idea</a></div>
+								</div>
 								<div class="vote">
 									<div class="upvote">
 										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
