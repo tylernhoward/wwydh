@@ -4,7 +4,7 @@
 	session_name( 'kanban' );
 	session_start();
 	$_SESSION["projid"] = $project_id;
-	echo $_SESSION["projid"];
+	// echo $_SESSION["projid"];
 
 
 ?>
@@ -12,7 +12,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="refresh" content="3; url=https://wwydh-2017.herokuapp.com/lwkanban/" /> //hardcoded for now
+		<meta http-equiv="refresh" content="3; url=https://wwydh-2017.herokuapp.com/lwkanban/" /> <!-- hardcoded for now -->
 		<title>WWYDH Project Manager</title>
 	</head>
 	<body>
