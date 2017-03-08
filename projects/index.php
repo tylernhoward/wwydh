@@ -49,7 +49,7 @@
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="stylesnew.css">
+<link rel="stylesheet" href="styles_new.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -229,6 +229,7 @@ $( function() {
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<div class="location_features"><?php echo $location["features"] ?></div>
 								<div style="clear: both"></div>
+
 							</div>
 						<?php } ?>
 					</div>
