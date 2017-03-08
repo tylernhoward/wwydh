@@ -116,6 +116,12 @@
 		<div class="plan-buttons options btn-group">
 			<div class="btn op-1"><a href="../projects/index.php">Go Back To Projects</a></div> <!--Insert link here -->
 		</div>
+		
+		<div id="footer">
+            <div class="grid-inner">
+                &copy; Copyright WWYDH <?php echo date("Y") ?>
+            </div>
+    </div>
 
 	</body>
 </html>
