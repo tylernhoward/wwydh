@@ -4,7 +4,11 @@
 }
 
 #splash {
+<<<<<<< HEAD
     background-image: url(../images/project_bg.jpg);
+=======
+    background-image: url(../images/plan_bg.png);
+>>>>>>> Alec_Kanban_Test
     background-size: cover;
     background-position: bottom;
 }
