@@ -167,8 +167,8 @@
                             <div class="title">Date of Completion</div>
     					</div>
     					<div class = "pane-content">
-    						<div class="pane-content-intro">Does your plan need permits? If so, please list below.</div>
-                <input name="date" type="text" placeholder="What date do you hope to be completed by? ex:(March 7, 2017)" />
+    						<div class="pane-content-intro">When do you want this plan to become a reality? Enter below.</div>
+                <input name="date" type="text" placeholder="What date do you hope to be completed by? ex: (March 7, 2017)" />
                         </div>
     				</div>
 
