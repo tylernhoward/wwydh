@@ -186,8 +186,11 @@ $( function() {
 							<div class="title"><?php echo $row["title"] ?></div>
 							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
 							<div class="description"><?php echo $row["description"] ?></div>
+
 							<hr>
-							<a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a>
+							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+
+
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
 								<div class="checklist">
@@ -208,6 +211,8 @@ $( function() {
 					<div class="locations">
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
+							<div class="plan-buttons options btn-group">
+								<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a></div>
 							<div class="location">
 								<div class="vote">
 									<div class="upvote">

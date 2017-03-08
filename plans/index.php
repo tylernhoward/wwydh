@@ -219,7 +219,7 @@ $( function() {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
 								<div class="plan-buttons options btn-group">
-									<div class="btn op-1"><a>Become the Project Manager</a></div>
+									<div class="btn op-1"><a>Become the Project Manager</a></div> <!--Insert link here -->
 								</div>
 								<div class="vote">
 									<div class="upvote">
@@ -232,7 +232,7 @@ $( function() {
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<div class="location_features"><?php echo $location["features"] ?></div>
-								<div class="date"><?php echo "Want Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+								<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
 								<div style="clear: both"></div>
 							</div>
 						<?php } ?>
