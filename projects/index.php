@@ -188,7 +188,7 @@ $( function() {
 
 							<hr>
 							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
-							<div class="manage"><?php echo "\nProject Manager: " . $row["creator_id"] ?></div>
+							<div class="manage"><?php echo "\nProject Manager: " . "thowar4" //placeholder?></div> 
 
 
 							<?php /* ?>
@@ -223,12 +223,13 @@ $( function() {
 								<div style="clear: both"></div>
 
 							</div>
-							<hr>
+
 						<?php } ?>
 					</div>
 		 	<?php }
 			?>
 		</div>
+		<hr>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">
