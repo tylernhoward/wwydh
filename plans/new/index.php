@@ -104,7 +104,8 @@
                                 <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
                             <?php } ?>
 						            </select>
-						           <!--FIX<div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div>-->
+                        <hr>
+						           <div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div>
 					</div>
 				</div>
 				<div class="pane" data-index="2">
