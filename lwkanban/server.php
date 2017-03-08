@@ -1,22 +1,4 @@
 <?php
-<<<<<<< HEAD
-<<<<<<< HEAD
-define('DATA_FILE', 'data.json');
-
-function save($data) {
-	$encoded = json_encode($data);
-	$fh = fopen(DATA_FILE, 'w') or die ("Can't open file");
-	fwrite($fh, strip_tags($encoded));
-	fclose($fh);
-}
-
-function load() {
-	$fh = fopen(DATA_FILE, 'r');
-	$data = fread($fh, filesize(DATA_FILE));
-	print $data;
-=======
-=======
->>>>>>> Alec_Kanban_Test
 include("../helpers/conn.php");
 define('DATA_FILE', 'data.json');
 /*
@@ -79,10 +61,6 @@ function load() {
 	$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
 	$row = mysqli_fetch_assoc($result);
 	print $row["json"];
-<<<<<<< HEAD
->>>>>>> Alec_Kanban_Test
-=======
->>>>>>> Alec_Kanban_Test
 }
 
 if (function_exists($_POST['action'])) {
