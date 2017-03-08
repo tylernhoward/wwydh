@@ -1,5 +1,6 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 define('DATA_FILE', 'data.json');
 
 function save($data) {
@@ -14,6 +15,8 @@ function load() {
 	$data = fread($fh, filesize(DATA_FILE));
 	print $data;
 =======
+=======
+>>>>>>> Alec_Kanban_Test
 include("../helpers/conn.php");
 define('DATA_FILE', 'data.json');
 /*
@@ -76,6 +79,9 @@ function load() {
 	$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
 	$row = mysqli_fetch_assoc($result);
 	print $row["json"];
+<<<<<<< HEAD
+>>>>>>> Alec_Kanban_Test
+=======
 >>>>>>> Alec_Kanban_Test
 }
 

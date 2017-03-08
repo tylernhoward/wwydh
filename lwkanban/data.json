@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
 	"1477789330164": {
 		"title": "Create a better User Interface",
@@ -71,6 +72,9 @@
 		"color": "2"
 	}
 }
+=======
+{"1488496527306":{"title":"Talked to Lawyer","id":"1488496527306","responsible":"permissions","state":"B","color":"0"},"1488818591919":{"title":"Get X","id":"1488818591919","responsible":"permit","state":"B","color":"2"},"1488826826714":{"title":"New project","id":"1488826826714","responsible":"Unassigned","state":"B","color":"0"},"1488826905475":{"title":"Get Permit M","id":"1488826905475","responsible":"permit","state":"B","color":"1"},"1488826938691":{"title":"New project","id":"1488826938691","responsible":"Unassigned","state":"B","color":"0"}}
+>>>>>>> Alec_Kanban_Test
 =======
 {"1488496527306":{"title":"Talked to Lawyer","id":"1488496527306","responsible":"permissions","state":"B","color":"0"},"1488818591919":{"title":"Get X","id":"1488818591919","responsible":"permit","state":"B","color":"2"},"1488826826714":{"title":"New project","id":"1488826826714","responsible":"Unassigned","state":"B","color":"0"},"1488826905475":{"title":"Get Permit M","id":"1488826905475","responsible":"permit","state":"B","color":"1"},"1488826938691":{"title":"New project","id":"1488826938691","responsible":"Unassigned","state":"B","color":"0"}}
 >>>>>>> Alec_Kanban_Test
