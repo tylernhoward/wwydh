@@ -1,6 +1,6 @@
 <?php
 	$project_id = $_GET['id'];
-	echo $project_id;
+	// echo $project_id;
 	session_name( 'kanban' );
 	session_start();
 	$_SESSION["projid"] = $project_id;
