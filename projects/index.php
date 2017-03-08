@@ -213,7 +213,7 @@ $( function() {
 
 							<div class="location">
 								<div class="plan-buttons options btn-group">
-									<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a></div> <!--Insert link here -->
+									<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Edit Task Progress</a></div> <!--Insert link here -->
 								</div>
 								<div class="vote">
 									<div class="upvote">
