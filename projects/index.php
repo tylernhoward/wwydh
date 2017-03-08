@@ -40,8 +40,9 @@
 	} *///DEPRECATED
 
 
-	$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`,
+	$q = $conn->prepare("SELECT pj.*, pl.*, i.*, l.*, i.image AS `idea image`,
 		 GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl
+		 LEFT JOIN plans pl ON pl.id = pj.plan_id
 		 LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id
 		 LEFT JOIN location_features f ON f.location_id = l.id
 		 WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
@@ -51,15 +52,15 @@
 	$projects = [];
 
 	$row = $data->fetch_array(MYSQLI_ASSOC);
-	$projects[$row["idea_id"]] = [];
-	array_push($projects[$row["idea_id"]], $row);
+	$projects[$row["plan_id"]] = [];
+	array_push($projects[$row["plan_id"]], $row);
 
 	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
-		if (array_key_exists($row["idea_id"], $projects)) {
-			array_push($projects[$row["idea_id"]], $row);
+		if (array_key_exists($row["plan_id"], $projects)) {
+			array_push($projects[$row["plan_id"]], $row);
 		} else {
-			$plans[$row["idea_id"]] = [];
-			array_push($projects[$row["idea_id"]], $row);
+			$plans[$row["plan_id"]] = [];
+			array_push($projects[$row["plan_id"]], $row);
 		}
 	}
 
@@ -72,14 +73,14 @@
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 		<link href="styles_new.css" type="text/css" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
 $( function() {
 	$( "#accordion" ).accordion();
 } );
@@ -239,8 +240,8 @@ $( function() {
 									</div>
 								</div>
 								<?php
-								$str = $row['building_address'];
-								$cit = $row['city'];
+								$str = $location['building_address'];
+								$cit = $location['city'];
 								$addURL = rawurlencode("$str $cit");
 								?>
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
