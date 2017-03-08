@@ -5,8 +5,6 @@
 	session_start();
 	$_SESSION["projid"] = $project_id;
 	// echo $_SESSION["projid"];
-
-
 ?>
 <!DOCTYPE html>
 <html>
