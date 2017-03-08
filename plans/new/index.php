@@ -21,17 +21,18 @@
 <html>
 	<head>
 		<title> New Plan</title>
-		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
-		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+    <link href="../../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+		<link href="../../helpers/splash.css" type="text/css" rel="stylesheet" />
 		<link href="styles.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
-		<script src="../helpers/globals.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script>$( function() {$( "#accordion" ).accordion();} );</script>
+        <script src="../../helpers/globals.js" type="text/javascript"></script>
+        <script src="scripts.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>$( function() {$( "#accordion" ).accordion();} );</script>
 	</head>
 	<body>
         <div class="width">
