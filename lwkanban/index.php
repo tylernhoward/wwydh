@@ -8,6 +8,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400|Montserrat:400,700" rel="stylesheet" />
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 
 		<!-- Scripts -->
 		<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -105,7 +106,7 @@
 			<?php
 			session_name( 'kanban' );
 			session_start();
-			echo $_SESSION["projid"];
+			// echo $_SESSION["projid"];
 			?>
 			<div id="board"></div>
 			<h2>Tags</h2>
