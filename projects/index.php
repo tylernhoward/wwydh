@@ -10,12 +10,17 @@
 	$result = null;
 
 	// count all records for pagination
+<<<<<<< HEAD
+	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM projects i");
+=======
 	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM plans i");
+>>>>>>> Alec_Kanban_Test
 	$q->execute();
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
 
+<<<<<<< HEAD
 	$id = isset($_SESSION["user"]["id"]) ? $_SESSION["user"]["id"] : 0;
 
 	// set the $_GET variables to appended to links that reload this page
@@ -25,8 +30,19 @@
 
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*if (isset($_GET["isSearch"])) {
+=======
+	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
+	if (isset($_GET["isSearch"])) {
+>>>>>>> Alec_Kanban_Test
 		$theQuery = "SELECT * FROM `locations` WHERE `building_address` LIKE '%{$_GET["sAddress"]}%' AND `building_address` LIKE '%{$_GET["sAddress"]}%' AND `block` LIKE '%{$_GET["sBlock"]}%' AND `lot` LIKE '%{$_GET["sLot"]}%' AND `zip_code` LIKE '%{$_GET["sZip"]}%' AND `city` LIKE '%{$_GET["sCity"]}%' AND `neighborhood` LIKE '%{$_GET["sNeighborhood"]}%' AND `police_district` LIKE '%{$_GET["sPoliceDistrict"]}%' AND `council_district` LIKE '%{$_GET["sCouncilDistrict"]}%' AND `longitude` LIKE '%{$_GET["sLongitude"]}%' AND `latitude` LIKE '%{$_GET["sLatitude"]}%' AND `owner` LIKE '%{$_GET["sOwner"]}%' AND `use` LIKE '%{$_GET["sUse"]}%' AND `mailing_address` LIKE '%{$_GET["sMailingAddr"]}%'";
+	} else if (isset($_GET["location"])) {
+		$q = $conn->prepare("SELECT u.name AS `name`, i.*, GROUP_CONCAT(cc.description SEPARATOR '[-]') as `checklist`, l.mailing_address, l.image FROM ideas i LEFT JOIN users u ON u.id = i.leader_id
+		LEFT JOIN locations l ON i.location_id = l.id
+		LEFT JOIN checklists c ON c.idea_id = i.id
+		LEFT JOIN checklist_items cc ON cc.checklist_id = c.id
+		WHERE cc.contributer_id IS NULL AND i.location_id = {$_GET["location"]} GROUP BY i.id");
 	} else {
+<<<<<<< HEAD
 		if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc") $sort = "`upvotes` ASC";
 		elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-desc") $sort = "`timestamp` DESC";
 		elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-asc") $sort = "`timestamp` ASC";
@@ -39,8 +55,37 @@
 			COUNT(pl.id) AS `plans` FROM ideas i LEFT JOIN plans pl ON pl.idea_id = i.id GROUP BY i.id ORDER BY $sort LIMIT $itemCount OFFSET $offset");
 	} *///DEPRECATED
 
+
+	$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`,
+		 GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl
+		 LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id
+		 LEFT JOIN location_features f ON f.location_id = l.id
+		 WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
+
 	$q->execute();
 	$data = $q->get_result();
+	$projects = [];
+
+	$row = $data->fetch_array(MYSQLI_ASSOC);
+	$projects[$row["idea_id"]] = [];
+	array_push($projects[$row["idea_id"]], $row);
+
+	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
+		if (array_key_exists($row["idea_id"], $projects)) {
+			array_push($projects[$row["idea_id"]], $row);
+		} else {
+			$plans[$row["idea_id"]] = [];
+			array_push($projects[$row["idea_id"]], $row);
+		}
+	}
+
+=======
+		$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id LEFT JOIN location_features f ON f.location_id = l.id WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
+	}
+
+	$q->execute();
+	$data = $q->get_result();
+
 	$plans = [];
 
 	$row = $data->fetch_array(MYSQLI_ASSOC);
@@ -55,21 +100,29 @@
 			array_push($plans[$row["idea_id"]], $row);
 		}
 	}
-
+>>>>>>> Alec_Kanban_Test
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
+<<<<<<< HEAD
 		<title>All Projects</title>
+=======
+		<title>All Plans</title>
+>>>>>>> Alec_Kanban_Test
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-		<link href="styles.css" type="text/css" rel="stylesheet" />
+		<link href="styles_new.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="/resources/demos/style.css">
+=======
+<link rel="stylesheet" href="styles_new.css">
+>>>>>>> Alec_Kanban_Test
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -125,12 +178,16 @@ $( function() {
 		</div>
 		<div id="splash">
 			<div class="splash_content">
-				<h1>Search Projects</h1>
+				<h1>Search Plans</h1>
 				<form method="POST">
 					<input type="submit" name="simple_search" value="Search"></input>
 					<input name="search" type="text" placeholder="Enter an address, category, or search keywords" />
 				</form>
 			</div>
+			<!--<div class="new-of-type">
+				Add New Plan
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</div> -->
 		</div>
 
 		<div class="grid-inner width">
@@ -156,7 +213,11 @@ $( function() {
 				</div>
 				<div style="clear: both"></div>
 			</div>
+<<<<<<< HEAD
 			<div class="add-to-plan">
+=======
+			<!--<div class="add-to-plan">
+>>>>>>> Alec_Kanban_Test
 				<ul>
 					<li class="create">
 						<i class="fa fa-plus" aria-hidden="true"></i>
@@ -168,6 +229,7 @@ $( function() {
 							</form>
 						</div>
 					</li>
+<<<<<<< HEAD
 					<?php /*if (isset($plans)) {
 						 foreach ($plans as $p)  { ?>
 							<?php if ($p["has idea"] == "false") { ?>
@@ -177,17 +239,39 @@ $( function() {
 					//} ?>
 				</ul>
 			</div>
+=======
+					<?php if (isset($plans)) {
+						 foreach ($plans as $p)  { ?>
+							<?php if ($p["has idea"] == "false") { ?>
+								<li class="existing" data-plan="<?php echo $p["id"] ?>"><?php echo $p["title"] ?></li>
+							<?php } ?>
+					<?php }
+					} ?>
+				</ul>
+			</div> -->
+>>>>>>> Alec_Kanban_Test
 
 		</div>
 		<div class="grid-inner width">
 			<?php
+<<<<<<< HEAD
+			foreach ($projects as $project) {
+				$row = $project[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
+=======
 			foreach ($plans as $plan) {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
+>>>>>>> Alec_Kanban_Test
 				<div class="idea">
 					<div class="grid-item width">
 						<div class="vote">
 							<div class="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+<<<<<<< HEAD
+=======
+							</div>
+							<div class="downvote">
+								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+>>>>>>> Alec_Kanban_Test
 							</div>
 							<div class="downvote">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
@@ -218,9 +302,57 @@ $( function() {
 							<?php } ?>
 							<?php */ ?>
 						</div>
+						<div class="idea_image_wrapper">
+							<i class="fa <?php echo $idea_categories[$row['category']]['fa-icon'] ?>"></i>
+							<div class="overlay"></div>
+							<div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $row["idea image"]?>);"></div>
+						</div>
+						<div class="idea_desc">
+							<div class="title"><?php echo $row["title"] ?></div>
+							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
+							<div class="description"><?php echo $row["description"] ?></div>
+							<hr>
+							<a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a>
+							<?php /* ?>
+							<?php if (count($row["checklist"]) > 0) { ?>
+								<div class="checklist">
+									<span>Contributors Needed: </span>
+									<ul>
+										<?php for ($i = 0; $i < count($row["checklist"]) && $i < 4; $i++) { ?>
+											<li><?php echo $row["checklist"][$i] ?></li>
+										<?php } ?>
+										<?php if (count($row["checklist"]) > 4) { ?>
+											<span><?php echo count($row["checklist"]) - 4 ?>+ more</span>
+										<?php } ?>
+									</ul>
+								</div>
+							<?php } ?>
+							<?php */ ?>
+						</div>
 					</div>
 					<div class="locations">
 						<?php foreach($plan as $location) {
+							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
+							<div class="location">
+								<div class="vote">
+									<div class="upvote">
+										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+									</div>
+									<div class="downvote">
+										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+									</div>
+								</div>
+
+								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
+								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
+								<div class="location_features"><?php echo $location["features"] ?></div>
+								<div style="clear: both"></div>
+							</div>
+						<?php } ?>
+					</div>
+<<<<<<< HEAD
+					<div class="locations">
+						<?php foreach($project as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
 								<div class="vote">
@@ -243,6 +375,8 @@ $( function() {
 							</div>
 						<?php } ?>
 					</div>
+=======
+>>>>>>> Alec_Kanban_Test
 		 	<?php }
 			?>
 		</div>
