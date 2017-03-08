@@ -103,8 +103,8 @@
                             <?php foreach ($idea_title as $key => $lc) { ?>
                                 <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
                             <?php } ?>
-						</select>
-						<div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div>
+						            </select>
+						           <!--FIX--><div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div>
 					</div>
 				</div>
 				<div class="pane" data-index="2">
@@ -117,6 +117,7 @@
                         <div class="pane-content-intro">What is your location? Choose from below.</div>
                         <select name="Location">
                             <option disabled selected>Choose one...</option>
+                            <!-- This isnt right-->
                             <?php foreach ($location_building_address as $key => $lc) { ?>
                                 <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
                             <?php } ?>
@@ -130,12 +131,14 @@
                         <div class="title">Tasks</div>
 		    </div>
 		    <div class = "pane-content">
-			    <div class = "pane-content-intro">Pleaese enter the tasks your plan will need below.</div>
-                            <div class="task-checklist"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-                            <div class="PlanTasks">
+			    <div class = "pane-content-intro">Please enter the tasks your plan will need below.</div>
+                            <div class= "task-checklist">
+                            <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
+                            <div class="checklist-item">
                                 <input type="text" placeholder="What tasks are needed for your plan? Please enter them below." />
                             </div>
                         </div>
+                      </div>
 		</div>
 		<div class="pane" data-index="4">
                     <div class="pane-title">
@@ -145,9 +148,9 @@
 					</div>
 					<div class = "pane-content">
 						<div class="pane-content-intro">Does your plan need permits? If so, please list below.</div>
-						<div class ="permit-checklist">
-                            <div class="add-permit"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-                            <div class="Permit">
+						      <div class ="permit-checklist">
+                            <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
+                            <div class="checklist-item">
                                 <input type="text" placeholder="Does your plan need permits? If yes, please enter below." />
 							</div>
 						</div>
