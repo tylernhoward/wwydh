@@ -39,7 +39,6 @@
 			COUNT(pl.id) AS `plans` FROM ideas i LEFT JOIN plans pl ON pl.idea_id = i.id GROUP BY i.id ORDER BY $sort LIMIT $itemCount OFFSET $offset");
 	} *///DEPRECATED
 
-<<<<<<< HEAD
 
 	$q = $conn->prepare("SELECT pj.*, pl.*, i.*, l.*, i.image AS `idea image`,
 		 GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl
@@ -48,14 +47,12 @@
 		 LEFT JOIN location_features f ON f.location_id = l.id
 		 WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
 
-=======
->>>>>>> master
 	$q->execute();
 	$data = $q->get_result();
 	$plans = [];
 
 	$row = $data->fetch_array(MYSQLI_ASSOC);
-<<<<<<< HEAD
+
 	$projects[$row["plan_id"]] = [];
 	array_push($projects[$row["plan_id"]], $row);
 
@@ -65,7 +62,7 @@
 		} else {
 			$plans[$row["plan_id"]] = [];
 			array_push($projects[$row["plan_id"]], $row);
-=======
+
 	$plans[$row["idea_id"]] = [];
 	array_push($plans[$row["idea_id"]], $row);
 
@@ -75,7 +72,6 @@
 		} else {
 			$plans[$row["idea_id"]] = [];
 			array_push($plans[$row["idea_id"]], $row);
->>>>>>> master
 		}
 	}
 
@@ -87,13 +83,10 @@
 		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-<<<<<<< HEAD
 		<link href="styles_new.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-=======
 		<link href="styles.css" type="text/css" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
->>>>>>> master
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
