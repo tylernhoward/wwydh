@@ -160,7 +160,20 @@
 						</div>
                     </div>
 				</div>
-				<div class="pane" data-index="5">
+        <div class="pane" data-index="5">
+                        <div class="pane-title">
+                            <div class="advance" data-target="6"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+                            <div class="retreat" data-target="4"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                            <div class="title">Date of Completion</div>
+    					</div>
+    					<div class = "pane-content">
+    						<div class="pane-content-intro">Does your plan need permits? If so, please list below.</div>
+                <input name="date" type="text" placeholder="What date do you hope to be completed by? ex:(March 7, 2017)" />
+                        </div>
+    				</div>
+
+
+				<div class="pane" data-index="6">
                     <div class="pane-title">
                         <!-- this advance handles completion, that's why the target is -1 -->
                         <div class="advance" data-target="-1"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
@@ -171,7 +184,7 @@
                 <div class="pane" data-index="-1">
                     <!-- Login Required -->
                     <div class="pane-title">
-						<div class="retreat" data-target="4"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+						<div class="retreat" data-target="5"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                         <div class="title">Login Required!</div>
                     </div>
                     <div class="pane-content">
