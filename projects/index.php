@@ -4,123 +4,6 @@
 
 	include "../helpers/paginate.php";
 	include "../helpers/conn.php";
-/*
-if ($_GET["isSearch"]) {
-	echo "<h1>Location Search Results</h1>";
-	echo "You searched for: ";
-	if ($_GET["sAddress"])
-	{
-		echo "Address contains ";
-		echo $_GET["sAddress"];
-	}
-	else
-		echo "ANY Address";
-	echo ", ";
-	if ($_GET["sBlock"])
-	{
-		echo "Block contains ";
-		echo $_GET["sBlock"];
-	}
-	else
-		echo "ANY Block";
-	echo ", ";
-	if ($_GET["sLot"])
-	{
-		echo "Lot contains ";
-		echo $_GET["sLot"];
-	}
-	else
-		echo "ANY Lot";
-	echo ", ";
-	if ($_GET["sZip"])
-	{
-		echo "Zip Code contains ";
-		echo $_GET["sZip"];
-	}
-	else
-		echo "ANY Zip Code";
-	echo ", ";
-	if ($_GET["sCity"])
-	{
-		echo "City contains ";
-		echo $_GET["sCity"];
-	}
-	else
-		echo "ANY City";
-	echo ", ";
-	if ($_GET["sNeighborhood"])
-	{
-		echo "Neighborhood contains ";
-		echo $_GET["sNeighborhood"];
-	}
-	else
-		echo "ANY Neighborhood";
-	echo ", ";
-	if ($_GET["sPoliceDistrict"])
-	{
-		echo "Police District contains ";
-		echo $_GET["sPoliceDistrict"];
-	}
-	else
-		echo "ANY Police District";
-	echo ", ";
-	if ($_GET["sCouncilDistrict"])
-	{
-		echo "Council District contains ";
-		echo $_GET["sCouncilDistrict"];
-	}
-	else
-		echo "ANY Council District";
-	echo ", ";
-	if ($_GET["sLongitude"])
-	{
-		echo "Longitude contains ";
-		echo $_GET["sLongitude"];
-	}
-	else
-		echo "ANY Longitude";
-	echo ", ";
-	if ($_GET["sLatitude"])
-	{
-		echo "Latitude contains ";
-		echo $_GET["sLatitude"];
-	}
-	else
-		echo "ANY Latitude";
-	echo ", ";
-	if ($_GET["sOwner"])
-	{
-		echo "Owner contains ";
-		echo $_GET["sOwner"];
-	}
-	else
-		echo "ANY Owner";
-	echo ", ";
-	if ($_GET["sUse"])
-	{
-		echo "Use contains ";
-		echo $_GET["sUse"];
-	}
-	else
-		echo "ANY Use";
-	echo ", ";
-	if ($_GET["sMailingAddr"])
-	{
-		echo "Mailing Address contains ";
-		echo $_GET["sMailingAddr"];
-	}
-	else
-		echo "ANY Mailing Address";
-}
-else
-{
-	echo "<h1>All Locations</h1>" ;
-}
-
-
-echo "<p align=center>";
-echo "<table width=1>";
-*/
 
 	$theQuery = "";
 	$result = null;
@@ -141,6 +24,133 @@ echo "<table width=1>";
 
 	$q->execute();
 	$data = $q->get_result();
+
+$loadPage =true;
+
+
+	/*
+	if ($_GET["isSearch"]) {
+		echo "<h1>Location Search Results</h1>";
+		echo "You searched for: ";
+		if ($_GET["sAddress"])
+		{
+			echo "Address contains ";
+			echo $_GET["sAddress"];
+		}
+		else
+			echo "ANY Address";
+		echo ", ";
+		if ($_GET["sBlock"])
+		{
+			echo "Block contains ";
+			echo $_GET["sBlock"];
+		}
+		else
+			echo "ANY Block";
+		echo ", ";
+		if ($_GET["sLot"])
+		{
+			echo "Lot contains ";
+			echo $_GET["sLot"];
+		}
+		else
+			echo "ANY Lot";
+		echo ", ";
+		if ($_GET["sZip"])
+		{
+			echo "Zip Code contains ";
+			echo $_GET["sZip"];
+		}
+		else
+			echo "ANY Zip Code";
+		echo ", ";
+		if ($_GET["sCity"])
+		{
+			echo "City contains ";
+			echo $_GET["sCity"];
+		}
+		else
+			echo "ANY City";
+		echo ", ";
+		if ($_GET["sNeighborhood"])
+		{
+			echo "Neighborhood contains ";
+			echo $_GET["sNeighborhood"];
+		}
+		else
+			echo "ANY Neighborhood";
+		echo ", ";
+		if ($_GET["sPoliceDistrict"])
+		{
+			echo "Police District contains ";
+			echo $_GET["sPoliceDistrict"];
+		}
+		else
+			echo "ANY Police District";
+		echo ", ";
+		if ($_GET["sCouncilDistrict"])
+		{
+			echo "Council District contains ";
+			echo $_GET["sCouncilDistrict"];
+		}
+		else
+			echo "ANY Council District";
+		echo ", ";
+		if ($_GET["sLongitude"])
+		{
+			echo "Longitude contains ";
+			echo $_GET["sLongitude"];
+		}
+		else
+			echo "ANY Longitude";
+		echo ", ";
+		if ($_GET["sLatitude"])
+		{
+			echo "Latitude contains ";
+			echo $_GET["sLatitude"];
+		}
+		else
+			echo "ANY Latitude";
+		echo ", ";
+		if ($_GET["sOwner"])
+		{
+			echo "Owner contains ";
+			echo $_GET["sOwner"];
+		}
+		else
+			echo "ANY Owner";
+		echo ", ";
+		if ($_GET["sUse"])
+		{
+			echo "Use contains ";
+			echo $_GET["sUse"];
+		}
+		else
+			echo "ANY Use";
+		echo ", ";
+		if ($_GET["sMailingAddr"])
+		{
+			echo "Mailing Address contains ";
+			echo $_GET["sMailingAddr"];
+		}
+		else
+			echo "ANY Mailing Address";
+	}
+	else
+	{
+		echo "<h1>All Locations</h1>" ;
+	}
+
+
+	echo "<p align=center>";
+	echo "<table width=1>";
+	*/
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -168,7 +178,7 @@ echo "<table width=1>";
 	                    <?php if (!isset($_SESSION["user"])) { ?>
 	                        <ul>
 	                            <a href="../login"><li>Log in</li></a>
-	                            <a href="#"><li>Sign up</li></a>
+	                            <a href="../signup"><li>Sign up</li></a>
 	                            <a href="../contact"><li>Contact</li></a>
 	                        </ul>
 	                    <?php } else { ?>
@@ -204,7 +214,7 @@ echo "<table width=1>";
 			<div class="splash_content">
 				<h1>Search Projects</h1>
 				<form method="POST">
-					<input type="submit" name="simple_search" value="Search"></input>
+					<input type="submit" name="simple_search" value="Search"/>
 					<input name="search" type="text" placeholder="Enter an address, city, zipcode, or user name" />
 				</form>
 			</div>
@@ -236,8 +246,6 @@ echo "<table width=1>";
 			 <div class=\"more\"><a href=\"propertyInfo.php?id={$row["id"]}\">(more)</a></div><br/>
 			 </td></tr>
 			 "; -->
-		 	<?php }
-			?>
 		</div>
 		<div id="pagination">
 			<div class="grid-inner">
