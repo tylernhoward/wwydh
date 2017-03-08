@@ -1,21 +1,23 @@
 <?php
-  session_start();
-  require_once "../../helpers/vars.php";
-  if(isset($_GET["location"])) {
-      require_once "../../helpers/conn.php";
-      $locationid = $_GET["location"];
-      $q = $conn->prepare("SELECT l.*, COUNT(DISTINCT i.id) AS ideas, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]')
-              AS features FROM locations l
-              LEFT JOIN ideas i ON i.location_id = l.id
-              LEFT JOIN location_features f ON f.location_id = l.id
-              WHERE l.id=? GROUP BY l.id");
-      $q->bind_param("s", $locationid);
-      $q->execute();
-      $location = $q->get_result()->fetch_array(MYSQLI_ASSOC);
-  }
-  if (isset($_GET["idea"])) {
-      //BACKEND:40 handle editing an idea here, EG change title, retrieve entry completion from database and set that pane as active, populate
-  }
+    session_start();
+
+    require_once "../../helpers/vars.php";
+
+    if (isset($_GET["location"])) {
+        require_once "../../helpers/conn.php";
+        $locationid = $_GET["location"];
+
+        $q = $conn->prepare("SELECT l.*, COUNT(DISTINCT i.id) AS ideas, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM locations l LEFT JOIN ideas i ON i.location_id = l.id LEFT JOIN location_features f ON f.location_id = l.id WHERE l.id=? GROUP BY l.id");
+        $q->bind_param("s", $locationid);
+        $q->execute();
+
+        $location = $q->get_result()->fetch_array(MYSQLI_ASSOC);
+    }
+
+    if (isset($_GET["idea"])) {
+        //BACKEND:40 handle editing an idea here, EG change title, retrieve entry completion from database and set that pane as active, populate
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +31,6 @@
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
         <script src="../../helpers/globals.js" type="text/javascript"></script>
         <script src="scripts.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>$( function() {$( "#accordion" ).accordion();} );</script>
     </head>
     <body>
         <div class="width">
