@@ -234,6 +234,7 @@ $( function() {
 								<div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
 								<div style="clear: both"></div>
 							</div>
+							<hr>
 						<?php } ?>
 					</div>
 		 	<?php }

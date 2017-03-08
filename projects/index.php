@@ -188,6 +188,7 @@ $( function() {
 
 							<hr>
 							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+							<div class="manage"><?php echo "\nProject Manager: " . $row["creator_id"] ?></div>
 
 
 							<?php /* ?>
@@ -215,14 +216,6 @@ $( function() {
 								<div class="plan-buttons options btn-group">
 									<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Edit Task Progress</a></div> <!--Insert link here -->
 								</div>
-								<div class="vote">
-									<div class="upvote">
-										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-									</div>
-									<div class="downvote">
-										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-									</div>
-								</div>
 
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
@@ -230,6 +223,7 @@ $( function() {
 								<div style="clear: both"></div>
 
 							</div>
+							<hr>
 						<?php } ?>
 					</div>
 		 	<?php }
