@@ -104,8 +104,11 @@
                                 <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
                             <?php } ?>
 						            </select>
-                        <hr>
-						           <div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div>
+                        <br>
+                        <div class="plan-buttons options btn-group">
+                    			<div class="btn op-1"><a href="../../ideas/new/">New Idea</a></div> <!--Insert link here -->
+                    		</div>
+						           <!--<div class="new-of-type">New Idea<i class="fa fa-plus" aria-hidden="true"></i></div> -->
 					</div>
 				</div>
 				<div class="pane" data-index="2">
