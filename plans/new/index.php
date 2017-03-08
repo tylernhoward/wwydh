@@ -87,7 +87,7 @@
                         <div class="title">Basic Information</div>
                     </div>
                     <div class="pane-content">
-                        <div class="pane-content-intro">Would you like credit for this idea?</div>
+                        <div class="pane-content-intro">Would you like credit for this plan?</div>
                         <div class="button active" data-leader="1">
                             <div>Give me credit!</div>
                         </div>
