@@ -44,7 +44,6 @@
 		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-		<link href="styles.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
@@ -186,8 +185,11 @@ $( function() {
 							<div class="title"><?php echo $row["title"] ?></div>
 							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
 							<div class="description"><?php echo $row["description"] ?></div>
+
 							<hr>
-							<a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a>
+							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+
+
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
 								<div class="checklist">
@@ -208,7 +210,11 @@ $( function() {
 					<div class="locations">
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
+
 							<div class="location">
+								<div class="plan-buttons options btn-group">
+									<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Edit Task Progress</a></div> <!--Insert link here -->
+								</div>
 								<div class="vote">
 									<div class="upvote">
 										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -222,6 +228,7 @@ $( function() {
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<div class="location_features"><?php echo $location["features"] ?></div>
 								<div style="clear: both"></div>
+
 							</div>
 						<?php } ?>
 					</div>

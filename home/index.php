@@ -149,7 +149,7 @@
                     ?>
                 </div>
                 <div id="projects" class="tabcontent" data-tab="2">
-                    <!-- <div id="ideas" class="tabcontent active" data-tab="2"> -->
+                    <div id="ideas" class="tabcontent active" data-tab="2">
                    <?php
                    foreach($ideas as $i) { ?>
                        <div class="idea">
