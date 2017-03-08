@@ -236,7 +236,6 @@ $( function() {
 							</div>
 
 						<?php } ?>
-						<hr>
 					</div>
 		 	<?php }
 			?>
