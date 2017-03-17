@@ -96,7 +96,6 @@
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
                 <a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
                 <div id="sideHelp" class="side-button">I Want to Contribute</div>
-                <a href="../contact"><div id="sideContact" class="side-button">Contact Us</div></a>
             </div>
             <div id="map"></div>
             <div id="welcome">
@@ -122,13 +121,18 @@
                                 <?php if ($l["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $l["id"] ?>">See other Plans here</a></div> <?php } ?>
                                 <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
                             </div>
-                            <div class="location_image" style="background-image: url(../helpers/location_images/<?php if (isset($l['image'])) echo $l['image']; else echo "no_image.jpg";?>);">
+                            <?php
+                            $str = $l['building_address'];
+                        		$cit = $l['city'];
+                        		$addURL = rawurlencode("$str $cit");
+                            ?>
+                            <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";>
                                 <?php if ($l["plans"] > 0) { ?>
                                     <div class="ideas_count"><?php echo $l["plans"] ?></div>
                                 <?php } ?>
                             </div>
                             <div class="location_desc">
-                                <div class="address"><?php echo $l["mailing_address"] ?></div>
+                                <div class="address"><?php echo $l["building_address"] ?></div>
                                 <?php if (isset($l["features"])) { ?>
                                     <div class="features">
                                         <span>Features:</span>
@@ -145,7 +149,7 @@
                     ?>
                 </div>
                 <div id="projects" class="tabcontent" data-tab="2">
-                    <!-- <div id="ideas" class="tabcontent active" data-tab="2"> -->
+                    <div id="ideas" class="tabcontent active" data-tab="2">
                    <?php
                    foreach($ideas as $i) { ?>
                        <div class="idea">
@@ -154,7 +158,7 @@
                                <?php if ($i["ideas"] > 0) { ?> <div class="btn seeideas"><a href="../ideas?location=<?php echo $i["id"] ?>">See other ideas nearby</a></div> <?php } ?>
                                <div class="btn seelocation"><a href="../locations/propertyInfo.php?id=<?php echo $i["id"] ?>">View full location</a></div>
                            </div>
-                           <div class="idea_image" style="background-image: url(../helpers/location_images/<?php if (isset($i['image'])) echo $i['image']; else echo "no_image.jpg";?>);">
+                           <div class="idea_image" style="background-image: url(../helpers/location_images/<?php if (isset($i['image'])) echo $i['image']; else echo "no_image.jpg";?>)";>
                                <?php if ($l["ideas"] > 0) { ?>
                                    <div class="ideas_count"><?php echo $i["ideas"] ?></div>
                                <?php } ?>

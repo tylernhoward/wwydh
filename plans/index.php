@@ -178,7 +178,9 @@ $( function() {
 			foreach ($plans as $plan) {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
+					<hr>
 					<div class="grid-item width">
+
 						<div class="vote">
 							<div class="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -217,6 +219,9 @@ $( function() {
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
+								<div class="plan-buttons options btn-group">
+									<div class="btn op-1"><a>Become the Project Manager</a></div> <!--Insert link here -->
+								</div>
 								<div class="vote">
 									<div class="upvote">
 										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -225,12 +230,12 @@ $( function() {
 										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 									</div>
 								</div>
-
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
-								<div class="location_features"><?php echo $location["features"] ?></div>
+								<div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
 								<div style="clear: both"></div>
 							</div>
+
 						<?php } ?>
 					</div>
 		 	<?php }

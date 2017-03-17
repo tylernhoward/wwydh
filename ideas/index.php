@@ -170,8 +170,7 @@
 			while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
 				if (isset($row["checklist"])) $row["checklist"] = explode("[-]", $row["checklist"]); ?>
 
-				<div class="idea
-				<?php if (isset($row["owner"]) && $row["owner"] == $_SESSION["user"]["id"]) echo "mine" ?>"
+				<div class="idea<?php if (isset($row["owner"]) && $row["owner"] == $_SESSION["user"]["id"]) echo "mine" ?>"
 				data-idea="<?php echo $row["id"] ?>">
 					<div class="grid-item width">
 						<div class="plan-buttons options btn-group">

@@ -77,7 +77,7 @@
 		</script>
 
 	</head>
-	<body onload="initMap();">
+	<body onload="initMap(); openNav();">
 		<?php if ($loadPage) { ?>
 			<div class="width">
 				<div id="nav">
@@ -124,6 +124,10 @@
 		        </div>
 			</div>
 			<div id="mapContainer">
+							<div id="mySidenav" class="sidenav">
+									<div class="sidebar-tools"></div>
+									<a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
+							</div>
 	            <div id="map"></div>
 	        </div>
 			<div class="grid-inner width">
@@ -158,9 +162,20 @@
 								<?php if ($row["ideas"] > 0) { ?>
 									<div class="ideas_count"><?php echo $row["ideas"] ?></div>
 								<?php } ?>
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php if (isset($row['image'])) echo $row['image']; else echo "no_image.jpg";?>);"></div>
+								<?php
+									$str = $row['building_address'];
+									$cit = $row['city'];
+									$addURL = rawurlencode("$str $cit");
+								?>
+
+								<!--
+								https://maps.googleapis.com/maps/api/streetview?size=600x300&location=2041 W NORTH AVENUE BALTIMORE&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0
+
+								rawurlencode("$row['building_address'] $row['city']")
+								-->
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_desc">
-									<div class="address"><?php echo $row["mailing_address"] ?></div>
+									<div class="address"><?php echo $row["building_address"] ?></div>
 									<div class="features"><?php echo $row["features"] ?></div>
 								</div>
 							</div>
