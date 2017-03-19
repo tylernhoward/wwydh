@@ -83,19 +83,20 @@
         <div class="outside" class="width">
             <div id="wrapper">
                 <div class="pane active" data-index="1">
-                    <div class="pane-title">
+                    <!-- <div class="pane-title">
                         <div class="advance" data-target="2"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                         <div class="title">Basic Information</div>
-                    </div>
+                    </div> -->
                     <div class="pane-content">
-                        <div class="pane-content-intro">Would you like credit for this idea?</div>
+                        <!-- <div class="pane-content-intro">Would you like credit for this idea?</div>
                         <div class="button active" data-leader="1">
                             <div>Give me credit!</div>
                         </div>
                         <div class="button" data-leader="0">
                             <div>No thanks!</div>
                         </div>
-                        <div class="login-warning active">This will require an account!</div>
+                        <div class="login-warning active">This will require an account!</div> -->
+                        <div class="pane-content-intro">Let's start off with just the basics</div>
                         <label for="title">Title</label>
                         <input name="title" type="text" placeholder="What is your idea? Be specific!" />
                         <label>Category</label>
@@ -108,23 +109,52 @@
                         </select>
                         <label for="description">Description</label>
                         <textarea name="description" placeholder="Describe your idea in detail."></textarea>
+                        <div class="advance" data-target="2">
+                          <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+                        </div>
                     </div>
                 </div>
                 <div class="pane" data-index="2">
-                    <div class="pane-title">
+                    <!-- <div class="pane-title">
                         <div class="advance" data-target="3"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                         <div class="retreat" data-target="1"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                         <div class="title">Location Requirements</div>
-                    </div>
+                    </div> -->
+
                     <div class="pane-content">
-                        <div class="pane-content-intro">
+                    <div class="pane-content-intro">Now lets fill in some more detailed information</div>
+                      <button class="accordion">Location Requirements</button>
+                      <div class="panel">
+                        <!-- <div class="pane-content-intro">
                             What does your location need to have?
-                        </div>
-                        <div class="location-checklist">
+                        </div> -->
+                        <!-- <div class="location-checklist"> -->
+
+                            <div class="checklist">
+                              <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
+                              <div class="checklist-item">
+                                <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
+                              </div>
+                            </div>
+                        <!-- </div> -->
+                      </div>
+
+
+                      <button class="accordion">Supplies Needed</button>
+                      <div class="panel">
+                        <div class="checklist">
                             <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
                             <div class="checklist-item">
-                                <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
+                                <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
                             </div>
+                        </div>
+                      </div>
+
+                        <div class="advance" data-target="3">
+                          <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+                        </div>
+                        <div class="retreat" data-target="1">
+                          <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
                         </div>
                     </div>
                 </div>
@@ -138,12 +168,12 @@
                         <div class="pane-content-intro">
                             What contributions do you anticipate needing?
                         </div>
-                        <div class="checklist">
+                        <!-- <div class="checklist">
                             <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
                             <div class="checklist-item">
                                 <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="pane" data-index="4">
