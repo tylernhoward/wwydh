@@ -24,21 +24,43 @@ jQuery(document).ready(function($) {
         $(".pane[data-index=" + target + "]").removeClass("done").addClass("active");
     });
 
-    $(".pane[data-index=1] .button").click(function() {
-        $(".pane[data-index=1] .button").removeClass("active");
+    $(".pane[data-index=3] .button").click(function() {
+        $(".pane[data-index=3] .button").removeClass("active");
 
         if ($(this).data("leader") === 0) {
-            $(".pane[data-index=1] .button[data-leader=0]").addClass("active");
-            $(".pane[data-index=1] .login-warning").removeClass("active");
+            $(".pane[data-index=3] .button[data-leader=0]").addClass("active");
+            $(".pane[data-index=3] .login-warning").removeClass("active");
         } else {
-            $(".pane[data-index=1] .button[data-leader=1]").addClass("active");
-            $(".pane[data-index=1] .login-warning").addClass("active");
+            $(".pane[data-index=3] .button[data-leader=1]").addClass("active");
+            $(".pane[data-index=3] .login-warning").addClass("active");
         }
     });
 
     $(".add-checklist-item").click(function() {
         addItem($(this));
     });
+
+
+    $(".accordion").click(function() {
+
+        // var acc = document.getElementsByClassName("accordion");
+        // var i;
+        //
+        // for (i = 0; i < acc.length; i++) {
+        //   acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block" || panel.style.display ==="")
+            {
+              panel.style.display = "none";
+            }
+            else
+            {
+              panel.style.display = "block";
+            }
+        //   }
+        // }
+        });
 
     /*
 
@@ -131,20 +153,22 @@ jQuery(document).ready(function($) {
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
-
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].onclick = function(){
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    }
-}
+    //
+    // function accordion()
+    //
+    // var acc = document.getElementsByClassName("accordion");
+    // var i;
+    //
+    // for (i = 0; i < acc.length; i++) {
+    //   acc[i].onclick = function(){
+    //     this.classList.toggle("active");
+    //     var panel = this.nextElementSibling;
+    //     if (panel.style.display === "block") {
+    //       panel.style.display = "none";
+    //     } else {
+    //       panel.style.display = "block";
+    //     }
+    //   }
+    // }
 
 });
