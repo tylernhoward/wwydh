@@ -220,7 +220,7 @@ $( function() {
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1">login</div>
 										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1){ ?>
-											<div class="btn op-1">login</div><div class="btn op-1"><a href="redirect.php?id=$row['id']">Edit Task Progress</a></div>
+											<div class="btn op-1">login</div><div class="btn op-1"><a href="redirect.php?<?php echo $row['id']; ?>">Edit Task Progress</a></div>
 										<?php } else { ?>
 											<div class="btn op-1">Manager?</div>
 										<?php } 
