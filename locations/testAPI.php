@@ -11,7 +11,7 @@
         padding: 0;
       }
       #street-view {
-        height: 25em%;
+        height: 25em;
       }
     </style>
   </head>
