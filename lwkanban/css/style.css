@@ -232,3 +232,10 @@ header nav ul li .glyphicon {
 .modal li {
 	line-height: 1.8em;
 }
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

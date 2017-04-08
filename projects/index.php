@@ -167,15 +167,16 @@ $( function() {
 			foreach ($plans as $plan) {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
+					<hr>
 					<div class="grid-item width">
-						<div class="vote">
+						<!--<div class="vote">
 							<div class="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
 							</div>
 							<div class="downvote">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 							</div>
-						</div>
+						</div>-->
 						<div class="idea_image_wrapper">
 							<i class="fa <?php echo $idea_categories[$row['category']]['fa-icon'] ?>"></i>
 							<div class="overlay"></div>

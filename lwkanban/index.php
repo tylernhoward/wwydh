@@ -22,7 +22,7 @@
 		<![endif]-->
 	</head>
 	<body>
-	<div class="width">
+	<!--<div class="width">
 			<div id="nav">
 	            <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 	                <a href="../home">
@@ -65,7 +65,7 @@
 	                </div>
 	            </div>
 	        </div>
-		</div>
+		</div> -->
 		<!-- Modal -->
 		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="helpModal">
 			<div class="modal-dialog" role="document">
@@ -111,6 +111,17 @@
 			<div id="board"></div>
 			<h2>Tags</h2>
 			<div id="navigation" class="navigation"></div>
+
 		</div>
+		<div class="plan-buttons options btn-group">
+			<div class="btn op-1"><a href="../projects/index.php">Go Back To Projects</a></div> <!--Insert link here -->
+		</div>
+		
+		<div id="footer">
+            <div class="grid-inner">
+                &copy; Copyright WWYDH <?php echo date("Y") ?>
+            </div>
+    </div>
+
 	</body>
 </html>

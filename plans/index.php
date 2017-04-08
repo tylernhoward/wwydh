@@ -178,6 +178,7 @@ $( function() {
 			foreach ($plans as $plan) {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
+					<hr>
 					<div class="grid-item width">
 
 						<div class="vote">
