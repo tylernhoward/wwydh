@@ -25,23 +25,30 @@
     </head>
 		<body>
 
-			 <div id="street-view"></div>
-			 <script>
-			 	var panorama;
-			 	function initialize() {
-					//<?php //echo $addURL ?>
-			 		panorama = new google.maps.StreetViewPanorama(
-			 				document.getElementById('street-view'),
-			 				{
-			 					position: {lat: 37.869260, lng: -122.254811},
-			 					pov: {heading: 165, pitch: 0},
-			 					zoom: 1
-			 				});
-			 	}
-			 </script>
-			 <script async defer
-			 		 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChjkgbyoDavdmJ6L4mdghOH8eTg7r_Nw8&callback=initialize">
-			 </script>
+		<div id="map"></div>
+    <div id="pano"></div>
+    <script>
+
+      function initialize() {
+        var fenway = {lat: 42.345573, lng: -71.098326};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: fenway,
+          zoom: 14
+        });
+        var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: fenway,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
+      }
+    </script>
+		<script async defer
+			 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChjkgbyoDavdmJ6L4mdghOH8eTg7r_Nw8&callback=initialize">
+	  </script>
 
 
 

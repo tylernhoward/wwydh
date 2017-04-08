@@ -127,10 +127,11 @@
   background: linear-gradient(to bottom, #418040 0%,#376837 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-#street-view {
-       height: 25em;
-       width: 100%;
-     }
+#map, #pano {
+        float: left;
+        height: 100%;
+        width: 45%;
+      }
 
 .imgViewer {
   width: 100%;
