@@ -22,6 +22,16 @@
 
     <head>
 		    <title><?php echo $row["building_address"] ?></title>
+				<style>
+		      html, body {
+		        height: 100%;
+		        margin: 0;
+		        padding: 0;
+		      }
+		      #street-view {
+		        height: 25em;
+		      }
+		    </style>
     </head>
 		<body>
 
