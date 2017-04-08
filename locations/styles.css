@@ -2,14 +2,6 @@
     padding: 10px;
     overflow: hidden;
 }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-#street-view {
-  height: 25em;
-}
 
 #splash {
     background-image: url(../images/baltimore_bg.jpg);
