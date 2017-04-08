@@ -191,6 +191,7 @@ body {
 .pane .checklist .checklist-item, .pane .location-checklist .checklist-item {
     margin-bottom: 10px;
     position: relative;
+    wkd]
 }
 
 .pane .checklist .checklist-item::after {
@@ -320,6 +321,17 @@ div.panel {
     transition: max-height 0.2s ease-out;
 }
 
+div.preview {
+    /*padding-top: 65px;*/
+    padding-bottom: 32px;
+    height: 325px;
+    background-color: white;
+    width: 100%;
+    /*max-height: 0;*/
+    overflow: hidden;
+    display: block;
+    transition: max-height 0.2s ease-out;
+}
 .next{
     background-color: #418040;
     color: white;
@@ -352,6 +364,4 @@ div.panel {
 
 .next:hover {
     opacity: 0.8;
-}
-
 }

@@ -42,12 +42,6 @@ jQuery(document).ready(function($) {
 
 
     $(".accordion").click(function() {
-
-        // var acc = document.getElementsByClassName("accordion");
-        // var i;
-        //
-        // for (i = 0; i < acc.length; i++) {
-        //   acc[i].onclick = function(){
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
             if (panel.style.display === "block" || panel.style.display ==="")
@@ -58,31 +52,7 @@ jQuery(document).ready(function($) {
             {
               panel.style.display = "block";
             }
-        //   }
-        // }
         });
-
-    /*
-
-        Garbage code for automatically traversing the checklist panes. Fix or delete.
-
-    $(".checklist").on("input", ".checklist-item input", function() {
-        var check = $(this).val().match(/ x [0-9]+/gi);
-
-        if  (check != null && check.length == 1) $(this).parent().addClass("valid");
-        else $(this).parent().removeClass("valid");
-    })
-
-    $(".checklist").on("blur", ".checklist-item.valid input", function(e) {
-        var elem = $(this);
-        if ($(".checklist-item").not(".valid").length == 0) {
-            addItem($(this));
-            traverse($(this));
-        } else {
-            traverse($(this));
-        }
-    })
-    */
 
     function doLogin(elem) {
         var login = {
@@ -153,22 +123,6 @@ jQuery(document).ready(function($) {
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
-    //
-    // function accordion()
-    //
-    // var acc = document.getElementsByClassName("accordion");
-    // var i;
-    //
-    // for (i = 0; i < acc.length; i++) {
-    //   acc[i].onclick = function(){
-    //     this.classList.toggle("active");
-    //     var panel = this.nextElementSibling;
-    //     if (panel.style.display === "block") {
-    //       panel.style.display = "none";
-    //     } else {
-    //       panel.style.display = "block";
-    //     }
-    //   }
-    // }
+
 
 });

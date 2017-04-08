@@ -96,7 +96,7 @@
                             <div>No thanks!</div>
                         </div>
                         <div class="login-warning active">This will require an account!</div> -->
-                        <div class="pane-content-intro">Let's start off with just the basics</div>
+                        <div class="pane-content-intro">Let's fill out all of the info for your new Idea!</div>
                         <button class="accordion active">Title</button>
                         <!-- <label for="title">Title</label> -->
                         <input name="title" type="text" placeholder="What is your idea? Be specific!" />
@@ -118,17 +118,13 @@
                       <!-- Start of page two combination -->
 
                       <button class="accordion active">Location Requirements</button>
-                      <!-- <label>Location Requirements</label> -->
                       <div class="panel">
-
-                        <!-- <div class="location-checklist"> -->
                             <div class="checklist">
                               <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
                               <div class="checklist-item">
                                 <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
                               </div>
                             </div>
-                        <!-- </div> -->
                       </div>
 
                       <button class="accordion active">Supplies Needed</button>
@@ -146,11 +142,12 @@
                     </div>
 
                       <!-- Keep next button out of pane content so it stays aligned with bottom -->
-                        <div class="advance" data-target="2">
+                        <div class="advance" data-target="3">
                           <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                         </div>
 
                 </div>
+                <!-- Skipped over -->
                 <div class="pane" data-index="2">
                     <!-- <div class="pane-title">
                         <div class="advance" data-target="3"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
@@ -218,6 +215,9 @@
 
                 <div class="pane" data-index="3">
                     <div class="pane-content">
+                      <div class="pane-content-intro">Preview</div>
+                      <div class="preview">
+                      </div>
 
                       <div class="pane-content-intro">Would you like credit for your idea?</div>
 
@@ -228,16 +228,12 @@
                             <div>No thanks!</div>
                         </div>
                         <div class="login-warning active">This will require an account!</div>
-
-                      <div class="panel">
-                        <div class="pane-content-intro">Preview</div>
-                      </div>
                     </div>
 
                     <div class="advance" data-target="-1">
                       <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
                     </div>
-                    <div class="retreat" data-target="2">
+                    <div class="retreat" data-target="1">
                       <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
                     </div>
 
