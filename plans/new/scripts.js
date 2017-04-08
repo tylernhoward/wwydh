@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
         var target = $(this).data("target");
 
         if (target == -1) {
-            submitIdea(elem);
+            submitPlan(elem);
         } else {
             $(this).parents(".pane").addClass("done").removeClass("active");
             $(".pane[data-index=" + target + "]").addClass("active");
@@ -24,15 +24,15 @@ jQuery(document).ready(function($) {
         $(".pane[data-index=" + target + "]").removeClass("done").addClass("active");
     });
 
-    $(".pane[data-index=1] .button").click(function() {
-        $(".pane[data-index=1] .button").removeClass("active");
+    $(".pane[data-index=6] .button").click(function() {
+        $(".pane[data-index=6] .button").removeClass("active");
 
         if ($(this).data("leader") === 0) {
-            $(".pane[data-index=1] .button[data-leader=0]").addClass("active");
-            $(".pane[data-index=1] .login-warning").removeClass("active");
+            $(".pane[data-index=6] .button[data-leader=0]").addClass("active");
+            $(".pane[data-index=6] .login-warning").removeClass("active");
         } else {
-            $(".pane[data-index=1] .button[data-leader=1]").addClass("active");
-            $(".pane[data-index=1] .login-warning").addClass("active");
+            $(".pane[data-index=6] .button[data-leader=1]").addClass("active");
+            $(".pane[data-index=6] .login-warning").addClass("active");
         }
     });
 
@@ -40,27 +40,19 @@ jQuery(document).ready(function($) {
         addItem($(this));
     });
 
-    /*
 
-        Garbage code for automatically traversing the checklist panes. Fix or delete.
-
-    $(".checklist").on("input", ".checklist-item input", function() {
-        var check = $(this).val().match(/ x [0-9]+/gi);
-
-        if  (check != null && check.length == 1) $(this).parent().addClass("valid");
-        else $(this).parent().removeClass("valid");
-    })
-
-    $(".checklist").on("blur", ".checklist-item.valid input", function(e) {
-        var elem = $(this);
-        if ($(".checklist-item").not(".valid").length == 0) {
-            addItem($(this));
-            traverse($(this));
-        } else {
-            traverse($(this));
-        }
-    })
-    */
+    $(".accordion").click(function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block" || panel.style.display ==="")
+            {
+              panel.style.display = "none";
+            }
+            else
+            {
+              panel.style.display = "block";
+            }
+        });
 
     function doLogin(elem) {
         var login = {
@@ -71,7 +63,7 @@ jQuery(document).ready(function($) {
         $.post("../../helpers/standalone-login.php", login, function(data) {
 
             if (data == 1) {
-                submitIdea(elem);
+                submitPlan(elem);
             } else {
                 // bad login information
                 alert("Login information incorrect! Please try again!");
@@ -79,7 +71,7 @@ jQuery(document).ready(function($) {
         }, "text");
     }
 
-    function submitIdea(elem) {
+    function submitPlan(elem) {
         // handle form submission
         var location_requirements = "";
         var contributions = "";
@@ -117,7 +109,7 @@ jQuery(document).ready(function($) {
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-1]").addClass("active");
             } else {
-                // successfully inserted idea
+                // successfully inserted plans
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-2]").addClass("active");
             }
@@ -131,4 +123,6 @@ jQuery(document).ready(function($) {
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
+
+
 });

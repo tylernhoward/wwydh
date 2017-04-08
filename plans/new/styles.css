@@ -15,9 +15,9 @@ body {
     border-radius: 2px;
     position: relative;
     margin-top: 80px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     overflow-x: hidden;
-    -webkit-overflow-scroll: touch;
+    /*-webkit-overflow-scroll: touch;*/
     min-height: 670px;
 }
 
@@ -55,7 +55,10 @@ body {
 .pane .pane-content {
     padding: 15px;
     box-sizing: border-box;
-    position: relative;
+    /*position: relative;*/
+    height: 565px;
+    overflow-y: scroll;
+    -webkit-overflow-scroll: touch;
 }
 
 .pane .pane-content-intro {
@@ -88,8 +91,8 @@ body {
 .pane .button {
     width: 50%;
     padding: 9px;
-    height: 100%;
-    height: inherit;
+    height: 36px;
+    /*height: inherit;*/
     float: left;
     color: #418040;
     border: 1px solid #418040;
@@ -165,7 +168,7 @@ body {
     position: relative;
 }
 
-.pane .checklist .add-checklist-item, .pane .location-checklist .add-checklist-item , .pane .task-checklist .add-checklist-item, .pane .permit-checklist .add-checklist-item {
+.pane .checklist .add-checklist-item, .pane .location-checklist .add-checklist-item {
     padding: 10px 15px;
     background: #418040;
     color: white;
@@ -178,16 +181,17 @@ body {
     cursor: pointer;
 }
 
-.pane .checklist .add-checklist-item i, .pane .location-checklist .add-checklist-item i, .pane .task-checklist .add-checklist-item i, .pane .permit-checklist .add-checklist-item i {
+.pane .checklist .add-checklist-item i, .pane .location-checklist .add-checklist-item i {
     font-size: 20px;
     margin-right: 10px;
     position: absolute;
     left: 15px;
 }
 
-.pane .checklist .checklist-item, .pane .location-checklist .checklist-item .pane .task-checklist .checklist-item i, .pane .permit-checklist .checklist-item i{
+.pane .checklist .checklist-item, .pane .location-checklist .checklist-item {
     margin-bottom: 10px;
     position: relative;
+    wkd]
 }
 
 .pane .checklist .checklist-item::after {
@@ -271,4 +275,93 @@ body {
     visibility: hidden;
     opacity: 0;
     left: -20px !important;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    margin: 20px auto 7px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #418040;
+    color: white;
+}
+
+button.accordion:after {
+    content: '\002B';
+    /*color: #777;*/
+    color: inherit;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+    color: inherit;
+}
+
+div.panel {
+    padding-top: 65px;
+    padding-bottom: 32px;
+    background-color: white;
+    width: 100%;
+    /*max-height: 0;*/
+    overflow: hidden;
+    display: block;
+    transition: max-height 0.2s ease-out;
+}
+
+div.preview {
+    /*padding-top: 65px;*/
+    padding-bottom: 32px;
+    height: 325px;
+    background-color: white;
+    width: 100%;
+    /*max-height: 0;*/
+    overflow: hidden;
+    display: block;
+    transition: max-height 0.2s ease-out;
+}
+.next{
+    background-color: #418040;
+    color: white;
+    padding: 14px 20px;
+    float:right;
+    margin: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.next:hover {
+    opacity: 0.8;
+}
+
+.back{
+    background-color: #ffae00;
+    color: white;
+    padding: 14px 20px;
+    float:left;
+    margin: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.next:hover {
+    opacity: 0.8;
 }
