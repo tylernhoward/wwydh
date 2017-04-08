@@ -24,8 +24,29 @@
 		    <title><?php echo $row["building_address"] ?></title>
     </head>
 		<body>
-	     <div class="imgViewer" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=1200x600&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
-       <div class="name"><?php echo $row["building_address"] ?></div>
+
+			 <div id="street-view"></div>
+			 <script>
+			 	var panorama;
+			 	function initialize() {
+					//<?php //echo $addURL ?>
+			 		panorama = new google.maps.StreetViewPanorama(
+			 				document.getElementById('street-view'),
+			 				{
+			 					position: {lat: 37.869260, lng: -122.254811},
+			 					pov: {heading: 165, pitch: 0},
+			 					zoom: 1
+			 				});
+			 	}
+			 </script>
+			 <script async defer
+			 		 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0&callback=initialize">
+			 </script>
+
+
+
+
+			 <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">
 						<div class="description">
