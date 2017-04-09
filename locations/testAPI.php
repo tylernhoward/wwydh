@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <title>Street View</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+      
       #street-view {
         height: 25em;
       }

@@ -24,7 +24,7 @@
 		    <title><?php echo $row["building_address"] ?></title>
     </head>
 		<body>
-	     <div id="imgViewer">
+	     <div id="imgViewer"></div>
 						<script>
 							 	var panorama;
 							 	function initialize() {
@@ -41,7 +41,6 @@
 						<script async defer
 								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&callback=initialize">
 						</script>
-			 </div>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">
