@@ -13,6 +13,7 @@
 		$str = $row['building_address'];
 		$cit = $row['city'];
 		$addURL = rawurlencode("$str $cit");
+
   ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
 	        panorama = new google.maps.StreetViewPanorama(
 	            document.getElementById('street-view'),
 	            {
-	              position: {lat: 37.869260, lng: -122.254811},
+	              position: {lat: <?php echo $row["latitude"]?>, lng: <?php echo $row["longitude"]?>},
 	              pov: {heading: 165, pitch: 0},
 	              zoom: 1
 	            });
