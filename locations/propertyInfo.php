@@ -20,27 +20,34 @@
 
     <link href="styles.css" type="text/css" rel="stylesheet" />
 
-    <head>
-		    <title><?php echo $row["building_address"] ?></title>
+		<head>
+			<meta charset="utf-8">
+			<title><?php echo $row["building_address"] ?></title>
+			<style>
+
+      	#street-view {
+        	height: 25em;
+      	}
+    	</style>
     </head>
 		<body>
-	     <div id="imgViewer"></div>
-						<script>
-							 	var panorama;
-							 	function initialize() {
-								 //<?php //echo $addURL ?>
-								panorama = new google.maps.StreetViewPanorama(
-								document.getElementById('imgViewer'),
-										 {
-											 position: {lat: 37.869260, lng: -122.254811},
-											 pov: {heading: 165, pitch: 0},
-											 zoom: 1
-										 });
-							  }
-						</script>
-						<script async defer
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&callback=initialize">
-						</script>
+	    <div id="street-view"></div>
+	    <script>
+	      var panorama;
+	      function initialize() {
+	        panorama = new google.maps.StreetViewPanorama(
+	            document.getElementById('street-view'),
+	            {
+	              position: {lat: 37.869260, lng: -122.254811},
+	              pov: {heading: 165, pitch: 0},
+	              zoom: 1
+	            });
+	      }
+	    </script>
+	    <script async defer
+	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&callback=initialize">
+	    </script>
+			<br>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">
