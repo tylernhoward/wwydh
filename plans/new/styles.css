@@ -146,7 +146,7 @@ body {
 }
 
 .pane select {
-    width: 100%;
+    width: 67%;
     -webkit-appearance: none;
     font-size: 14px;
     padding: 10px;
@@ -160,7 +160,7 @@ body {
 }
 
 .pane input:focus, .pane textarea:focus {
-    box-shadow: 0px 0px 5px 2px rgba(65,128,64,0.4);
+    box-shadow: 0px 0px 5px 2px rgba(65, 128, 64, 0.4);
     border-color: #418040;
 }
 
@@ -201,7 +201,6 @@ body {
     color: #418040;
     right: 10px;
     top: 15px;
-
 }
 
 .pane .checklist .checklist-item.valid::after {
@@ -324,7 +323,7 @@ div.panel {
 div.preview {
     /*padding-top: 65px;*/
     padding-bottom: 32px;
-    height: 325px;
+    height: 650px;
     background-color: white;
     width: 100%;
     /*max-height: 0;*/
@@ -332,11 +331,12 @@ div.preview {
     display: block;
     transition: max-height 0.2s ease-out;
 }
-.next{
+
+.next {
     background-color: #418040;
     color: white;
     padding: 14px 20px;
-    float:right;
+    float: right;
     margin: 30px;
     text-align: center;
     text-decoration: none;
@@ -349,11 +349,11 @@ div.preview {
     opacity: 0.8;
 }
 
-.back{
+.back {
     background-color: #ffae00;
     color: white;
     padding: 14px 20px;
-    float:left;
+    float: left;
     margin: 30px;
     text-align: center;
     text-decoration: none;
