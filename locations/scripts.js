@@ -38,7 +38,7 @@ function initMap() {
                 });
 
                 marker.addListener("click", function() {
-                    alert("Distance (as the crow flies): " + this.distance); // FRONTEND:10 change the map marker click listener to trigger location popup
+                    alert(this.mailing_address); // FRONTEND:10 change the map marker click listener to trigger location popup
                 })
             });
         } else if (location != -1) {
