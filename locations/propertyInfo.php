@@ -57,7 +57,7 @@ var panorama;
         panorama.setPov({
            heading: heading,
            pitch: 0,
-           zoom: 1
+           zoom: 0
          });
         panorama.setVisible(true);
 				//panorama.setStreetNamesEnabled(false);
