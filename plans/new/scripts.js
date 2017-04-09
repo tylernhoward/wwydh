@@ -24,35 +24,31 @@ jQuery(document).ready(function($) {
         $(".pane[data-index=" + target + "]").removeClass("done").addClass("active");
     });
 
-    $(".pane[data-index=6] .button").click(function() {
-        $(".pane[data-index=6] .button").removeClass("active");
-
-        if ($(this).data("leader") === 0) {
-            $(".pane[data-index=6] .button[data-leader=0]").addClass("active");
-            $(".pane[data-index=6] .login-warning").removeClass("active");
-        } else {
-            $(".pane[data-index=6] .button[data-leader=1]").addClass("active");
-            $(".pane[data-index=6] .login-warning").addClass("active");
-        }
-    });
+    // $(".pane[data-index=6] .button").click(function() {
+    //     $(".pane[data-index=6] .button").removeClass("active");
+    //
+    //     if ($(this).data("leader") === 0) {
+    //         $(".pane[data-index=6] .button[data-leader=0]").addClass("active");
+    //         $(".pane[data-index=6] .login-warning").removeClass("active");
+    //     } else {
+    //         $(".pane[data-index=6] .button[data-leader=1]").addClass("active");
+    //         $(".pane[data-index=6] .login-warning").addClass("active");
+    //     }
+    // });
 
     $(".add-checklist-item").click(function() {
         addItem($(this));
     });
 
-
     $(".accordion").click(function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block" || panel.style.display ==="")
-            {
-              panel.style.display = "none";
-            }
-            else
-            {
-              panel.style.display = "block";
-            }
-        });
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block" || panel.style.display === "") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
 
     function doLogin(elem) {
         var login = {
@@ -79,14 +75,14 @@ jQuery(document).ready(function($) {
         $(".location-checklist .checklist-item").each(function(index, value) {
             if ($("input", value).val().length > 0) {
                 if (index == 0) location_requirements += $("input", value).val();
-                else  location_requirements += "[-]" + $("input", value).val();
+                else location_requirements += "[-]" + $("input", value).val();
             }
         });
 
         $(".checklist .checklist-item").each(function(index, value) {
             if ($("input", value).val().length > 0) {
                 if (index == 0) contributions += $("input", value).val();
-                else  contributions += "[-]" + $("input", value).val();
+                else contributions += "[-]" + $("input", value).val();
             }
         });
 
@@ -104,15 +100,15 @@ jQuery(document).ready(function($) {
 
         $.post("../../helpers/ideas/new.php", form, function(data) {
 
-            if (data == -1) {
+            // if (data == -1) {
                 // login required
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-1]").addClass("active");
-            } else {
-                // successfully inserted plans
-                $(elem).parents(".pane").addClass("done").removeClass("active");
-                $(".pane[data-index=-2]").addClass("active");
-            }
+            // } else {
+            //     // successfully inserted plans
+            //     $(elem).parents(".pane").addClass("done").removeClass("active");
+            //     $(".pane[data-index=-2]").addClass("active");
+            // }
         }, "text");
     }
 

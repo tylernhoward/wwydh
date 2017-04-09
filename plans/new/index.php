@@ -97,7 +97,7 @@ if (isset($_GET["plan"])) {
         <input name="title" type="text" placeholder="What is your plan's title? Be specific!" />
 
       <button class="accordion active">Idea</button>
-      <div class=panel>
+      <div>
         <select name="Ideas">
           <option disabled selected>Choose one...</option>
           <?php foreach ($idea_title as $key => $lc) { ?>
@@ -105,11 +105,13 @@ if (isset($_GET["plan"])) {
             <?php } ?>
           </select>
           <div class="plan-buttons options btn-group">
-            <div class="btn op-1"><a href="../../ideas/new/">Create New Idea</a></div> <!--Insert link here -->
+            <div class="btn op-3" style="margin-top: 0px;">
+              <a href="../../ideas/new/">Create New Idea</a></div>
           </div>
           </div>
 
         <button class="accordion active">Location</button>
+        <div>
           <select name="Location">
             <option disabled selected>Choose one...</option>
             <!-- This isnt right-->
@@ -117,6 +119,11 @@ if (isset($_GET["plan"])) {
               <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
               <?php } ?>
             </select>
+            <div class="plan-buttons options btn-group">
+              <div class="btn op-3" style="margin-top: 0px;">
+                <a href="../../locations/new/">Submit New Location</a></div>
+            </div>
+          </div>
 
             <button class="accordion active">Tasks</button>
             <div class=panel>
@@ -156,8 +163,9 @@ if (isset($_GET["plan"])) {
             <div class="pane-content-intro">Preview</div>
             <div class="preview">
             </div>
+                    </div>
 
-            <div class="pane-content-intro">Would you like credit for your plan?</div>
+            <!-- <div class="pane-content-intro">Would you like credit for your plan?</div>
 
             <div class="button active" data-leader="1">
               <div>Give me credit!</div>
@@ -166,7 +174,7 @@ if (isset($_GET["plan"])) {
               <div>No thanks!</div>
             </div>
             <div class="login-warning active">This will require an account!</div>
-          </div>
+          </div> -->
 
           <div class="advance" data-target="-1">
             <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
@@ -174,6 +182,7 @@ if (isset($_GET["plan"])) {
           <div class="retreat" data-target="1">
             <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
           </div>
+
 
         </div>
 
@@ -203,21 +212,23 @@ if (isset($_GET["plan"])) {
 
         <div class="pane" data-index="-2">
           <!-- Successful Submission -->
-          <div class="pane-title">
+          <!-- <div class="pane-title">
             <div class="title">Plan Submitted!</div>
-          </div>
+          </div> -->
           <div class="pane-content">
+            <div class="panel">
             <div class="pane-content-intro">
               Your plan was submitted successfully! Great!
             </div>
             <div class="success-marker">
               <i class="fa fa-check" aria-hidden="true"></i>
             </div>
-            <div class="next-steps">
+          </div>
+            <!-- <div class="next-steps">
               <div class="sub-intro">
                 What's next?
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
