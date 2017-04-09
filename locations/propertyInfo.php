@@ -33,20 +33,50 @@
     </head>
 		<body>
 	    <div id="street-view"></div>
-	    <script>
-	      var panorama;
-	      function initialize() {
-	        panorama = new google.maps.StreetViewPanorama(
-	            document.getElementById('street-view'),
-	            {
-	              position: {lat: <?php echo $row["latitude"]?>, lng: <?php echo $row["longitude"]?>},
-	              pov: {heading: 165, pitch: 0},
-	              zoom: 1
-	            });
-	      }
-	    </script>
+			<script>
+var panorama;
+
+  function loadStreetView() {
+
+    var _lat = <?php echo $row["latitude"] ?>;
+    var _lng = <?php echo $row["longitude"] ?>;
+
+    var target = new google.maps.LatLng(_lat,_lng);
+
+    var sv = new google.maps.StreetViewService();
+
+    panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'));
+
+    var pano = sv.getPanoramaByLocation(target, 50, function(result, status) {
+
+      if (status == google.maps.StreetViewStatus.OK) {
+
+        var heading = google.maps.geometry.spherical.computeHeading(result.location.latLng, target);
+				panorama.setStreetNamesEnabled(false);
+				panorama.setUserNavigationEnabled(false);
+        panorama.setPosition(result.location.latLng);
+        panorama.setPov({
+           heading: heading,
+           pitch: 0,
+           zoom: 1
+         });
+        panorama.setVisible(true);
+
+      }
+      else {
+
+        console.log("Cannot find a street view for this property.");
+        return;
+
+      }
+
+    });
+  }
+
+  </script>
+
 	    <script async defer
-	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&callback=initialize">
+	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&libraries=geometry&callback=initialize">
 	    </script>
 			<br>
        <div class="name"><?php echo $row["building_address"] ?></div>
