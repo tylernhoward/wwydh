@@ -46,7 +46,7 @@ function initMap() {
         });
 
         marker.addListener("click", function() {
-            alert(this.building_address); // FRONTEND:10 change the map marker click listener to trigger location popup
+            alert(this.address); // FRONTEND:10 change the map marker click listener to trigger location popup
         })
     })
 }

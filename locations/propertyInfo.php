@@ -52,8 +52,7 @@ var panorama;
       if (status == google.maps.StreetViewStatus.OK) {
 
         var heading = google.maps.geometry.spherical.computeHeading(result.location.latLng, target);
-				panorama.setStreetNamesEnabled(false);
-				panorama.setUserNavigationEnabled(false);
+
         panorama.setPosition(result.location.latLng);
         panorama.setPov({
            heading: heading,
@@ -61,6 +60,8 @@ var panorama;
            zoom: 1
          });
         panorama.setVisible(true);
+				//panorama.setStreetNamesEnabled(false);
+				//panorama.setUserNavigationEnabled(false);
 
       }
       else {
