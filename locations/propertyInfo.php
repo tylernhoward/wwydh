@@ -24,7 +24,7 @@
 		    <title><?php echo $row["building_address"] ?></title>
     </head>
 		<body>
-	     <div class="imgViewer">
+	     <div id="imgViewer">
 						<script>
 							 	var panorama;
 							 	function initialize() {
