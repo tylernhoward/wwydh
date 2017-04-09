@@ -76,7 +76,7 @@ var panorama;
   </script>
 
 	    <script async defer
-	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&libraries=geometry&callback=initialize">
+	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&libraries=geometry&callback=loadStreetView">
 	    </script>
 			<br>
        <div class="name"><?php echo $row["building_address"] ?></div>

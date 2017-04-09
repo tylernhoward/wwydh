@@ -42,11 +42,11 @@ function initMap() {
         var marker = new google.maps.Marker({
             map: map,
             position: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
-            address: this.address
+            address: this.building_address
         });
 
         marker.addListener("click", function() {
-            alert(this.address); // FRONTEND:10 change the map marker click listener to trigger location popup
+            alert(this.building_address); // FRONTEND:10 change the map marker click listener to trigger location popup
         })
     })
 }
