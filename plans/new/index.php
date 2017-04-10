@@ -108,7 +108,7 @@ if (isset($_GET["plan"])) {
             <div class="btn op-3" style="margin-top: 0px;">
               <a href="../../ideas/new/">Create New Idea</a></div>
           </div>
-          </div>
+        </div>
 
         <button class="accordion active">Location</button>
         <div>
