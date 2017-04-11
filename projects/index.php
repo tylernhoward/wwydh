@@ -1,21 +1,15 @@
 <?php
-
 	session_start();
-
 	include "../helpers/paginate.php";
 	include "../helpers/vars.php";
 	include "../helpers/conn.php";
-
 	$theQuery = "";
 	$result = null;
-
 	// count all records for pagination
 	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM plans i");
 	$q->execute();
-
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	if (isset($_GET["isSearch"])) {
 		$theQuery = "SELECT * FROM `locations` WHERE `building_address` LIKE '%{$_GET["sAddress"]}%' AND `building_address` LIKE '%{$_GET["sAddress"]}%' AND `block` LIKE '%{$_GET["sBlock"]}%' AND `lot` LIKE '%{$_GET["sLot"]}%' AND `zip_code` LIKE '%{$_GET["sZip"]}%' AND `city` LIKE '%{$_GET["sCity"]}%' AND `neighborhood` LIKE '%{$_GET["sNeighborhood"]}%' AND `police_district` LIKE '%{$_GET["sPoliceDistrict"]}%' AND `council_district` LIKE '%{$_GET["sCouncilDistrict"]}%' AND `longitude` LIKE '%{$_GET["sLongitude"]}%' AND `latitude` LIKE '%{$_GET["sLatitude"]}%' AND `owner` LIKE '%{$_GET["sOwner"]}%' AND `use` LIKE '%{$_GET["sUse"]}%' AND `mailing_address` LIKE '%{$_GET["sMailingAddr"]}%'";
@@ -28,16 +22,12 @@
 	} else {
 		$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id LEFT JOIN location_features f ON f.location_id = l.id WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
 	}
-
 	$q->execute();
 	$data = $q->get_result();
-
 	$plans = [];
-
 	$row = $data->fetch_array(MYSQLI_ASSOC);
 	$plans[$row["idea_id"]] = [];
 	array_push($plans[$row["idea_id"]], $row);
-
 	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
 		if (array_key_exists($row["idea_id"], $plans)) {
 			array_push($plans[$row["idea_id"]], $row);
@@ -51,10 +41,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>All Plans</title>
+		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-		<link href="styles.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
@@ -115,7 +104,7 @@ $( function() {
 		</div>
 		<div id="splash">
 			<div class="splash_content">
-				<h1>Search Plans</h1>
+				<h1>Search Projects</h1>
 				<form method="POST">
 					<input type="submit" name="simple_search" value="Search"></input>
 					<input name="search" type="text" placeholder="Enter an address, category, or search keywords" />
@@ -178,15 +167,16 @@ $( function() {
 			foreach ($plans as $plan) {
 				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
 				<div class="idea">
+					<hr>
 					<div class="grid-item width">
-						<div class="vote">
+						<!--<div class="vote">
 							<div class="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
 							</div>
 							<div class="downvote">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 							</div>
-						</div>
+						</div>-->
 						<div class="idea_image_wrapper">
 							<i class="fa <?php echo $idea_categories[$row['category']]['fa-icon'] ?>"></i>
 							<div class="overlay"></div>
@@ -196,8 +186,12 @@ $( function() {
 							<div class="title"><?php echo $row["title"] ?></div>
 							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
 							<div class="description"><?php echo $row["description"] ?></div>
+
 							<hr>
-							<a href="redirect.php?id=<?php echo $row['id']; ?>">Tasks</a>
+							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
+							<div class="manage"><?php echo "\nProject Manager: " . "thowar4" //placeholder?></div>
+
+
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
 								<div class="checklist">
@@ -218,26 +212,34 @@ $( function() {
 					<div class="locations">
 						<?php foreach($plan as $location) {
 							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
+
 							<div class="location">
-								<div class="vote">
-									<div class="upvote">
-										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-									</div>
-									<div class="downvote">
-										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-									</div>
+								<div class="plan-buttons options btn-group">
+									<?php
+										/*if user is manager display tasks if not display become a project manager*/
+										if (!isset($_SESSION["user"])){ ?>
+											<div class="btn op-1">login</div>
+										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1){ ?>
+											<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Edit Task Progress</a></div>
+										<?php } else { ?>
+											<div class="btn op-1">Manager?</div>
+										<?php } 
+									?>
 								</div>
 
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<div class="location_features"><?php echo $location["features"] ?></div>
 								<div style="clear: both"></div>
+
 							</div>
+
 						<?php } ?>
 					</div>
 		 	<?php }
 			?>
 		</div>
+
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">
@@ -245,7 +247,6 @@ $( function() {
 				<?php
 					$starting_page = ($page - 5 > 0) ? $page - 5 : 1;
 					$ending_page = ($page + 5 < ceil($total / $itemCount)) ? $page + 5 : ceil($total / $itemCount);
-
 					for ($i = 0; $i <= 10 && $starting_page + $i <= $ending_page; $i++) { ?>
 						<li><a <?php echo ($page == $starting_page + $i) ? 'class="active"' : "" ?>
 							href="?page=<?php echo $starting_page + $i ?>"><?php echo $starting_page + $i ?></a>

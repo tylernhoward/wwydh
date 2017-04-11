@@ -8,6 +8,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400|Montserrat:400,700" rel="stylesheet" />
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 
 		<!-- Scripts -->
 		<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -21,7 +22,7 @@
 		<![endif]-->
 	</head>
 	<body>
-	<div class="width">
+	<!--<div class="width">
 			<div id="nav">
 	            <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 	                <a href="../home">
@@ -64,7 +65,7 @@
 	                </div>
 	            </div>
 	        </div>
-		</div>
+		</div> -->
 		<!-- Modal -->
 		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="helpModal">
 			<div class="modal-dialog" role="document">
@@ -105,11 +106,22 @@
 			<?php
 			session_name( 'kanban' );
 			session_start();
-			echo $_SESSION["projid"];
+			// echo $_SESSION["projid"];
 			?>
 			<div id="board"></div>
 			<h2>Tags</h2>
 			<div id="navigation" class="navigation"></div>
+
 		</div>
+		<div class="plan-buttons options btn-group">
+			<div class="btn op-1"><a href="../projects/index.php">Go Back To Projects</a></div> <!--Insert link here -->
+		</div>
+		
+		<div id="footer">
+            <div class="grid-inner">
+                &copy; Copyright WWYDH <?php echo date("Y") ?>
+            </div>
+    </div>
+
 	</body>
 </html>

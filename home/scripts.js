@@ -42,7 +42,7 @@ function initMap() {
         var marker = new google.maps.Marker({
             map: map,
             position: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
-            address: this.mailing_address
+            address: this.building_address
         });
 
         marker.addListener("click", function() {

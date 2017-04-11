@@ -51,13 +51,15 @@ function load() {
 	/*
 	$fh = fopen(DATA_FILE, 'r');
 	$data = fread($fh, filesize(DATA_FILE));
-	*/
+	
 	mysql_connect("mysql.winnerdigital.net", "wwydh", "foucheisbae")or die(mysql_error());
 	mysql_select_db("wwydh")or die(mysql_error());
+	*/
+	include("../helpers/conn.php");
 	include("temp.php");
 	$q = "SELECT json FROM task_test WHERE test_id= '$project_test_id'";
-	$result=mysql_query($q)or die(mysql_error());
-	$row = mysql_fetch_assoc($result);
+	$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
+	$row = mysqli_fetch_assoc($result);
 	print $row["json"];
 }
 

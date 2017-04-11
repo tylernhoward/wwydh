@@ -12,6 +12,8 @@
 	$q = $conn->prepare("SELECT COUNT(l.id) as total FROM locations l");
 	$q->execute();
 
+<<<<<<< HEAD
+=======
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
 
@@ -151,6 +153,7 @@ $loadPage =true;
 
 
 
+>>>>>>> Alec_Kanban_Test
 ?>
 <!DOCTYPE html>
 <html>
@@ -238,6 +241,8 @@ $loadPage =true;
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
+=======
 				<!--
 			  echo "<tr><td style=\"background-image:url(../helpers/location_images/{$row["image"]})\">
 			 <div class=\"address\">{$row["building_address"]}</div><br/>
@@ -246,6 +251,7 @@ $loadPage =true;
 			 <div class=\"more\"><a href=\"propertyInfo.php?id={$row["id"]}\">(more)</a></div><br/>
 			 </td></tr>
 			 "; -->
+>>>>>>> Alec_Kanban_Test
 		</div>
 		<div id="pagination">
 			<div class="grid-inner">

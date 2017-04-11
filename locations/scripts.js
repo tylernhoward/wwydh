@@ -1,5 +1,20 @@
 // alright boys, get ready...
 
+
+
+// open and close functions for home sidemenu
+function openNav() {
+    $(".sidenav").addClass("open");
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+
+
 // Google's MAP function DON'T TOUCH!!
 function initMap() {
     // call my getLocation method
@@ -18,12 +33,12 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     map: map,
                     position: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
-                    address: this.mailing_address,
+                    address: this.building_address,
                     distance: this.distance
                 });
 
                 marker.addListener("click", function() {
-                    alert("Distance (as the crow flies): " + this.distance); // FRONTEND:10 change the map marker click listener to trigger location popup
+                    alert(this.address); // FRONTEND:10 change the map marker click listener to trigger location popup
                 })
             });
         } else if (location != -1) {
