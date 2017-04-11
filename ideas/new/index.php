@@ -250,10 +250,6 @@ if (isset($_GET["idea"])) {
 
   <div class="pane" data-index="-1">
     <!-- Login Required -->
-    <!-- <div class="pane-title">
-    <div class="retreat" data-target="3"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-    <div class="title">Login Required!</div>
-  </div> -->
   <div class="pane-content">
     <div class="pane-content-intro error">
       You must be logged in to receive credit for this idea!
@@ -275,23 +271,20 @@ if (isset($_GET["idea"])) {
 
 <div class="pane" data-index="-2">
   <!-- Successful Submission -->
-  <!-- <div class="pane-title">
-    <div class="title">Idea Submitted!</div>
-  </div> -->
-  <div class="pane-content">
-    <div class="panel">
+<div class="pane-content">
+  <div class="panel">
     <div class="pane-content-intro">
       Your idea was submitted successfully! Great!
     </div>
     <div class="success-marker">
       <i class="fa fa-check" aria-hidden="true"></i>
     </div>
-    <!-- <div class="next-steps">
-      <div class="sub-intro">
-        What's next?
-      </div> -->
-    </div>
   </div>
+</div>
+<!-- Once backend works can redirect to created Idea -->
+<a href="../../home">
+  <div class="next">Return to homepage <i class="fa fa-home" aria-hidden="true"></i></div>
+  </a>
 </div>
 </div>
 </div>
