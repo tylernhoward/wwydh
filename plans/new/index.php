@@ -123,7 +123,7 @@ if (isset($_GET["plan"])) {
                       <div class= "task-checklist">
                         <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
                         <div class="checklist-item">
-                          <input type="text" placeholder="What tasks are needed for your plan? Please enter them below." />
+                          <input type="text" placeholder="What tasks are needed for your plan? If you need multiple tasks click add item." />
                         </div>
                       </div>
                     </div>
@@ -135,7 +135,7 @@ if (isset($_GET["plan"])) {
                       <div class ="permit-checklist">
                         <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
                         <div class="checklist-item">
-                          <input type="text" placeholder="Does your plan need permits? If yes, please enter below." />
+                          <input type="text" placeholder="Does your plan need permits? If you need multiple permits click add item." />
                         </div>
                       </div>
                     </div>
@@ -160,11 +160,12 @@ if (isset($_GET["plan"])) {
                 <div class="advance" data-target="-1">
                   <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
                 </div>
+                <!-- <div class="advance" data-target="2">
+                  <div class="next">Test Page <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                </div> -->
                 <div class="retreat" data-target="1">
                   <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
                 </div>
-
-
               </div>
 
               <div class="pane" data-index="-1">
@@ -182,9 +183,11 @@ if (isset($_GET["plan"])) {
                   <input name="submit" type="submit" value="Submit" />
                 </div>
               </div>
+
               <div class="retreat" data-target="6">
                 <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
               </div>
+              
             </div>
 
             <div class="pane" data-index="-2">
