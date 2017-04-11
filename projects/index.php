@@ -218,11 +218,12 @@ $( function() {
 									<?php
 										/*if user is manager display tasks if not display become a project manager*/
 										if (!isset($_SESSION["user"])){ ?>
-											<div class="btn op-1">login</div>
+											<div class="btn op-1"><a href="../login">login</a></div>
 										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1){ ?>
 											<div class="btn op-1"><a href="redirect.php?id=<?php echo $row['id']; ?>">Edit Task Progress</a></div>
 										<?php } else { ?>
-											<div class="btn op-1">Manager?</div>
+											<div class="btn op-1"><a href="tasktable.php">Become a Manager</a></div>
+											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $row['id']; ?>">See Task Progress</a></div>
 										<?php } 
 									?>
 								</div>
