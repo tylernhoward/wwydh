@@ -61,6 +61,18 @@ $json = $row["json"];
 									str += '<td>' + CreateDetailView(objValue, theme, true) + '</td>';
 								}
 							} else {
+								if(objValue == "B"){
+									objValue = "New Tasks"
+								}
+								else if(objValue == "C"){
+									objValue = "Completed"
+								}
+								else if(objValue == "W"){
+									objValue = "Work in Progress"
+								}
+								else if(objValue == "A"){
+									objValue = "Assigned"
+								}
 								str += '<td>' + objValue + '</td>';
 							}
 				 
