@@ -6,9 +6,24 @@
 		//$password = "nzqbzNU3drDhVsgHsP4f";
 
 		//$conn = new mysqli($servername, $username, $password, "wwydh");
-		$theQuery = "SELECT * FROM idea WHERE `id`='{$_GET["id"]}'";
+		$ideaIds = [];
+		$ideaTitles = [];
+		$query = "SELECT id, title FROM ideas";
+		$result = $conn->query($query);
+		$i = 0;
+		if($result->num_rows > 0){
+		  while($row = $result->fetch_assoc()){
+		    $ideaIds[$i] = $row["id"];
+		    $ideaTitles[$i]= $row["title"];
+		    $i = $i + 1;
+		  }
+		}
+
+		$theQuery = "SELECT * FROM ideas WHERE `id`='{$_GET["id"]}'";
 		$result = $conn->query($theQuery);
 		$row = @mysqli_fetch_array($result);
+
+
   ?>
 
 <!DOCTYPE html>
@@ -22,12 +37,12 @@
 
 		<body>
 	     <div class="imgViewer" style="background-image: url(../helpers/idea_images/ajhdjwugq.jpg)";></div>
-       <div class="name">Sample name</div>
-       <div class="postedDate">Posted by: User 1 on 01/23/17</div>
+       <div class="name"><?php echo $row["title"] ?></div>
+       <div class="postedDate">Posted by: <?php echo $row["owner"] ?> on <?php echo $row["timestamp"] ?></div>
        <div class="info">
           <div class="generalInfo">
-						<div class="description"> A fun event for all families! </div>
-
+						<div class="description"> <?php echo $row["description"] ?> </div>
+<!--
 						<br>
 		           	<h1>Requirements:</h1>
           	<ul>
@@ -36,7 +51,7 @@
 							<li><b>Example 3</li>
           	</ul>
 					</br>
-
+-->
 					</div>
 						<div style="clear: both;"></div>
           </div>
