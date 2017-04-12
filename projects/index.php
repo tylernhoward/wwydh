@@ -6,7 +6,7 @@
 	$theQuery = "";
 	$result = null;
 	// count all records for pagination
-	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM plans i");
+	$q = $conn->prepare("SELECT COUNT(i.id) as total FROM projects i");
 	$q->execute();
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
@@ -189,7 +189,7 @@ $( function() {
 
 							<hr>
 							<div class="date"><?php echo "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div>
-							<div class="manage"><?php echo "\nProject Manager: " . "thowar4" //placeholder?></div>
+							<div class="manage"><?php echo "\nProject Manager: " . "manager" //placeholder?></div>
 
 
 							<?php /* ?>
@@ -224,7 +224,7 @@ $( function() {
 										<?php } else { ?>
 											<div class="btn op-1"><a href="tasktable.php">Become a Manager</a></div>
 											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $row['id']; ?>">See Task Progress</a></div>
-										<?php } 
+										<?php }
 									?>
 								</div>
 

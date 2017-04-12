@@ -1,21 +1,43 @@
 <?php
 session_start();
+include "../../helpers/conn.php";
 require_once "../../helpers/vars.php";
-if(isset($_GET["location"])) {
-  require_once "../../helpers/conn.php";
-  $locationid = $_GET["location"];
-  $q = $conn->prepare("SELECT l.*, COUNT(DISTINCT i.id) AS plans, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]')
-  AS features FROM locations l
-  LEFT JOIN plans i ON i.location_id = l.id
-  LEFT JOIN location_features f ON f.location_id = l.id
-  WHERE l.id=? GROUP BY l.id");
-  $q->bind_param("s", $locationid);
-  $q->execute();
-  $location = $q->get_result()->fetch_array(MYSQLI_ASSOC);
+
+//Nick, your calls to the database were riduculously complicated to understand shame on you.
+//Gonna run really sloppy with parallel arrays lmao.
+$ideaIds = [];
+$ideaTitles = [];
+$query = "SELECT id, title FROM ideas";
+$result = $conn->query($query);
+$i = 0;
+if($result->num_rows > 0){
+  while($row = $result->fetch_assoc()){
+    $ideaIds[$i] = $row["id"];
+    $ideaTitles[$i]= $row["title"];
+    $i = $i + 1;
+  }
 }
-if (isset($_GET["plan"])) {
-  //BACKEND:40 handle editing an plan here, EG change title, retrieve entry completion from database and set that pane as active, populate
+
+$locationIds = [];
+$locations = [];
+$query = "SELECT id, building_address FROM locations";
+$result = $conn->query($query);
+$i = 0;
+
+//ARBITRARY LIMIT FOR MEMORY, can remove..
+$limit=30;
+
+if( $result->num_rows > 0){
+  while(($row = $result->fetch_assoc()) && $limit > 0){
+    $locationIds[$i] = $row["id"];
+    $locations[$i]= $row["building_address"];
+    $i = $i + 1;
+    $limit = $limit - 1;
+  }
 }
+
+$conn->close();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,8 +114,8 @@ if (isset($_GET["plan"])) {
           <div>
             <select name="Ideas">
               <option disabled selected>Choose one...</option>
-              <?php foreach ($idea_title as $key => $lc) { ?>
-                <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
+              <?php foreach ($ideaTitles as $title) { ?>
+                <option value="<?php echo $title ?>"><?php echo $title ?></option>
                 <?php } ?>
               </select>
               <div class="plan-buttons options btn-group">
@@ -107,8 +129,8 @@ if (isset($_GET["plan"])) {
                 <select name="Location">
                   <option disabled selected>Choose one...</option>
                   <!-- This isnt right-->
-                  <?php foreach ($location_building_address as $key => $lc) { ?>
-                    <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
+                  <?php foreach ($locations as $loc) { ?>
+                    <option value="<?php echo $loc?>"><?php echo $loc ?></option>
                     <?php } ?>
                   </select>
                   <div class="plan-buttons options btn-group">
