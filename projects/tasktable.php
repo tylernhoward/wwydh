@@ -25,30 +25,30 @@ $json = $row["json"];
 					if (theme === undefined) {
 						theme = 'lightPro';  //default theme
 					}
-				 
+
 					if (enableHeader === undefined) {
 						enableHeader = false; //default enable headers
 					}
-				 
+
 					// If the returned data is an object do nothing, else try to parse
 					var array = typeof objArray != 'object' ? JSON.parse(objArray) : new Array(objArray);
 					var keys = Object.keys(array[0]);
-				 
+
 					var str = '<table class="w3-table-all w3-card-4">';
 					str += '<tbody>';
-				 
-				 
+
+
 					for (var i = 0; i < array.length; i++) {
 						var row = 0;
 						for (var index in keys) {
 							var objValue = array[i][keys[index]]
-				 
+
 							str += (row % 2 == 0) ? '<tr class="w3-green">' : '<tr>';
-				 
+
 							if (enableHeader) {
 								str += '<th scope="row">' + keys[index] + '</th>';
 							}
-				 
+
 							// Support for Nested Tables
 							if (typeof objValue === 'object' && objValue !== null) {
 								if (Array.isArray(objValue)) {
@@ -75,7 +75,7 @@ $json = $row["json"];
 								}
 								str += '<td>' + objValue + '</td>';
 							}
-				 
+
 							str += '</tr>';
 							row++;
 						}
@@ -84,7 +84,7 @@ $json = $row["json"];
 					str += '</table>';
 					return str;
 				}
-				
+
 				var json = <?php print $json; ?>;
 				document.write(CreateDetailView(json));
 		</script>
