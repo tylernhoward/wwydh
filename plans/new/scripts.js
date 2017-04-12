@@ -40,6 +40,12 @@ jQuery(document).ready(function($) {
         addItem($(this));
     });
 
+    // $(".checklist-item").keyup(function(event){
+    // if(event.keyCode == 13){
+    //     $(".add-checklist-item").click();
+    // }
+    // });
+
     $(".accordion").click(function() {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
@@ -113,12 +119,13 @@ jQuery(document).ready(function($) {
     }
 
     function addItem(elem) {
-        $(elem).parent().append('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
+        $(elem).siblings().prepend('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
     }
 
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
+
 
 
 });
