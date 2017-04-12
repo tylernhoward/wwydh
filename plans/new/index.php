@@ -187,7 +187,7 @@ if (isset($_GET["plan"])) {
               <div class="retreat" data-target="6">
                 <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
               </div>
-              
+
             </div>
 
             <div class="pane" data-index="-2">
