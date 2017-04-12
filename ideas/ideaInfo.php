@@ -28,7 +28,7 @@
        <div class="postedDate">Posted by: <?php echo $row["owner"] ?> on <?php echo $row["timestamp"] ?></div>
        <div class="info">
           <div class="generalInfo">
-						<div class="description"> <?php echo $row["description"] ?> </div>
+						<div class="description"> Description: <?php echo \n $row["description"] ?> </div>
 <!--
 						<br>
 		           	<h1>Requirements:</h1>
