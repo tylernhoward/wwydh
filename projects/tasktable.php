@@ -11,7 +11,7 @@ $json = $row["json"];
 <html>
 	<head>
 		<title>All Projects</title>
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	</head>
 	<body>
 		<script>
