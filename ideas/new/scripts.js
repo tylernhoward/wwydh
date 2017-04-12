@@ -24,15 +24,15 @@ jQuery(document).ready(function($) {
         $(".pane[data-index=" + target + "]").removeClass("done").addClass("active");
     });
 
-    $(".pane[data-index=1] .button").click(function() {
-        $(".pane[data-index=1] .button").removeClass("active");
+    $(".pane[data-index=3] .button").click(function() {
+        $(".pane[data-index=3] .button").removeClass("active");
 
         if ($(this).data("leader") === 0) {
-            $(".pane[data-index=1] .button[data-leader=0]").addClass("active");
-            $(".pane[data-index=1] .login-warning").removeClass("active");
+            $(".pane[data-index=3] .button[data-leader=0]").addClass("active");
+            $(".pane[data-index=3] .login-warning").removeClass("active");
         } else {
-            $(".pane[data-index=1] .button[data-leader=1]").addClass("active");
-            $(".pane[data-index=1] .login-warning").addClass("active");
+            $(".pane[data-index=3] .button[data-leader=1]").addClass("active");
+            $(".pane[data-index=3] .login-warning").addClass("active");
         }
     });
 
@@ -40,27 +40,19 @@ jQuery(document).ready(function($) {
         addItem($(this));
     });
 
-    /*
 
-        Garbage code for automatically traversing the checklist panes. Fix or delete.
-
-    $(".checklist").on("input", ".checklist-item input", function() {
-        var check = $(this).val().match(/ x [0-9]+/gi);
-
-        if  (check != null && check.length == 1) $(this).parent().addClass("valid");
-        else $(this).parent().removeClass("valid");
-    })
-
-    $(".checklist").on("blur", ".checklist-item.valid input", function(e) {
-        var elem = $(this);
-        if ($(".checklist-item").not(".valid").length == 0) {
-            addItem($(this));
-            traverse($(this));
-        } else {
-            traverse($(this));
-        }
-    })
-    */
+    $(".accordion").click(function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block" || panel.style.display ==="")
+            {
+              panel.style.display = "none";
+            }
+            else
+            {
+              panel.style.display = "block";
+            }
+        });
 
     function doLogin(elem) {
         var login = {
@@ -125,10 +117,12 @@ jQuery(document).ready(function($) {
     }
 
     function addItem(elem) {
-        $(elem).parent().append('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
+        $(elem).siblings().prepend('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
     }
 
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
+
+
 });

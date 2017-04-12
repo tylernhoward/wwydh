@@ -34,20 +34,20 @@
 		<body>
 	    <div id="street-view"></div>
 			<script>
-var panorama;
+			var panorama;
 
-  function loadStreetView() {
+  		function loadStreetView() {
 
-    var _lat = <?php echo $row["latitude"] ?>;
-    var _lng = <?php echo $row["longitude"] ?>;
+    	var _lat = <?php echo $row["latitude"] ?>;
+    	var _lng = <?php echo $row["longitude"] ?>;
 
-    var target = new google.maps.LatLng(_lat,_lng);
+    	var target = new google.maps.LatLng(_lat,_lng);
 
-    var sv = new google.maps.StreetViewService();
+    	var sv = new google.maps.StreetViewService();
 
-    panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'));
+    	panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'));
 
-    var pano = sv.getPanoramaByLocation(target, 50, function(result, status) {
+    	var pano = sv.getPanoramaByLocation(target, 50, function(result, status) {
 
       if (status == google.maps.StreetViewStatus.OK) {
 
@@ -68,7 +68,6 @@ var panorama;
 
         console.log("Cannot find a street view for this property.");
         return;
-
       }
 
     });
