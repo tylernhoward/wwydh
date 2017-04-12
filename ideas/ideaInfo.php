@@ -6,19 +6,6 @@
 		//$password = "nzqbzNU3drDhVsgHsP4f";
 
 		//$conn = new mysqli($servername, $username, $password, "wwydh");
-		$ideaIds = [];
-		$ideaTitles = [];
-		$query = "SELECT id, title FROM ideas";
-		$result = $conn->query($query);
-		$i = 0;
-		if($result->num_rows > 0){
-		  while($row = $result->fetch_assoc()){
-		    $ideaIds[$i] = $row["id"];
-		    $ideaTitles[$i]= $row["title"];
-		    $i = $i + 1;
-		  }
-		}
-
 		$theQuery = "SELECT * FROM ideas WHERE `id`='{$_GET["id"]}'";
 		$result = $conn->query($theQuery);
 		$row = @mysqli_fetch_array($result);
