@@ -9,32 +9,13 @@ $ideaIds = [];
 $ideaTitles = [];
 $query = "SELECT id, title FROM ideas";
 $result = $conn->query($query);
-$i = 0;
-if($result->num_rows > 0){
-  while($row = $result->fetch_assoc()){
-    $ideaIds[$i] = $row["id"];
-    $ideaTitles[$i]= $row["title"];
-    $i = $i + 1;
-  }
-}
 
-$locationIds = [];
-$locations = [];
-$query = "SELECT id, building_address FROM locations";
-$result = $conn->query($query);
-$i = 0;
+
+$q = "SELECT id, building_address FROM locations";
+$result2 = $conn->query($q);
 
 //ARBITRARY LIMIT FOR MEMORY, can remove..
 $limit=30;
-
-if( $result->num_rows > 0){
-  while(($row = $result->fetch_assoc()) && $limit > 0){
-    $locationIds[$i] = $row["id"];
-    $locations[$i]= $row["building_address"];
-    $i = $i + 1;
-    $limit = $limit - 1;
-  }
-}
 
 $conn->close();
 
@@ -112,11 +93,11 @@ $conn->close();
 
           <button class="accordion active">Idea</button>
           <div>
-            <select name="Ideas">
+            <select name="idea">
               <option disabled selected>Choose one...</option>
-              <?php foreach ($ideaTitles as $title) { ?>
-                <option value="<?php echo $title ?>"><?php echo $title ?></option>
-                <?php } ?>
+              <?php if($result->num_rows > 0){ while($ideas = $result->fetch_assoc()){ ?>
+                <option value="<?php echo $ideas["id"] ?>"><?php echo $ideas["title"] ?></option>
+			  <?php }} ?>
               </select>
               <div class="plan-buttons options btn-group">
                 <div class="btn op-3" style="margin-top: 0px;">
@@ -126,12 +107,12 @@ $conn->close();
 
               <button class="accordion active">Location</button>
               <div>
-                <select name="Location">
+                <select name="location">
                   <option disabled selected>Choose one...</option>
                   <!-- This isnt right-->
-                  <?php foreach ($locations as $loc) { ?>
-                    <option value="<?php echo $loc?>"><?php echo $loc ?></option>
-                    <?php } ?>
+                  <?php if( $result2->num_rows > 0){ while(($row = $result2->fetch_assoc()) && $limit > 0){ ?>
+                    <option value="<?php echo $row["id"]?>"><?php echo $row["building_address"] ?></option>
+				  <?php $limit = $limit - 1; }} ?>
                   </select>
                   <div class="plan-buttons options btn-group">
                     <div class="btn op-3" style="margin-top: 0px;">
@@ -167,17 +148,27 @@ $conn->close();
                   <input name="date" type="text" placeholder="What date do you hope to be completed by? ex: (March 7, 2017)" />
 
                 </div>
-                <div class="advance" data-target="6">
-                  <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
-                </div>
+                <div class="advance" data-target="3">
+					<div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+				</div>
               </div>
 
-              <div class="pane" data-index="6">
+              <div class="pane" data-index="3">
                 <div class="pane-content">
                   <div class="pane-content-intro">Preview</div>
                   <div class="preview">
                   </div>
-                </div>
+				  
+				  <div class="pane-content-intro">Would you like credit for your idea?</div>
+
+				  <div class="button active" data-leader="1">
+					<div>Give me credit!</div>
+				  </div>
+				  <div class="button" data-leader="0">
+					<div>No thanks!</div>
+				  </div>
+					<div class="login-warning active">This will require an account!</div>
+				</div>
 
                 <div class="advance" data-target="-1">
                   <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
@@ -206,7 +197,7 @@ $conn->close();
                 </div>
               </div>
 
-              <div class="retreat" data-target="6">
+              <div class="retreat" data-target="3">
                 <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
               </div>
 
