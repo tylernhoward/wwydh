@@ -104,17 +104,17 @@ jQuery(document).ready(function($) {
 
         console.log(form);
 
-        $.post("../../helpers/ideas/new.php", form, function(data) {
+        $.post("../../helpers/plans/new.php", form, function(data) {
 
-            // if (data == -1) {
+            if (data == -1) {
                 // login required
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-1]").addClass("active");
-            // } else {
-            //     // successfully inserted plans
-            //     $(elem).parents(".pane").addClass("done").removeClass("active");
-            //     $(".pane[data-index=-2]").addClass("active");
-            // }
+            } else {
+                // successfully inserted idea
+                $(elem).parents(".pane").addClass("done").removeClass("active");
+                $(".pane[data-index=-2]").addClass("active");
+            }
         }, "text");
     }
 
