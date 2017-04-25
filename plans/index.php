@@ -184,7 +184,7 @@ $( function() {
 			
 				<div class="idea">
 					<hr>
-					<div class="title"><?php echo $planrow["title"] ?></div>
+					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
 						<div class="vote">
 							<div class="upvote">
@@ -235,6 +235,7 @@ $( function() {
 							<div class="location">
 								<div class="plan-buttons options btn-group">
 									<div class="btn op-1"><a>Become the Project Manager</a></div> <!--Insert link here -->
+									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
 								<div class="vote">
 									<div class="upvote">
