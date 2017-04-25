@@ -1,25 +1,47 @@
 <?php
+    header("Content-type: text/plain");
 
     session_start();
 
-    if (isset($_SESSION["user"]) && isset($_POST)) {
-        include "../conn.php";
+    // check if data was submitted
+    if (isset($_POST["submit"])) {
+        require_once "../conn.php";
 
-        $q = $conn->prepare("INSERT INTO plans (title, location_id, idea_id, creator_id) VALUES (?, ?, ?, ?)");
-        $q->bind_param("ssss", $_POST["title"], $_POST["location"], $_POST["idea"], $_SESSION["user"]["id"]);
+        // check login, return login error
+        if ((!isset($_SESSION["user"])) && $_POST["leader"] == "true") {
+            echo "-1";
+            exit();
+        }
+		$title = $_POST["title"];
+		$location = $_POST["location"];
+		$idea = $_POST["idea"];
+		$creator = $_SESSION["user"]["id"];
+		$published = 0;
+		$date = $_POST["date"];
+		$q = $conn->prepare("INSERT INTO plans (title, location_id, idea_id, creator_id, published, date) VALUES (?, ?, ?, ?, ?, ?)");
+		$q->bind_param("sssiis", $title, $location, $idea, $creator, $published, $date);
         $q->execute();
 
-        // grab title of plan for message
-        $q = $conn->prepare("SELECT title FROM plans WHERE id=$conn->insert_id");
-        $q->execute();
-        $title = $q->get_result()->fetch_array(MYSQLI_ASSOC)["title"];
+        $id = $conn->insert_id;
 
+        $permits = explode("[-]", $_POST["permits"]);
+        $tasks = explode("[-]", $_POST["tasks"]);
 
-        $_SESSION["message"] = ["success", "Idea added to '{$title}' successfully!"];
+        foreach ($permits as $p) {
+            $q = $conn->prepare("INSERT INTO Permit (Description, PlanID) VALUES (?, ?)");
+            $q->bind_param("si", $p, $id);
+            $q->execute();
+        }
 
-        echo $conn->insert_id;
+        foreach ($tasks as $t) {
+            $q = $conn->prepare("INSERT INTO PlanTasks (PlanID, Task) VALUES (?, ?)");
+            $q->bind_param("is", $id, $t);
+            $q->execute();
+        }
+
+        echo "1"; // return success
+        exit();
     } else {
-        echo "-1";
+        echo "Access Denied";
     }
-
 ?>

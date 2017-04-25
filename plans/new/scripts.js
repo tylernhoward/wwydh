@@ -24,17 +24,17 @@ jQuery(document).ready(function($) {
         $(".pane[data-index=" + target + "]").removeClass("done").addClass("active");
     });
 
-    // $(".pane[data-index=6] .button").click(function() {
-    //     $(".pane[data-index=6] .button").removeClass("active");
-    //
-    //     if ($(this).data("leader") === 0) {
-    //         $(".pane[data-index=6] .button[data-leader=0]").addClass("active");
-    //         $(".pane[data-index=6] .login-warning").removeClass("active");
-    //     } else {
-    //         $(".pane[data-index=6] .button[data-leader=1]").addClass("active");
-    //         $(".pane[data-index=6] .login-warning").addClass("active");
-    //     }
-    // });
+    $(".pane[data-index=3] .button").click(function() {
+        $(".pane[data-index=3] .button").removeClass("active");
+
+        if ($(this).data("leader") === 0) {
+            $(".pane[data-index=3] .button[data-leader=0]").addClass("active");
+            $(".pane[data-index=3] .login-warning").removeClass("active");
+        } else {
+            $(".pane[data-index=3] .button[data-leader=1]").addClass("active");
+            $(".pane[data-index=3] .login-warning").addClass("active");
+        }
+    });
 
     $(".add-checklist-item").click(function() {
         addItem($(this));
@@ -69,56 +69,58 @@ jQuery(document).ready(function($) {
 
     function submitPlan(elem) {
         // handle form submission
-        var location_requirements = "";
-        var contributions = "";
+        var permits = "";
+        var tasks = "";
 
-        $(".location-checklist .checklist-item").each(function(index, value) {
+        $(".permit-checklist .checklist-item").each(function(index, value) {
             if ($("input", value).val().length > 0) {
-                if (index == 0) location_requirements += $("input", value).val();
-                else location_requirements += "[-]" + $("input", value).val();
+                if (index == 0) permits += $("input", value).val();
+                else permits += "[-]" + $("input", value).val();
             }
         });
 
-        $(".checklist .checklist-item").each(function(index, value) {
+        $(".task-checklist .checklist-item").each(function(index, value) {
             if ($("input", value).val().length > 0) {
-                if (index == 0) contributions += $("input", value).val();
-                else contributions += "[-]" + $("input", value).val();
+                if (index == 0) tasks += $("input", value).val();
+                else tasks += "[-]" + $("input", value).val();
             }
         });
 
         var form = {
             leader: ($(".pane .button.active").data("leader") === 1) ? true : false,
             title: $("input[name=title]").val(),
-            description: $("textarea").val(),
-            category: $("[name=category]").val(),
-            location_requirements: location_requirements,
-            contributions: contributions,
+            idea: $("[name=idea]").val(),
+			location: $("[name=location]").val(),
+            permits: permits,
+            tasks: tasks,
+			date: $("input[name=date]").val(),
             submit: "true"
         };
 
         console.log(form);
 
-        $.post("../../helpers/ideas/new.php", form, function(data) {
+        $.post("../../helpers/plans/new.php", form, function(data) {
 
-            // if (data == -1) {
+            if (data == -1) {
                 // login required
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-1]").addClass("active");
-            // } else {
-            //     // successfully inserted plans
-            //     $(elem).parents(".pane").addClass("done").removeClass("active");
-            //     $(".pane[data-index=-2]").addClass("active");
-            // }
+            } else {
+                // successfully inserted idea
+                $(elem).parents(".pane").addClass("done").removeClass("active");
+                $(".pane[data-index=-2]").addClass("active");
+            }
         }, "text");
     }
 
     function addItem(elem) {
-        $(elem).parent().append('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
+        $(elem).siblings().prepend('<div class="checklist-item"><input type="text" placeholder="Enter another item here." /></div>');
     }
 
     function traverse(element) {
         $(element).parent().next().children("input").focus();
     }
+
 
 
 });
