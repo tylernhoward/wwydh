@@ -65,7 +65,7 @@
 								</div>
 						</div>
 			</div>
-
+			<br>
 
 		    <title><?php echo $row["title"] ?></title>
     </head>

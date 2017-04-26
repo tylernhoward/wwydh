@@ -67,7 +67,7 @@
 		            </div>
 		        </div>
 			</div>
-
+			<br>
 
 			<title><?php echo $row["building_address"] ?></title>
 			<style>
