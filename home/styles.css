@@ -110,7 +110,7 @@
     margin: auto;
 }
 
-#see-how {
+#aboutlink {
     background-color: white;
     color: #418040;
     border: 2px solid #418040;
@@ -126,7 +126,7 @@
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-#see-how:hover {
+#aboutlink:hover {
     opacity: 0.9;
 }
 
