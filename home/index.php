@@ -101,7 +101,15 @@
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                    <div id="see-how">See How it Works!</div>
+
+
+
+
+
+
+
+
+                    <!----><div id="aboutlink"><a href="../splash/index.php" id="learnmore">See How it Works!</div>>
                 </div>
             </div>
         </div>
@@ -184,7 +192,7 @@
                 </div>
             </div>
         </div>
-        <div id="about">
+        <!--<div id="about">
             <div class="grid-inner width">
                 <h1>ABOUT</h1>
                 <div class="small-content">
@@ -193,8 +201,8 @@
 
                 <p>"What would you do here?"</p>
             </div>
-        </div>
-        <div id="how">
+        </div>-->
+        <!--<div id="how">
             <div class="grid-inner width">
                 <h1 style="text-align:center"><font color="#3a3a3a">HOW IT WORKS</font></h1>
                 <table>
@@ -211,6 +219,7 @@
                 </table>
             </div>
         </div>
+      -->
         <div id="footer">
             <div class="grid-inner">
                 &copy; Copyright WWYDH <?php echo date("Y") ?>

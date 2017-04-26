@@ -94,15 +94,14 @@
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
                 <h3>The Problem</h3>
-								<p>Thousands of buildings and lots sit vacant in neighborhoods within the city wasting space that could be taken advantage of by the community. These properties bring down the property value of the surrounding area and attract criminal activity like vandalization, which detracts from the natural beauty of these Baltimore neighboorhoods.</p>
+								<p>Thousands of buildings and lots are vacant in neighborhoods within the city and wasting space. This space could be better used by the community. These properties bring down the property value of the surrounding area and attract criminal activity like vandalization, which detracts from the natural beauty of these Baltimore neighborhoods.</p>
 							</section>
 						</div>
 						<div class="6u">
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
                 <h3>The Goal</h3>
-								<p>Our goal is bring back life to Baltimore by having the creative, imaginative citizens create projects in the vacant lots and underused buildings found throughout Baltimore. This would not only bring more culture into the city, but would bring communities closer together as well. So Baltimore citizens, look around and ask "What would you do here?"</p>
-
+								<p>Our goal is to make use of existing resources by having the imaginative citizens of Baltimore create projects in the vacant lots and underused buildings in their communities. By empowering neighbors to make a change, dreams will be realized and the community will be brought closer together. So Baltimore, look around and ask "What would you do here?"</p>
 							</section>
 						</div>
 					</div>
@@ -124,7 +123,7 @@
   							<section class="special box">
   								<i class="icon 1"><img src="../images/lot.png" /></i>
   								<h3>The Location</h3>
-  								<p>Find an empty lot or vacant property. Chose from a location that has already been posted or report a location in your own neighborhood as well!</p>
+  								<p>Find an empty lot or vacant property. Choose from a location that has already been posted or report a location in your own neighborhood as well!</p>
   							</section>
   						</div>
   						<div class="4u">
@@ -147,7 +146,7 @@
   							<section class="special box">
   								<i class="icon 4"><img src="../images/team.png" /></i>
   								<h3>The Community</h3>
-  								<p>Users contribute to the by volunteering to fill the item requirements of the plan. Users can also donate their time and complete tasks for the project.</p>
+  								<p>Users contribute by volunteering to fill the item requirements of the plan. Users can also donate their time and complete tasks for the project.</p>
   							</section>
   						</div>
   						<div class="4u">
