@@ -19,6 +19,7 @@
     <link href="styles.css" type="text/css" rel="stylesheet" />
 
     <head>
+			<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 			<meta charset="utf-8">
 			<div class="width">
 				<div id="nav">

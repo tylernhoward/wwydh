@@ -101,15 +101,7 @@
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-
-
-
-
-
-
-
-
-                    <!----><div id="aboutlink"><a href="../splash/index.php" id="learnmore">See How it Works!</div>>
+                    <div id="aboutlink"><a href="../splash/index.php" id="learnmore">See How it Works!></div>
                 </div>
             </div>
         </div>

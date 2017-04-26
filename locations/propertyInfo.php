@@ -22,6 +22,7 @@
     <link href="styles.css" type="text/css" rel="stylesheet" />
 		<meta charset="utf-8">
 		<head>
+			<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 			<div class="width">
 				<div id="nav">
 		            <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
