@@ -71,7 +71,7 @@
     </head>
 
 		<body>
-	     <div class="imgViewer" style="background-image: url(../helpers/idea_images/ajhdjwugq.jpg)";></div>
+	    <div class="imgViewer" style="background-image: url(../helpers/idea_images/<?php echo $row["image"]?>);"></div>
        <div class="name"><?php echo $row["title"] ?></div>
        <div class="postedDate">Posted by: <?php echo $row["owner"] ?> on <?php echo $row["timestamp"] ?></div>
        <div class="info">
