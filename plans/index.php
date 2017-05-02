@@ -234,7 +234,7 @@ $( function() {
 					<div class="locations">
 							<div class="location">
 								<div class="plan-buttons options btn-group">
-									<div class="btn op-1"><a>Become the Project Manager</a></div> <!--Insert link here -->
+									<div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
 								<div class="vote">
