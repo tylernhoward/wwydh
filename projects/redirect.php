@@ -12,12 +12,8 @@
         $result = $q->get_result();
 
         if ($result->num_rows == 0) {
-			$jsonq = "SELECT json FROM json_sample WHERE id= 1";
-			$jsonresult=mysqli_query($conn,$jsonq)or die(mysqli_error($conn));
-			$jsonrow = mysqli_fetch_assoc($result);
-			$j = $jsonrow["json"];
-			echo $jsonrow["json"];
-            $q="INSERT INTO task_test(json, project_id, test_id) VALUES('$j', 0,'$project_id')";
+			$json = '{\"1488496527306\":{\"title\":\"New project\",\"id\":\"1488496527306\",\"responsible\":\"Unassigned\",\"state\":\"B\",\"color\":\"0\"}}';
+            $q="INSERT INTO task_test(json, project_id, test_id) VALUES('$json', 0,'$project_id')";
 			$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
         }
 ?>
