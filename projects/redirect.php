@@ -10,7 +10,7 @@
         $q->bind_param("s", $project_id);
         $q->execute();
         $result = $q->get_result();
-
+//if there is no tasks for this project yet create default board
         if ($result->num_rows == 0) {
 			$json = '{\"1488496527306\":{\"title\":\"New project\",\"id\":\"1488496527306\",\"responsible\":\"Unassigned\",\"state\":\"B\",\"color\":\"0\"}}';
             $q="INSERT INTO task_test(json, project_id, test_id) VALUES('$json', 0,'$project_id')";

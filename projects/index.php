@@ -240,10 +240,13 @@ $( function() {
 							<div class="location">
 								<div class="plan-buttons options btn-group">
 									<?php
+										$manquery = "SELECT * FROM manager_of WHERE plan_id = '" . $planrow['id'] . "' ";
+										$allmanage = $conn->query($manquery);
+										while($manage = $allmanage->fetch_assoc()){
 										/*if user is manager display tasks if not display become a project manager*/
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1"><a href="../login">login to edit task progress</a></div>
-										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1){ ?>
+										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1 && $_SESSION["user"]["id"] == $manage["user_id"] ){ ?>
 											<div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
 										<?php } else { ?>
 											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
