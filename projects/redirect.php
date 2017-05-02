@@ -1,10 +1,25 @@
 <?php
+	include("../helpers/conn.php");
 	$project_id = $_GET['id'];
 	// echo $project_id;
 	session_name( 'kanban' );
 	session_start();
 	$_SESSION["projid"] = $project_id;
 	// echo $_SESSION["projid"];
+	$q = $conn->prepare("SELECT * FROM task_test WHERE test_id=?");
+        $q->bind_param("s", $project_id);
+        $q->execute();
+        $result = $q->get_result();
+
+        if ($result->num_rows == 0) {
+			$jsonq = "SELECT json FROM json_sample WHERE id= 1";
+			$jsonresult=mysqli_query($conn,$jsonq)or die(mysqli_error($conn));
+			$jsonrow = mysqli_fetch_assoc($result);
+			$j = $jsonrow["json"];
+			echo $jsonrow["json"];
+            $q="INSERT INTO task_test(json, project_id, test_id) VALUES('$j', 0,'$project_id')";
+			$result=mysqli_query($conn,$q)or die(mysqli_error($conn));
+        }
 ?>
 <!DOCTYPE html>
 <html>
