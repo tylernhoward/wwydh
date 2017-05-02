@@ -19,6 +19,9 @@
 	
 	$updateuser = "UPDATE users SET manager= '$plan' WHERE id = '$manager'";
 	$result=mysqli_query($conn,$updateuser)or die(mysqli_error($conn));
+	
+	$updateman = "INSERT INTO manager_of(user_id, plan_id) VALUES('$manager','$plan')";
+	$result=mysqli_query($conn,$updateman)or die(mysqli_error($conn));
 	echo '<p><a href="../projects" target="_blank">Projects</a></p>';
 
   ?>
