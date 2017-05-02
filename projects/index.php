@@ -54,7 +54,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>All Plans</title>
+		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 		<link href="styles_new.css" type="text/css" rel="stylesheet" />
@@ -180,7 +180,7 @@ $( function() {
 		</div>
 		<div class="grid-inner width">
 			<?php
-			$projectsquery = "SELECT * FROM projects";
+			$projectsquery = "SELECT * FROM project_test";
 			$allprojects = $conn->query($projectsquery);
 			while($projectsrow = $allprojects->fetch_assoc()){
 				$planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
