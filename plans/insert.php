@@ -17,6 +17,8 @@
 	
 	//update user as manager
 	
+	$updateuser = "UPDATE users SET manager= '$plan' WHERE id = '$manager'";
+	$result=mysqli_query($conn,$updateuser)or die(mysqli_error($conn));
 	echo '<p><a href="../projects" target="_blank">Projects</a></p>';
 
   ?>
