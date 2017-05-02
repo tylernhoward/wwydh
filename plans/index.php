@@ -16,7 +16,7 @@
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
 	
-	$planquery = "SELECT * FROM plans";
+	$planquery = "SELECT * FROM plans WHERE published <> 1";
 	$allplans = $conn->query($planquery);
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
@@ -234,7 +234,13 @@ $( function() {
 					<div class="locations">
 							<div class="location">
 								<div class="plan-buttons options btn-group">
-									<div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
+									<?php
+										/*if user is manager display tasks if not display become a project manager*/
+										if (!isset($_SESSION["user"])){ ?>
+											<div class="btn op-1"><a href="../login">login to Publish as Project</a></div>
+										<?php } else{ ?>
+											<div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
+										<?php } ?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
 								<div class="vote">
