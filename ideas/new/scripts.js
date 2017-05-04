@@ -117,7 +117,7 @@ jQuery(document).ready(function($) {
     }
 
     function addItem(elem) {
-        $(elem).siblings().prepend('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
+        $(elem).parent().append('<div class="checklist-item"><input type="text" placeholder="Enter another requirement here." /></div>');
     }
 
     function traverse(element) {
