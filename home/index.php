@@ -94,15 +94,15 @@
 
                 </div>
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
-                <a href="../plans/new"><div id="sidePlan" class="side-button">I Have a Plan</div></a>
+                <a href="../plans/new"><div id="sideHelp" class="side-button">I Have a Plan</div></a>
                 <a href="../locations/new"><div id="sideHelp" class="side-button">I Have a Location</div></a>
                 <a href="../contact"><div id="sideHelp" class="side-button">I Want to Contribute</div></a>
             </div>
             <div id="map"></div>
             <div id="welcome">
                 <div class="width">
-                    <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                  <div id = "see-how">See How it Works!</div>
+                    <!--Might take out??-->
+                    <a href = "../splash"><div id = "see-how">See How it Works!</div></a>
                 </div>
             </div>
         </div>
