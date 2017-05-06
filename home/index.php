@@ -106,119 +106,109 @@
             </div>
         </div>
         <div id="explore">
-            <div class="width">
-                <h1> EXPLORE </h1>
-                <ul class="tab">
-                    <li class="active tablink" data-target="1">Plans</li>
-                    <li class="tablink" data-target="2">Projects</li>
-                </ul>
-                <div id="locations" class="tabcontent active" data-tab="1">
-                    <?php
-                    foreach($projects as $p) { ?>
-                        <div class="project">
-                               <div class="col-md-5">
-                                   <div class="image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=400x400&fov=90&heading=235&pitch=5&location=2041_W_NORTH_AVE_21217-1221&key=AIzaSyAUpp8_WpyD2t_9eTfJA_N6AQ1p_sEsVng)"></div>
-                                   <div class="description">
-                                       <h3 style="margin: 0px 5px 5px 0px; text-decoration: underline">Location</h3>
-                                       <div><b>Address: </b>2041 W NORTH AVE </div>
-                                       <div><b>Neighborhood: </b>EASTERWOOD</div>
-                                       <div><b>Zip Code: </b>21217-1221</div>
-                                       <div><b>Council District: </b>7 </div>
-                                   </div>
-                               </div>
+              <div class="grid-inner width">
+                <?php
+                $projectsquery = "SELECT * FROM project_test";
+                $allprojects = $conn->query($projectsquery);
+                while($projectsrow = $allprojects->fetch_assoc()){
+                  $planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
+                  $allplans = $conn->query($planquery);
+                  while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
 
-                               <div class="col-xs-6">
-                                   <div class="description" style="display: inline-block">
-                                       <h3 style="margin: 0px 5px 5px 0px; text-decoration: underline">Idea</h3>
-                                       <div><b>Title: </b>Bball game</div>
-                                       <div><b>Owner: </b>NO OWNER</div>
-                                   </div>
-                               </div>
-                               <div class="col-md-1">
-                                   <div class="options btn-group pull-right">
-                                       <div class="btn op-1"><a href="../projects/projectInfo.php?id=13">View Project</a></div>
-                                       <div class="btn op-2"><a href="../locations/propertyInfo.php?id=1">View Location</a></div>
-                                       <div class="btn op-3"><a href="../ideas/IdeaInfo.php?id=">View Idea</a></div>
-                                   </div>
-                               </div>
-                           </div>
-                           <?php } ?>
-                         </div>
-
-
-
-                  <!--
-                        <div class="location">
-                            <div class="options btn-group">
-                                <div class="btn op-1"><a href="../dashboard?newplan&location=<?php echo $l["id"] ?>">Make a Plan Here</a></div>
-                                <?php if ($l["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $l["id"] ?>">See other Plans here</a></div> <?php } ?>
-                                <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
-                            </div>
-                            <?php
-                            $str = $l['building_address'];
-                        		$cit = $l['city'];
-                        		$addURL = rawurlencode("$str $cit");
-                            ?>
-                            <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";>
-                                <?php if ($l["plans"] > 0) { ?>
-                                    <div class="ideas_count"><?php echo $l["plans"] ?></div>
-                                <?php } ?>
-                            </div>
-                            <div class="location_desc">
-                                <div class="address"><?php echo $l["building_address"] ?></div>
-                                <?php if (isset($l["features"])) { ?>
-                                    <div class="features">
-                                        <span>Features:</span>
-                                            <ul>
-                                                <?php foreach ($l["features"] as $f) { ?>
-                                                    <li><?php echo $f ?></li>
-                                                <?php } ?>
-                                            </ul>
-                                    </div>
-                                <?php } ?>
-                            </div>
+                  <div class="idea">
+                    <hr>
+                    <div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
+                    <div class="grid-item width">
+                      <div class="vote">
+                        <div class="upvote">
+                          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                         </div>
-                    <?php }
+                        <div class="downvote">
+                          <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                      <?php
+                        $ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
+                        $anidea = $conn->query($ideaquery);
+                        while($idearow = $anidea->fetch_assoc()){
+                      ?>
+                      <div class="idea_image_wrapper">
+                        <i class="fa <?php echo $idea_categories[$idearow['category']]['fa-icon'] ?>"></i>
+                        <div class="overlay"></div>
+                        <div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $idearow["image"]?>);"></div>
+                      </div>
+                      <div class="idea_desc">
+                        <div class="title"><?php echo $idearow["title"] ?></div>
+                        <div class="category"><?php echo $idea_categories[$idearow['category']]["title"] ?></div>
+                        <div class="description"><?php echo $idearow["description"] ?></div>
+                        <?php /* ?>
+                        <?php if (count($row["checklist"]) > 0) { ?>
+                          <div class="checklist">
+                            <span>Contributors Needed: </span>
+                            <ul>
+                              <?php for ($i = 0; $i < count($row["checklist"]) && $i < 4; $i++) { ?>
+                                <li><?php echo $row["checklist"][$i] ?></li>
+                              <?php } ?>
+                              <?php if (count($row["checklist"]) > 4) { ?>
+                                <span><?php echo count($row["checklist"]) - 4 ?>+ more</span>
+                              <?php } ?>
+                            </ul>
+                          </div>
+                        <?php } ?>
+                        <?php */ ?>
+                      </div>
+                    </div>
+                    <?php } ?>
+                    <?php
+                        $locquery = "SELECT * FROM locations WHERE id = '" . $planrow['location_id'] . "' ";
+                        $alllocations = $conn->query($locquery);
+                        while($location = $alllocations->fetch_assoc()){
                     ?>
-                </div>
+                    <div class="locations">
+                        <div class="location">
+                          <div class="plan-buttons options btn-group">
+                            <?php
+                              if (isset($_SESSION['user'])){
+                              $manquery = "SELECT * FROM manager_of WHERE plan_id = '" . $planrow['id'] . "' AND user_id = '" . $_SESSION['user']['id'] . "' ";
+                              $allmanage = $conn->query($manquery);
+                               if ($allmanage->num_rows > 0) {
+                                $indicator = 1;
+                              }
+                              else
+                                $inidicator = 0;
+                              }
+                              /*if user is manager display tasks if not display become a project manager*/
+                              if (!isset($_SESSION["user"])){ ?>
+                                <div class="btn op-1"><a href="../login">login to edit task progress</a></div>
+                              <?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1 && $indicator = 1){ ?>
+                                <div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
+                              <?php } else { ?>
+                                <div class="btn op-1"><a href="tasktable.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
+                              <?php }
+                            ?>
+                            <div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
+                          </div>
+                          <div class="vote">
+                            <div class="upvote">
+                              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="downvote">
+                              <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                          <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
+                          <div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
+                          <!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
+                          <div style="clear: both"></div>
+                        </div>
 
-                <div id="projects" class="tabcontent" data-tab="2">
-                    <div id="ideas" class="tabcontent active" data-tab="2">
-                   <?php
-                   foreach($ideas as $i) { ?>
-                       <div class="idea">
-                           <div class="btn-group">
-                               <div class="btn newidea"><a href="../newidea?location=<?php echo $l["id"] ?>">I have a similar idea</a></div>
-                               <?php if ($i["ideas"] > 0) { ?> <div class="btn seeideas"><a href="../ideas?location=<?php echo $i["id"] ?>">See other ideas nearby</a></div> <?php } ?>
-                               <div class="btn seelocation"><a href="../locations/propertyInfo.php?id=<?php echo $i["id"] ?>">View full location</a></div>
-                           </div>
-                           <div class="idea_image" style="background-image: url(../helpers/location_images/<?php if (isset($i['image'])) echo $i['image']; else echo "no_image.jpg";?>)";>
-                               <?php if ($l["ideas"] > 0) { ?>
-                                   <div class="ideas_count"><?php echo $i["ideas"] ?></div>
-                               <?php } ?>
-                           </div>
-                           <div class="idea_desc">
-                               <div class="idea_leader"><?php echo $i["leader"] ?></div>
-                               <div class="address"><?php echo $i["address"] ?></div>
-                  <div class="idea_status">Status: <?php echo $i["completed"] == 0 ? "unfinished" : "finished" ?></div>
-                               <?php if (isset($i["features"])) { ?>
-                                   <div class="features">
-                                       <span>Features:</span>
-                                           <ul>
-                                               <?php foreach ($i["features"] as $f) { ?>
-                                                   <li><?php echo $f ?></li>
-                                               <?php } ?>
-                                           </ul>
-                                   </div>
-                               <?php } ?>
-                           </div>
-                       </div>
-                   <?php }
-                   ?>-->
-                </div>
+                        <?php } ?>
+                    </div>
+                <?php }}
+                ?>
+              </div>
             </div>
-
-
+          </div>
         <div id="footer">
             <div class="grid-inner">
                 &copy; Copyright WWYDH <?php echo date("Y") ?>
