@@ -101,7 +101,7 @@
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                    <div id="see-how">See How it Works!</div>
+                    <div class = "btn-default" id="see-how">See How it Works!</div>
                 </div>
             </div>
         </div>
