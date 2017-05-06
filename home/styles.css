@@ -264,14 +264,15 @@ ul.tab li {
     position: relative;
 }
 
-.location_image, .project_image {
+.image {
     width: 250px;
     height: 150px;
     background-position: center;
     background-size: cover;
     float: left;
-    margin-right: 10px;
+    margin-left: 10px;
     position: relative;
+    display:inline-block;
 }
 
 .ideas_count {
@@ -289,6 +290,40 @@ ul.tab li {
     box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.35);
     font-size: 14px;
     -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.project {
+    width: 100%;
+    clear: both;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #418040;
+    overflow: hidden;
+}
+
+.project:last-child {
+    border-bottom-width: 0px;
+}
+
+.description {
+    color: white;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #3a3a3a;
+    overflow: hidden;
+    display: inline-block;
+    margin: 10px;
+}
+
+.location_image, .project_image {
+    width: 250px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    float: left;
+    margin-right: 10px;
+    position: relative;
 }
 
 .location, .project {

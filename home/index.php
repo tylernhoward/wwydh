@@ -91,7 +91,6 @@
         <div id="mapContainer">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-tools">
-
                 </div>
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
                 <a href="../plans/new"><div id="sideHelp" class="side-button">I Have a Plan</div></a>
@@ -115,7 +114,40 @@
                 </ul>
                 <div id="locations" class="tabcontent active" data-tab="1">
                     <?php
-                    foreach($locations as $l) { ?>
+                    foreach($projects as $p) { ?>
+                        <div class="project">
+                               <div class="col-md-5">
+                                   <div class="image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=400x400&fov=90&heading=235&pitch=5&location=2041_W_NORTH_AVE_21217-1221&key=AIzaSyAUpp8_WpyD2t_9eTfJA_N6AQ1p_sEsVng)"></div>
+                                   <div class="description">
+                                       <h3 style="margin: 0px 5px 5px 0px; text-decoration: underline">Location</h3>
+                                       <div><b>Address: </b>2041 W NORTH AVE </div>
+                                       <div><b>Neighborhood: </b>EASTERWOOD</div>
+                                       <div><b>Zip Code: </b>21217-1221</div>
+                                       <div><b>Council District: </b>7 </div>
+                                   </div>
+                               </div>
+
+                               <div class="col-xs-6">
+                                   <div class="description" style="display: inline-block">
+                                       <h3 style="margin: 0px 5px 5px 0px; text-decoration: underline">Idea</h3>
+                                       <div><b>Title: </b>Bball game</div>
+                                       <div><b>Owner: </b>NO OWNER</div>
+                                   </div>
+                               </div>
+                               <div class="col-md-1">
+                                   <div class="options btn-group pull-right">
+                                       <div class="btn op-1"><a href="../projects/projectInfo.php?id=13">View Project</a></div>
+                                       <div class="btn op-2"><a href="../locations/propertyInfo.php?id=1">View Location</a></div>
+                                       <div class="btn op-3"><a href="../ideas/IdeaInfo.php?id=">View Idea</a></div>
+                                   </div>
+                               </div>
+                           </div>
+                           <?php } ?>
+                         </div>
+
+
+
+                  <!--
                         <div class="location">
                             <div class="options btn-group">
                                 <div class="btn op-1"><a href="../dashboard?newplan&location=<?php echo $l["id"] ?>">Make a Plan Here</a></div>
@@ -185,7 +217,7 @@
                    ?>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div id="footer">
             <div class="grid-inner">
