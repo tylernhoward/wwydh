@@ -94,16 +94,15 @@
 
                 </div>
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
-                <a href="../plan/new"><div id="sidePlan" class="side-button">I Have a Plan</div></a>
-
+                <a href="../plans/new"><div id="sidePlan" class="side-button">I Have a Plan</div></a>
                 <a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
-                <div id="sideHelp" class="side-button">I Want to Contribute</div>
+                <a href="../contact"><div id="sideHelp" class="side-button">I Want to Contribute</div></a>
             </div>
             <div id="map"></div>
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                    <div <span id = "see-how">See How it Works!</span></div>
+                    <a href = "../splash"><div id = "see-how">See How it Works!</div>
                 </div>
             </div>
         </div>
@@ -111,7 +110,7 @@
             <div class="width">
                 <h1> EXPLORE </h1>
                 <ul class="tab">
-                    <li class="active tablink" data-target="1">Locations</li>
+                    <li class="active tablink" data-target="1">Plans</li>
                     <li class="tablink" data-target="2">Projects</li>
                 </ul>
                 <div id="locations" class="tabcontent active" data-tab="1">
@@ -150,6 +149,7 @@
                     <?php }
                     ?>
                 </div>
+
                 <div id="projects" class="tabcontent" data-tab="2">
                     <div id="ideas" class="tabcontent active" data-tab="2">
                    <?php
@@ -186,6 +186,7 @@
                 </div>
             </div>
         </div>
+        
         <div id="footer">
             <div class="grid-inner">
                 &copy; Copyright WWYDH <?php echo date("Y") ?>

@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
 
-    // scroll to how it works on click
+    /* scroll to how it works on click
     $("#see-how").click(function() {
         $("html, body").animate({scrollTop: $("#how").offset().top}, 650);
-    })
+    })*/
 
     // handle homepage tab switching
     $("li.tablink").click(function() {
