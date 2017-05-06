@@ -100,9 +100,9 @@
             </div>
             <div id="map"></div>
             <div id="welcome">
-                <div class="width">
+                <div class="grid-inner width">
                     <!--Might take out??-->
-                    <a href = "../splash"><div id = "see-how">See How it Works!</div></a>
+                    <div id = "see-how" href = "../splash">See How it Works!</div>
                 </div>
             </div>
         </div>
