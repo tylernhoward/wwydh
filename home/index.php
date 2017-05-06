@@ -108,83 +108,6 @@
         <div id="explore">
             <div class="grid-inner width">
                 <h1> EXPLORE </h1>
-                <ul class="tab">
-                    <li class="tablink active" data-target="1">Plans</li>
-                    <li class="tablink" data-target="2">Projects</li>
-                </ul>
-                <div id="plans" class="tabcontent active" data-tab="1">
-                  <?php
-                  while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
-
-                    <div class="idea">
-                      <hr>
-                      <div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
-                      <div class="grid-item width">
-                        <?php
-                          $ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
-                          $anidea = $conn->query($ideaquery);
-                          while($idearow = $anidea->fetch_assoc()){
-                        ?>
-                        <div class="idea_image_wrapper">
-                          <i class="fa <?php echo $idea_categories[$idearow['category']]['fa-icon'] ?>"></i>
-                          <div class="overlay"></div>
-                          <div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $idearow["image"]?>);"></div>
-                        </div>
-                        <div class="idea_desc">
-                          <div class="title"><?php echo $idearow["title"] ?></div>
-                          <div class="category"><?php echo $idea_categories[$idearow['category']]["title"] ?></div>
-                          <div class="description"><?php echo $idearow["description"] ?></div>
-                          <?php /* ?>
-                          <?php if (count($row["checklist"]) > 0) { ?>
-                            <div class="checklist">
-                              <span>Contributors Needed: </span>
-                              <ul>
-                                <?php for ($i = 0; $i < count($row["checklist"]) && $i < 4; $i++) { ?>
-                                  <li><?php echo $row["checklist"][$i] ?></li>
-                                <?php } ?>
-                                <?php if (count($row["checklist"]) > 4) { ?>
-                                  <span><?php echo count($row["checklist"]) - 4 ?>+ more</span>
-                                <?php } ?>
-                              </ul>
-                            </div>
-                          <?php } ?>
-                          <?php */ ?>
-                        </div>
-                      </div>
-                      <?php } ?>
-                      <?php
-                          $locquery = "SELECT * FROM locations WHERE id = '" . $planrow['location_id'] . "' ";
-                          $alllocations = $conn->query($locquery);
-                          while($location = $alllocations->fetch_assoc()){
-                      ?>
-                      <div class="locations">
-                          <div class="location">
-                            <div class="plan-buttons options btn-group">
-                              <?php
-                                /*if user is manager display tasks if not display become a project manager*/
-                                if (!isset($_SESSION["user"])){ ?>
-                                  <div class="btn op-1"><a href="../login">login to Publish as Project</a></div>
-                                <?php } else{ ?>
-                                  <div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
-                                <?php } ?>
-                              <div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
-                            </div>
-                            <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
-                            <div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
-                            <!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
-                            <div style="clear: both"></div>
-                          </div>
-
-                        <?php } ?>
-                      </div>
-                  <?php }
-                  ?>
-                </div>
-                </div>
-
-
-
-
                         <div id="projects" class= "tabcontent" data-tab="2">
                           <?php
                           $projectsquery = "SELECT * FROM project_test";
@@ -246,7 +169,7 @@
                                         $indicator = 1;
                                       }
                                       else
-                                        $inidicator = 0;
+                                        $indicator = 0;
                                       }
                                       /*if user is manager display tasks if not display become a project manager*/
                                       if (!isset($_SESSION["user"])){ ?>
@@ -259,7 +182,7 @@
                                     ?>
                                     <div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
                                   </div>
-                                  
+
                                   <div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
                                   <div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
                                   <!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
