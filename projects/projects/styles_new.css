@@ -4,7 +4,7 @@
 }
 
 #splash {
-    background-image: url(../images/plan_bg.png);
+    background-image: url(../images/project_bg.jpg);
     background-size: cover;
     background-position: bottom;
 }
@@ -185,4 +185,3 @@
 .content-one {
     display:none;
 }
-
