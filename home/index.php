@@ -107,15 +107,16 @@
         </div>
         <div id="explore">
             <div class="grid-inner width">
-                <h1> EXPLORE </h1>
+                <h1> EXPLORE POPULAR PROJECTS </h1>
+                <?php
+                $projectsquery = "SELECT * FROM project_test";
+                $allprojects = $conn->query($projectsquery);
+                while($projectsrow = $allprojects->fetch_assoc()){
+                  $planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
+                  $allplans = $conn->query($planquery);
+                  while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
                         <div id="projects" class= "tabcontent" data-tab="2">
-                          <?php
-                          $projectsquery = "SELECT * FROM project_test";
-                          $allprojects = $conn->query($projectsquery);
-                          while($projectsrow = $allprojects->fetch_assoc()){
-                            $planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
-                            $allplans = $conn->query($planquery);
-                            while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
+
                           <div class="idea">
                             <hr>
                             <div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
