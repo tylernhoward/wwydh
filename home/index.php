@@ -112,7 +112,7 @@
                     <li class="tablink active" data-target="1">Plans</li>
                     <li class="active" data-target="2">Projects</li>
                 </ul>
-                <div id="plans" class="tabcontent active" data-tab="1">
+                <div id="plans" class="tablink active" data-tab="1">
                   <?php
                   while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
 
@@ -201,7 +201,7 @@
 
 
 
-                        <div id="projects" class= "tabcontent" data-tab="2">
+                        <div id="projects" class= "tablink" data-tab="2">
                           <?php
                           $projectsquery = "SELECT * FROM project_test";
                           $allprojects = $conn->query($projectsquery);
