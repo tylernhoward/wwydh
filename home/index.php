@@ -101,7 +101,8 @@
             <div id="welcome">
                 <div class="grid-inner width">
                     <!--Might take out??-->
-                    <a href = "../splash"><div id = "see-how">See How it Works!</div></a>
+
+                    <div class="btn op-2"><a href="../splash">See How it Works!</a></div>
                 </div>
             </div>
         </div>
@@ -109,9 +110,10 @@
             <div class="grid-inner width">
                 <h1> EXPLORE POPULAR PROJECTS </h1>
                 <?php
+                $pageLimit = 5;
                 $projectsquery = "SELECT * FROM project_test";
                 $allprojects = $conn->query($projectsquery);
-                while($projectsrow = $allprojects->fetch_assoc()){
+                while(($projectsrow = $allprojects->fetch_assoc())&& $pageLimit >=0){
                   $planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
                   $allplans = $conn->query($planquery);
                   while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
@@ -192,7 +194,9 @@
 
                                 <?php } ?>
                             </div>
-                        <?php }}
+                        <?php }
+                            $pageLimit--;
+                          }
                         ?>
                       </div>
                     </div>
