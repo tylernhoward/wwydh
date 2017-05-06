@@ -109,8 +109,8 @@
             <div class="grid-inner width">
                 <h1> EXPLORE </h1>
                 <ul class="tab">
-                    <li class="tablink" data-target="1">Plans</li>
-                    <li class="active tablink" data-target="2">Projects</li>
+                    <li class="tablink active" data-target="1">Plans</li>
+                    <li class="active" data-target="2">Projects</li>
                 </ul>
                 <div id="plans" class="tabcontent active" data-tab="1">
                   <?php
