@@ -214,10 +214,10 @@
                            </div>
                        </div>
                    <?php }
-                   ?>
+                   ?>-->
                 </div>
             </div>
-        </div>-->
+
 
         <div id="footer">
             <div class="grid-inner">
