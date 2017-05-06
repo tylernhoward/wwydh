@@ -102,7 +102,7 @@
                 <div class="grid-inner width">
                     <!--Might take out??-->
                     <div class="plan-buttons options btn-group">
-                      <div class="btn op-2"><a href="../splash">See How it Works!</a></div>
+                      <div class="btn op-3"><a href="../splash">See How it Works!</a></div>
                     </div>
                 </div>
             </div>
