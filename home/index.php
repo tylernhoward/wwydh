@@ -94,6 +94,8 @@
 
                 </div>
                 <a href="../ideas/new"><div id="sideIdea" class="side-button">I Have an Idea</div></a>
+                <a href="../plan/new"><div id="sidePlan" class="side-button">I Have a Plan</div></a>
+
                 <a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
                 <div id="sideHelp" class="side-button">I Want to Contribute</div>
             </div>
@@ -101,7 +103,7 @@
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                    <div class = "btn-default" id="see-how">See How it Works!</div>
+                    <div <span id = "see-how">See How it Works!</span></div>
                 </div>
             </div>
         </div>
@@ -182,33 +184,6 @@
                    <?php }
                    ?>
                 </div>
-            </div>
-        </div>
-        <div id="about">
-            <div class="grid-inner width">
-                <h1>ABOUT</h1>
-                <div class="small-content">
-                    WWYDH facilitates economic and social revitalization in Baltimore by combining the existing vacant and underutilized built infrastructure with the creative imagination and skills of people throughout the city. We begin by asking the simplest question:
-                </div>
-
-                <p>"What would you do here?"</p>
-            </div>
-        </div>
-        <div id="how">
-            <div class="grid-inner width">
-                <h1 style="text-align:center"><font color="#3a3a3a">HOW IT WORKS</font></h1>
-                <table>
-                	<tr>
-                		<th><img src="../images/idea.png" /></th>
-                		<th><img src="../images/contributors.png" /></th>
-                		<th><img src="../images/implementation.png" /></th>
-                	</tr>
-                	<tr>
-                		<td>Submit an idea for a location to WWYDH. You can choose to anonymously submit the idea for someone else to eventually lead, or lead the idea yourself. </td>
-                		<td>Ideas can be upvoted and downvoted, so the best rise to the top. A checklist of people and resources the idea will need is generated. Users can contribute to the idea by volunteering to fill one or more of the requirements on the list. When the list is complete, the idea can move to the next stage.</td>
-                		<td>The idea becomes a project, and the project is implemented by everyone who pledged to contribute his or her time and skills to turn a vacant location into a useful space for the community.</td>
-                	</tr>
-                </table>
             </div>
         </div>
         <div id="footer">
