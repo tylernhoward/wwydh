@@ -102,7 +102,7 @@
             <div id="welcome">
                 <div class="grid-inner width">
                     <!--Might take out??-->
-                    <div id = "see-how" href = "../splash">See How it Works!</div>
+                    <a href = "../splash"><div id = "see-how">See How it Works!</div></a>
                 </div>
             </div>
         </div>
