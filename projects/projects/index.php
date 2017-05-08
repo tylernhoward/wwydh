@@ -15,7 +15,7 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-
+	
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
 	if (isset($_GET["isSearch"])) {
@@ -186,9 +186,9 @@ $( function() {
 				$planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
 				$allplans = $conn->query($planquery);
 				while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
-
-
+			
 				<div class="idea">
+					<hr>
 					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
 						<div class="vote">
@@ -240,10 +240,19 @@ $( function() {
 							<div class="location">
 								<div class="plan-buttons options btn-group">
 									<?php
+										if (isset($_SESSION['user'])){
+										$manquery = "SELECT * FROM manager_of WHERE plan_id = '" . $planrow['id'] . "' AND user_id = '" . $_SESSION['user']['id'] . "' ";
+										$allmanage = $conn->query($manquery);
+										 if ($allmanage->num_rows > 0) {
+											$indicator = 1;
+										}
+										else
+											$inidicator = 0;
+										}
 										/*if user is manager display tasks if not display become a project manager*/
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1"><a href="../login">login to edit task progress</a></div>
-										<?php } elseif (isset($_SESSION["user"]) &&  $projectsrow['manager_id'] ==  $_SESSION["user"]["id"]){ ?>
+										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1 && $indicator = 1){ ?>
 											<div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
 										<?php } else { ?>
 											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
@@ -267,8 +276,6 @@ $( function() {
 
 							<?php } ?>
 					</div>
-					<hr>
-
 		 	<?php }}
 			?>
 		</div>

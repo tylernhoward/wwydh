@@ -16,7 +16,7 @@
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
 	
-	$planquery = "SELECT * FROM plans";
+	$planquery = "SELECT * FROM plans WHERE published <> 1";
 	$allplans = $conn->query($planquery);
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*

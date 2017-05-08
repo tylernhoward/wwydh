@@ -124,12 +124,9 @@
 		        </div>
 			</div>
 			<div id="mapContainer">
-							<div id="mySidenav" class="sidenav">
-									<div class="sidebar-tools"></div>
-									<a href="../locations/new"><div id="sideLocation" class="side-button">I Have a Location</div></a>
-							</div>
 	            <div id="map"></div>
-	        </div>
+
+	    </div>
 			<div class="grid-inner width">
 				<div id="toolbar">
 					<div id="item-count">
@@ -151,6 +148,11 @@
 							>Date: Oldest to Newest</option>
 						</select>
 					</div>
+					
+					<div class="plan-buttons options btn-group">
+						<div class="btn op-1"><a href="../locations/new">Add a New Location</a></div>
+					</div>
+
 					<div style="clear: both"></div>
 				</div>
 				<?php
