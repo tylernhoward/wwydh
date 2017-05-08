@@ -213,7 +213,7 @@
                                     <?php }
                                   ?>
                                   <div class="btn op-2"><a href="#">View Similar Projects</a></div>
-                                  <div class="btn op-3"><a href="../locations/propertyinfo.php?id=<?php echo $planrow['location_id'] ?>">View Location</a></div>
+                                  <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $planrow['location_id'] ?>">View Location</a></div>
                                 </div>
 
                               </div>
