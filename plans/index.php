@@ -15,7 +15,7 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-	
+
 	$planquery = "SELECT * FROM plans WHERE published <> 1";
 	$allplans = $conn->query($planquery);
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
@@ -181,9 +181,9 @@ $( function() {
 		<div class="grid-inner width">
 			<?php
 			while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
-			
+
 				<div class="idea">
-					<hr>
+
 					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
 						<div class="vote">
@@ -259,6 +259,7 @@ $( function() {
 
 						<?php } ?>
 					</div>
+					<hr>
 		 	<?php }
 			?>
 		</div>

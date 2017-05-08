@@ -102,13 +102,12 @@
             <div id="welcome">
                 <div class="width">
                     <!--<span id="see-how"><h1>See How it Works!</h1></span>-->
-                    <div id="aboutlink"><a href="../splash/index.php" id="learnmore">See How it Works!</a></div>
-                <div class="grid-inner width">
-                    <!--Might take out??-->
+                    <div id="aboutlink"><a href="../splash/index.php" style = "text-decoration: none;" id="learnmore">See How it Works!</a></div>
+                <!--<div class="grid-inner width">
                     <div class="plan-buttons options btn-group">
                       <div class="btn op-3"><a href="../splash">See How it Works!</a></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
           <div id="explore">
