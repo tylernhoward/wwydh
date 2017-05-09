@@ -110,6 +110,7 @@
                 </div>-->
             </div>
         </div>
+      </div>
           <div id="explore">
             <div class="width">
                 <h1> EXPLORE </h1>
@@ -244,7 +245,6 @@
                       </div>
                 </div>
             </div>
-        </div>
         <!--<div id="about">
             <div class="grid-inner width">
                 <h1>ABOUT</h1>
