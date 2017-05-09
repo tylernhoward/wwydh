@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include "../helpers/conn.php";
+	require_once "../helpers/vars.php";
 
 	$plan = $_GET["id"];
 	$manager = $_SESSION["user"]["id"];
@@ -35,7 +36,7 @@
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	  <script src="https://use.fontawesome.com/42543b711d.js"></script>
 	  <script src="../helpers/globals.js" type="text/javascript"></script>
-	  <script src="scripts.js" type="text/javascript"></script>
+	  <script src="../plans/new/scripts.js" type="text/javascript"></script>
 	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	  <link rel="stylesheet" href="/resources/demos/style.css">
 	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -54,9 +55,9 @@
 	        <div id="user_nav" class="nav">
 	          <?php if (!isset($_SESSION["user"])) { ?>
 	            <ul>
-	              <a href="../../login"><li>Log in</li></a>
+	              <a href="../login"><li>Log in</li></a>
 	              <a href="#"><li>Sign up</li></a>
-	              <a href="../../contact"><li>Contact</li></a>
+	              <a href="../contact"><li>Contact</li></a>
 	            </ul>
 	            <?php } else { ?>
 	              <div class="loggedin">
@@ -87,25 +88,26 @@
 	          </div>
 	        </div>
 	      </div>
-<body>
 	<div class="outside" class="width">
 		<div id="wrapper">
-				<div class="pane" data-index="1">
+				<div class="pane active" data-index="1">
 					<!-- Successful Submission -->
 				<div class="pane-content">
 					<div class="panel">
 						<div class="pane-content-intro">
-							Your plan has been pushed to a project successfully!
+							You are now the project manager! Let's take a look at the taskboard and make this a reality!
 						</div>
 						<div class="success-marker">
 							<i class="fa fa-check" aria-hidden="true"></i>
 						</div>
 					</div>
 		</div>
-		<!-- Once backend works can redirect to created Plan -->
+		<!-- Once backend works can redirect to created Project -->
 		<a href="../projects">
-			<div class="next">Go to Projects <i class="fa fa-home" aria-hidden="true"></i></div>
+			<div class="next">Go to Projects</div>
 			</a>
 		</div>
 	</div>
 	</div>
+</body>
+</html>

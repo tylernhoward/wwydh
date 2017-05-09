@@ -5,7 +5,7 @@ var planCount = 1;
 var plan_info = false;
 
 jQuery(document).ready(function($) {
-
+/*
     if (plan) $("#new-plan").addClass("open");
     $("html").on("click", function(e) {
         if (plan && !$(e.target).parents("#new-plan .wrapper").length) {
@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
             plan = false;
         }
     });
-
+*/
     $("#sidebar li").on("click", function() {
         $(".pane, #sidebar li").removeClass("active");
         $("#" + $(this).data("target")).addClass("active");
@@ -23,10 +23,7 @@ jQuery(document).ready(function($) {
 
     $("#sidebar .new-menu .new-menu-link").on("click", function() {
         if ($(this).hasClass("new-plan")) {
-            $("#new-plan").addClass("open");
-            setTimeout(function() {
-                plan = true;
-            }, 100);
+            window.location.href = "../plans/new";
         } else if ($(this).hasClass("new-idea")) {
             window.location.href = "../ideas/new";
         } else if ($(this).hasClass("new-location")) {
@@ -58,7 +55,9 @@ jQuery(document).ready(function($) {
     });
 
     $("#create-plan").on("click", function() {
-        var title = $("#new-plan input").val();
+        window.location.href = "../plans/new";
+
+      /*  var title = $("#new-plan input").val();
 
         if (title.length == 0) {
             $("#new-plan input").addClass("empty");
@@ -79,7 +78,7 @@ jQuery(document).ready(function($) {
                     window.location.reload();
                 }
             })
-        }
+        }*/
     });
 
     $("#cancel-create-plan").click(function() {

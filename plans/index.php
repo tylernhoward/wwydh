@@ -239,7 +239,7 @@ $( function() {
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1"><a href="../login">login to Publish as Project</a></div>
 										<?php } else{ ?>
-											<div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
+											<div class="btn op-1"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
 										<?php } ?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
@@ -259,10 +259,11 @@ $( function() {
 
 						<?php } ?>
 					</div>
-					<hr>
-		 	<?php }
-			?>
+
 		</div>
+		<hr>
+		<?php }
+		?>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">

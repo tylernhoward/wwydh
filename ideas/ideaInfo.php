@@ -57,9 +57,9 @@
 										<div id="main_nav" class="nav">
 												<ul>
 														<a href="../locations"><li>Locations</li></a>
-														<a href="../ideas"><li>Ideas</li></a>
+														<a href="../ideas" class="active"><li>Ideas</li></a>
 														<a href="../plans"><li>Plans</li></a>
-														<a href="../projects" class="active"><li>Projects</li></a>
+														<a href="../projects"><li>Projects</li></a>
 												</ul>
 										</div>
 								</div>

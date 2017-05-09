@@ -123,8 +123,8 @@
                         <div class="location">
                             <div class="options btn-group">
                                 <div class="btn op-1"><a href="../dashboard?newplan&location=<?php echo $l["id"] ?>">Make a Plan Here</a></div>
-                                <?php if ($l["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $l["id"] ?>">See other Plans here</a></div> <?php } ?>
-                                <div class="btn op-3"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
+                                <!--<?php if ($l["plans"] > 0) { ?> <div class="btn op-2"><a href="../plans?location=<?php echo $l["id"] ?>">See other Plans here</a></div> <?php } ?>-->
+                                <div class="btn op-2"><a href="../locations/propertyInfo.php?id=<?php echo $l["id"] ?>">View full location</a></div>
                             </div>
                             <div class="location_image" style="background-image: url(../helpers/location_images/<?php if (isset($l['image'])) echo $l['image']; else echo "no_image.jpg";?>);">
                                 <?php if ($l["plans"] > 0) { ?>
@@ -233,12 +233,14 @@
                                   </div>
                                   <?php } ?>
                               </div>
-                              <hr>
-                          <?php }
-                              $pageLimit--;
-                            }
-                          ?>
+
+
                         </div>
+                        <hr>
+                        <?php }
+                            $pageLimit--;
+                          }
+                        ?>
                       </div>
                 </div>
             </div>

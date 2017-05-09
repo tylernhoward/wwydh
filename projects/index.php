@@ -267,11 +267,13 @@ $( function() {
 
 							<?php } ?>
 					</div>
-					<hr>
 
-		 	<?php }}
-			?>
+
+
 		</div>
+		<hr>
+		<?php }}
+		?>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">
