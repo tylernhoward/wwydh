@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>WWYDH Welcome</title>
+		<title>WWYDH | Welcome</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -16,11 +16,12 @@
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-small.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
-		
-	</head>
-	<body id="top">
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+
+
 		<div id="nav">
 						<div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 								<a href="../home">
@@ -63,6 +64,12 @@
 								</div>
 						</div>
 				</div>
+
+
+	</head>
+
+	<body id="top">
+
 
 		<!-- Banner -->
 			<section id="banner">
