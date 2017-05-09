@@ -94,13 +94,15 @@
 						<div class="6u">
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-                <h3>The Problem</h3>
-								<p>Thousands of buildings and lots are vacant in neighborhoods within the city and wasting space. This space could be better used by the community. These properties bring down the property value of the surrounding area and attract criminal activity like vandalization, which detracts from the natural beauty of these Baltimore neighborhoods.</p>
 							</section>
 						</div>
 						<div class="6u">
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+							</section>
+						</div>
+						<div class="12u">
+							<section class="special">
                 <h3>The Goal</h3>
 								<p>Our goal is to make use of existing resources by having the imaginative citizens of Baltimore create projects in the vacant lots and underused buildings in their communities. By empowering neighbors to make a change, dreams will be realized and the community will be brought closer together. So Baltimore, look around and ask "What would you do here?"</p>
 							</section>
