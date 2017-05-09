@@ -10,19 +10,121 @@
 		$result = $conn->query($theQuery);
 		$rowcount = mysqli_num_rows($result);
 		$row = @mysqli_fetch_array($result);
+		$str = $row['building_address'];
+		$cit = $row['city'];
+		$addURL = rawurlencode("$str $cit");
+
   ?>
 
 <!DOCTYPE html>
 <html>
 
     <link href="styles.css" type="text/css" rel="stylesheet" />
+		<meta charset="utf-8">
+		<head>
+			<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+			<div class="width">
+				<div id="nav">
+		            <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
+		                <a href="../home">
+		                    <div id="logo"></div>
+		                    <div id="logo_name">What Would You Do Here?</div>
+		                    <div class="spacer"></div>
+		                </a>
+		                <div id="user_nav" class="nav">
+		                    <?php if (!isset($_SESSION["user"])) { ?>
+		                        <ul>
+		                            <a href="../login"><li>Log in</li></a>
+		                            <a href="../signup"><li>Sign up</li></a>
+		                            <a href="../contact"><li>Contact</li></a>
+		                        </ul>
+		                    <?php } else { ?>
+		                        <div class="loggedin">
+		                            <span class="click-space">
+		                                <span class="chevron"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+		                                <div class="image" style="background-image: url(../helpers/user_images/<?php echo $_SESSION["user"]["image"] ?>);"></div>
+		                                <span class="greet">Hi <?php echo $_SESSION["user"]["first"] ?>!</span>
+		                            </span>
 
-    <head>
-		    <title><?php echo $row["building_address"] ?></title>
+		                            <div id="nav_submenu">
+		                                <ul>
+		                                    <a href="../dashboard"><li>Dashboard</li></a>
+		                                    <a href="../profile"><li>My Profile</li></a>
+		                                    <a href="../helpers/logout.php?go=home"><li>Log out</li></a>
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    <?php } ?>
+		                </div>
+		                <div id="main_nav" class="nav">
+		                    <ul>
+		                        <a href="../locations" class="active"><li>Locations</li></a>
+		                        <a href="../ideas"><li>Ideas</li></a>
+		                        <a href="../plans"><li>Plans</li></a>
+		                        <a href="../projects"><li>Projects</li></a>
+		                    </ul>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+			<br>
+
+			<title><?php echo $row["building_address"] ?></title>
+			<style>
+
+      	#street-view {
+        	height: 25em;
+      	}
+    	</style>
     </head>
-
 		<body>
-	     <div class="imgViewer" style="background-image: url(../helpers/location_images/<?php echo $row["image"] ?>)";></div>
+	    <div id="street-view"></div>
+			<script>
+			var panorama;
+
+  		function loadStreetView() {
+
+    	var _lat = <?php echo $row["latitude"] ?>;
+    	var _lng = <?php echo $row["longitude"] ?>;
+
+    	var target = new google.maps.LatLng(_lat,_lng);
+
+    	var sv = new google.maps.StreetViewService();
+
+    	panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'));
+
+    	var pano = sv.getPanoramaByLocation(target, 50, function(result, status) {
+
+      if (status == google.maps.StreetViewStatus.OK) {
+
+        var heading = google.maps.geometry.spherical.computeHeading(result.location.latLng, target);
+
+        panorama.setPosition(result.location.latLng);
+        panorama.setPov({
+           heading: heading,
+           pitch: 0,
+           zoom: 0
+         });
+        panorama.setVisible(true);
+				//panorama.setStreetNamesEnabled(false);
+				//panorama.setUserNavigationEnabled(false);
+
+      }
+      else {
+
+        console.log("Cannot find a street view for this property.");
+        return;
+      }
+
+    });
+  }
+
+  </script>
+
+	    <script async defer
+	         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR77cFxxe06TlBNbAAAgEty48353uubUQ&libraries=geometry&callback=loadStreetView">
+	    </script>
+			<br>
        <div class="name"><?php echo $row["building_address"] ?></div>
        <div class="info">
           <div class="generalInfo">

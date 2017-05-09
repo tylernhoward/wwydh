@@ -126,13 +126,9 @@
   background: -webkit-linear-gradient(top, #418040 0%,#376837 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #418040 0%,#376837 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
-
-.imgViewer {
+#imgViewer {
   width: 100%;
   height: 25em;
-  background-color: #fbffdf;
-  background-repeat: repeat;
-  background-position: left;
 }
 
 td {
@@ -176,4 +172,86 @@ ul{
   text-align: left;
   display: block;
   width: 100%;
+}
+.sidebar-view {
+    height: 40px;
+}
+
+.sidebar-view:before {
+    content: "\f00d";
+    font-family: "FontAwesome";
+    color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    font-size: 30px;
+    float: right;
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.sidebar-view.hidden:before {
+    content: "\f0c9";
+}
+
+.sidenav a {
+    text-decoration: none;
+}
+
+.sidenav {
+    height: 298px;
+    width: 300px;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    bottom:0;
+    margin: auto;
+    right: -300px;
+    background-color: white;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.sidenav.open {
+    opacity: 1;
+    right: 0;
+}
+
+.side-button {
+    padding: 25px;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: lighter;
+    text-align: left;
+    box-shadow: inset 0px -1px 5px 1px rgba(0,0,0,0.1);
+}
+
+.side-button:hover {
+    padding-left: 35px;
+}
+
+#sideLocation {
+    background-color: #4D8C4C;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+      .sidenav {padding-top: 45px;}
+      .sidenav a {font-size: 18px;}
 }

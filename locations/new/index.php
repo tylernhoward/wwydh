@@ -163,7 +163,7 @@
     <body onload="initMap()">
         <div id="nav">
             <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
-                <a href="../home">
+                <a href="../../home">
                     <div id="logo"></div>
                     <div id="logo_name">What Would You Do Here?</div>
                     <div class="spacer"></div>

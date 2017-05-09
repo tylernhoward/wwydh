@@ -93,7 +93,7 @@ AS `projects contributed to`, (SELECT COUNT(p.id) AS count FROM projects p INNER
             <?php
             unset($_SESSION["message"]);
         } ?>
-        <div id="new-plan" class="overlay">
+        <!--<div id="new-plan" class="overlay">
             <div class="wrapper">
                 <div class="overlay_title">New Plan</div>
                 <div class="overlay-inner">
@@ -111,7 +111,7 @@ AS `projects contributed to`, (SELECT COUNT(p.id) AS count FROM projects p INNER
                     <div style="clear: both"></div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div id="nav">
             <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
                 <a href="../home">
@@ -123,7 +123,7 @@ AS `projects contributed to`, (SELECT COUNT(p.id) AS count FROM projects p INNER
                     <?php if (!isset($_SESSION["user"])) { ?>
                         <ul>
                             <a href="../login"><li>Log in</li></a>
-                            <a href="#"><li>Sign up</li></a>
+                            <a href="../signup"><li>Sign up</li></a>
                             <a href="../contact"><li>Contact</li></a>
                         </ul>
                     <?php } else { ?>

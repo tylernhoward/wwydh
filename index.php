@@ -1,5 +1,5 @@
 <?php
-    header("Location: ./home/index.php");
+    header("Location: ./splash/index.php");
 
     /* Make sure that code below does not get executed when we redirect. */
     exit;

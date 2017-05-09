@@ -17,6 +17,7 @@
 	$offset = $itemCount * ($page - 1);
 
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
+	/*
 	if (isset($_GET["isSearch"])) {
 		$theQuery = "SELECT * FROM `locations` WHERE `building_address` LIKE '%{$_GET["sAddress"]}%' AND `building_address` LIKE '%{$_GET["sAddress"]}%' AND `block` LIKE '%{$_GET["sBlock"]}%' AND `lot` LIKE '%{$_GET["sLot"]}%' AND `zip_code` LIKE '%{$_GET["sZip"]}%' AND `city` LIKE '%{$_GET["sCity"]}%' AND `neighborhood` LIKE '%{$_GET["sNeighborhood"]}%' AND `police_district` LIKE '%{$_GET["sPoliceDistrict"]}%' AND `council_district` LIKE '%{$_GET["sCouncilDistrict"]}%' AND `longitude` LIKE '%{$_GET["sLongitude"]}%' AND `latitude` LIKE '%{$_GET["sLatitude"]}%' AND `owner` LIKE '%{$_GET["sOwner"]}%' AND `use` LIKE '%{$_GET["sUse"]}%' AND `mailing_address` LIKE '%{$_GET["sMailingAddr"]}%'";
 	} else if (isset($_GET["location"])) {
@@ -29,23 +30,25 @@
 		$q = $conn->prepare("SELECT pl.*, i.*, l.*, i.image AS `idea image`, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]') AS features FROM plans pl LEFT JOIN ideas i ON i.id = pl.idea_id LEFT JOIN locations l ON l.id = pl.location_id LEFT JOIN location_features f ON f.location_id = l.id WHERE pl.published = 1 GROUP BY l.id, i.id  ORDER BY i.id");
 	}
 
+
 	$q->execute();
 	$data = $q->get_result();
 
-	$projects = [];
+	$plans = [];
 
 	$row = $data->fetch_array(MYSQLI_ASSOC);
-	$projects[$row["plan_id"]] = [];
-	array_push($projects[$row["plan_id"]], $row);
+	$plans[$row["idea_id"]] = [];
+	array_push($plans[$row["idea_id"]], $row);
 
 	while ($row = $data->fetch_array(MYSQLI_ASSOC)) {
-		if (array_key_exists($row["plan_id"], $projects)) {
-			array_push($projects[$row["plan_id"]], $row);
+		if (array_key_exists($row["idea_id"], $plans)) {
+			array_push($plans[$row["idea_id"]], $row);
 		} else {
-			$projects[$row["plan_id"]] = [];
-			array_push($projects[$row["plan_id"]], $row);
+			$plans[$row["idea_id"]] = [];
+			array_push($plans[$row["idea_id"]], $row);
 		}
 	}
+	*/
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +57,12 @@
 		<title>All Projects</title>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-		<link href="styles.css" type="text/css" rel="stylesheet" />
+		<link href="styles_new.css" type="text/css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
 		<script src="../helpers/globals.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="styles_new.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -151,10 +154,6 @@ $( function() {
 				<div style="clear: both"></div>
 			</div>
 			<!--<div class="add-to-plan">
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 				<ul>
 					<li class="create">
 						<i class="fa fa-plus" aria-hidden="true"></i>
@@ -174,20 +173,23 @@ $( function() {
 					<?php }
 					} ?>
 				</ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-			</div>
-=======
-=======
->>>>>>> origin/master
 			</div> -->
+
+		</div>
 
 		</div>
 		<div class="grid-inner width">
 			<?php
-			foreach ($plans as $plan) {
-				$row = $plan[0]; // selects the first element to use as the idea row since all rows have the same idea information xD ?>
+			$projectsquery = "SELECT * FROM project_test";
+			$allprojects = $conn->query($projectsquery);
+			while($projectsrow = $allprojects->fetch_assoc()){
+				$planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
+				$allplans = $conn->query($planquery);
+				while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
+
+
 				<div class="idea">
+					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
 						<div class="vote">
 							<div class="upvote">
@@ -197,15 +199,20 @@ $( function() {
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 							</div>
 						</div>
+						<?php
+							$ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
+							$anidea = $conn->query($ideaquery);
+							while($idearow = $anidea->fetch_assoc()){
+						?>
 						<div class="idea_image_wrapper">
-							<i class="fa <?php echo $idea_categories[$row['category']]['fa-icon'] ?>"></i>
+							<i class="fa <?php echo $idea_categories[$idearow['category']]['fa-icon'] ?>"></i>
 							<div class="overlay"></div>
-							<div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $row["idea image"]?>);"></div>
+							<div class="idea_image" style="background-image: url(../helpers/idea_images/<?php echo $idearow["image"]?>);"></div>
 						</div>
 						<div class="idea_desc">
-							<div class="title"><?php echo $row["title"] ?></div>
-							<div class="category"><?php echo $idea_categories[$row['category']]["title"] ?></div>
-							<div class="description"><?php echo $row["description"] ?></div>
+							<div class="title"><?php echo $idearow["title"] ?></div>
+							<div class="category"><?php echo $idea_categories[$idearow['category']]["title"] ?></div>
+							<div class="description"><?php echo $idearow["description"] ?></div>
 							<?php /* ?>
 							<?php if (count($row["checklist"]) > 0) { ?>
 								<div class="checklist">
@@ -223,29 +230,43 @@ $( function() {
 							<?php */ ?>
 						</div>
 					</div>
+					<?php } ?>
+					<?php
+							$locquery = "SELECT * FROM locations WHERE id = '" . $planrow['location_id'] . "' ";
+							$alllocations = $conn->query($locquery);
+							while($location = $alllocations->fetch_assoc()){
+					?>
 					<div class="locations">
-						<?php foreach($projects as $location) {
-							if (isset($location["features"])) $location["features"] = implode(" | ", explode("[-]", $location["features"])); ?>
 							<div class="location">
-								<div class="vote">
-									<div class="upvote">
-										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-									</div>
-									<div class="downvote">
-										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-									</div>
+								<div class="plan-buttons options btn-group">
+									<?php
+										/*if user is manager display tasks if not display become a project manager*/
+										if (!isset($_SESSION["user"])){ ?>
+											<div class="btn op-1"><a href="../login">login to edit task progress</a></div>
+										<?php } elseif (isset($_SESSION["user"]) &&  $projectsrow['manager_id'] ==  $_SESSION["user"]["id"]){ ?>
+											<div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
+										<?php } else { ?>
+											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
+										<?php }
+									?>
+									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
-
-								<div class="location_image" style="background-image: url(../helpers/location_images/<?php echo $location["image"] ?>)"></div>
+								
+								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
-								<div class="location_features"><?php echo $location["features"] ?></div>
+								<!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
 								<div style="clear: both"></div>
 							</div>
-						<?php } ?>
+
+							<?php } ?>
 					</div>
-		 	<?php }
-			?>
+
+
+
 		</div>
+		<hr>
+		<?php }}
+		?>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">
