@@ -1,12 +1,3 @@
-#splash {
-  height: 575px;
-  position:relative;
-    background-image: url(../images/plan_bg.png);
-    background-size: cover;
-    background-position: bottom;
-}
-
-
 
 .location_image, .project_image {
     height: 100px;
