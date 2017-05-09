@@ -29,7 +29,7 @@
 	<!DOCTYPE html>
 	<html>
 	<head>
-	  <title> New Plan</title>
+	  <title> New Project</title>
 	  <link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 	  <link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 	  <link href="../plans/new/styles.css" type="text/css" rel="stylesheet" />
