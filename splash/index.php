@@ -8,8 +8,7 @@
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
-		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
-    <link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -19,10 +18,10 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-small.css" />
 		</noscript>
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body id="top">
-
-
 		<div id="nav">
 						<div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 								<a href="../home">
@@ -65,9 +64,6 @@
 								</div>
 						</div>
 				</div>
-
-
-
 
 		<!-- Banner -->
 			<section id="banner">
