@@ -20,8 +20,8 @@
 		</noscript>
 		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
-
-
+	</head>
+	<body id="top">
 		<div id="nav">
 						<div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 								<a href="../home">
@@ -64,12 +64,6 @@
 								</div>
 						</div>
 				</div>
-
-
-	</head>
-
-	<body id="top">
-
 
 		<!-- Banner -->
 			<section id="banner">
