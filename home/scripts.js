@@ -35,7 +35,7 @@ function initMap() {
         animation: google.maps.Animation.DROP,
         center: {lat: parseFloat(locations[0].latitude), lng: parseFloat(locations[0].longitude)},
         scrollwheel: false,
-        zoom: 30
+        zoom: 20
     });
 
     $(locations).each(function() {
