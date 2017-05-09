@@ -18,8 +18,7 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-small.css" />
 		</noscript>
-		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
-		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+		
 	</head>
 	<body id="top">
 		<div id="nav">
