@@ -5,6 +5,7 @@
 	include "../helpers/paginate.php";
 	include "../helpers/vars.php";
 	include "../helpers/conn.php";
+//
 
 	$theQuery = "";
 	$result = null;
