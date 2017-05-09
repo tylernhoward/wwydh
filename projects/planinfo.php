@@ -9,7 +9,7 @@
 	<html>
 			<link href="infostyle.css" type="text/css" rel="stylesheet" />
 
-	    <head>
+			<head>
 				<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
 				<meta charset="utf-8">
 				<div class="width">
@@ -49,16 +49,14 @@
 													<ul>
 															<a href="../locations"><li>Locations</li></a>
 															<a href="../ideas" ><li>Ideas</li></a>
-															<a href="../plans" class="active"><li>Plans</li></a>
-															<a href="../projects"><li>Projects</li></a>
+															<a href="../plans"><li>Plans</li></a>
+															<a href="../projects" class="active"><li>Projects</li></a>
 													</ul>
 											</div>
 									</div>
 							</div>
 				</div>
 				<br>
-
-
 
 		    <title><?php echo $row["title"] ?></title>
     </head>

@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
 
-    // scroll to how it works on click
+    /* scroll to how it works on click
     $("#see-how").click(function() {
         $("html, body").animate({scrollTop: $("#how").offset().top}, 650);
-    })
+    })*/
 
     // handle homepage tab switching
     $("li.tablink").click(function() {
@@ -35,7 +35,7 @@ function initMap() {
         animation: google.maps.Animation.DROP,
         center: {lat: parseFloat(locations[0].latitude), lng: parseFloat(locations[0].longitude)},
         scrollwheel: false,
-        zoom: 14
+        zoom: 15
     });
 
     $(locations).each(function() {

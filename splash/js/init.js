@@ -9,7 +9,7 @@
 	skel.init({
 		reset: 'full',
 		breakpoints: {
-
+			
 			// Global.
 				global: {
 					range: '*',
@@ -23,15 +23,68 @@
 					}
 				},
 
+			// XLarge.
+				xlarge: {
+					range: '-1680',
+					href: 'css/style-xlarge.css',
+					containers: 1200
+				},
+
+			// Large.
+				large: {
+					range: '-1280',
+					href: 'css/style-large.css',
+					containers: 960,
+					grid: {
+						gutters: {
+							vertical: '2.5em'
+						}
+					},
+					viewport: {
+						scalable: false
+					}
+				},
+
+			// Medium.
+				medium: {
+					range: '-980',
+					href: 'css/style-medium.css',
+					containers: '90%',
+					grid: {
+						collapse: 1
+					}
+				},
+
+			// Small.
+				small: {
+					range: '-736',
+					href: 'css/style-small.css',
+					containers: '90%',
+					grid: {
+						gutters: {
+							vertical: '1.25em'
+						}
+					}
+				},
+
+			// XSmall.
+				xsmall: {
+					range: '-480',
+					href: 'css/style-xsmall.css',
+					grid: {
+						collapse: 2
+					}
+				}
+
 		},
 		plugins: {
 			layers: {
-
+				
 				// Config.
 					config: {
 						transform: true
 					},
-
+				
 				// Navigation Panel.
 					navPanel: {
 						animation: 'pushX',
@@ -61,9 +114,9 @@
 	});
 
 	$(function() {
-
+		
 		// jQuery ready stuff.
-
+		
 	});
 
 })(jQuery);

@@ -15,8 +15,8 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-	
-	$planquery = "SELECT * FROM plans";
+
+	$planquery = "SELECT * FROM plans WHERE published <> 1";
 	$allplans = $conn->query($planquery);
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
@@ -181,9 +181,9 @@ $( function() {
 		<div class="grid-inner width">
 			<?php
 			while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
-			
+
 				<div class="idea">
-					<hr>
+
 					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
 						<div class="vote">
@@ -239,18 +239,11 @@ $( function() {
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1"><a href="../login">login to Publish as Project</a></div>
 										<?php } else{ ?>
-											<div class="btn op-2"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
+											<div class="btn op-1"><a href="insert.php?id=<?php echo $planrow["id"] ?>">Become the Project Manager and Publish to Project</a></div>
 										<?php } ?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
-								<div class="vote">
-									<div class="upvote">
-										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-									</div>
-									<div class="downvote">
-										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-									</div>
-								</div>
+								
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
@@ -259,9 +252,11 @@ $( function() {
 
 						<?php } ?>
 					</div>
-		 	<?php }
-			?>
+
 		</div>
+		<hr>
+		<?php }
+		?>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">

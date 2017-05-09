@@ -2,14 +2,13 @@
 
 <html>
 	<head>
-		<title>WWYDH Welcome</title>
+		<title>WWYDH | Welcome</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
-		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
-    <link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -17,11 +16,12 @@
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body id="top">
-
-
 		<div id="nav">
 						<div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
 								<a href="../home">
@@ -65,9 +65,6 @@
 						</div>
 				</div>
 
-
-
-
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
@@ -93,13 +90,15 @@
 						<div class="6u">
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-                <h3>The Problem</h3>
-								<p>Thousands of buildings and lots are vacant in neighborhoods within the city and wasting space. This space could be better used by the community. These properties bring down the property value of the surrounding area and attract criminal activity like vandalization, which detracts from the natural beauty of these Baltimore neighborhoods.</p>
 							</section>
 						</div>
 						<div class="6u">
 							<section class="special">
                 <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+							</section>
+						</div>
+						<div class="12u">
+							<section class="special">
                 <h3>The Goal</h3>
 								<p>Our goal is to make use of existing resources by having the imaginative citizens of Baltimore create projects in the vacant lots and underused buildings in their communities. By empowering neighbors to make a change, dreams will be realized and the community will be brought closer together. So Baltimore, look around and ask "What would you do here?"</p>
 							</section>
