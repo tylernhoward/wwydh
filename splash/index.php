@@ -17,7 +17,7 @@
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
+			<link rel="stylesheet" href="css/style-small.css" />
 		</noscript>
 	</head>
 	<body id="top">

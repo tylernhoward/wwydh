@@ -377,7 +377,7 @@ ul.tab li {
     width: 300px;
     position: absolute;
     z-index: 9;
-    top: 10;
+    top: -1;
     bottom:0;
     margin: auto;
     right: -300px;
