@@ -255,7 +255,6 @@ body {
 input[name="uploaded_file"]{
   -webkit-appearance: none;
   background-color: white;
-  color: white;
   font-size: 14px;
   padding: 10px;
   border-radius: 1px;
