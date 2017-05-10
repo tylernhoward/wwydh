@@ -252,6 +252,17 @@ body {
     margin-bottom: 15px;
 }
 
+input[name="uploaded_file"]{
+  -webkit-appearance: none;
+  background-color: white;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
 .pane .login input[type="submit"] {
     background: #418040;
     -webkit-appearance: none;
