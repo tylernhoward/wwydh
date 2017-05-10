@@ -1,8 +1,7 @@
 <?php
 
 	session_start();
-	require_once("dbcontroller.php");
-	$db_handle = new DBController();
+
 	include "../helpers/paginate.php";
 	include "../helpers/vars.php";
 	include "../helpers/conn.php";
@@ -16,7 +15,7 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-
+	
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
 	if (isset($_GET["isSearch"])) {
@@ -50,18 +49,6 @@
 		}
 	}
 	*/
-	
-	if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc"){
-		$sort = "`likes` ASC";
-	}
-	elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-desc"){
-		$sort = "`date_created` DESC";
-	}
-	elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-asc"){
-		$sort = "`date_created` ASC";
-	} else{
-		$sort = "`likes` DESC";
-	}
 ?>
 
 <!DOCTYPE html>
@@ -78,62 +65,6 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style>
-body{width:610;}
-.demo-table {width: 100%;border-spacing: initial;margin: 20px 0px;word-break: break-word;table-layout: auto;line-height:1.8em;color:#333;}
-.demo-table th {background: #81CBFD;padding: 5px;text-align: left;color:#FFF;}
-.demo-table td {border-bottom: #f0f0f0 1px solid;background-color: #ffffff;padding: 5px;}
-.demo-table td div.feed_title{text-decoration: none;color:#40CD22;font-weight:bold;}
-.demo-table ul{margin:0;padding:0;}
-.demo-table li{cursor:pointer;list-style-type: none;display: inline-block;color: #F0F0F0;text-shadow: 0 0 1px #666666;font-size:20px;}
-.demo-table .highlight, .demo-table .selected {color:#F4B30A;text-shadow: 0 0 1px #F48F0A;}
-.btn-likes {float:left; padding: 0px 5px;cursor:pointer;}
-.btn-likes input[type="button"]{width:20px;height:20px;border:0;cursor:pointer;}
-.like {background:url('like.png')}
-.unlike {background:url('unlike.png')}
-.label-likes {font-size:12px;color:#2F529B;height:20px;}
-.desc {clear:both;color:#999;}
-
-</style>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-function addLikes(id,action) {
-	$('.demo-table #tutorial-'+id+' li').each(function(index) {
-		$(this).addClass('selected');
-		$('#tutorial-'+id+' #rating').val((index+1));
-		if(index == $('.demo-table #tutorial-'+id+' li').index(obj)) {
-			return false;	
-		}
-	});
-	$.ajax({
-	url: "add_likes.php",
-	data:'id='+id+'&action='+action,
-	type: "POST",
-	beforeSend: function(){
-		$('#tutorial-'+id+' .btn-likes').html("<img src='LoaderIcon.gif' />");
-	},
-	success: function(data){
-	var likes = parseInt($('#likes-'+id).val());
-	switch(action) {
-		case "like":
-		$('#tutorial-'+id+' .btn-likes').html('<input type="button" title="Unlike" class="unlike" onClick="addLikes('+id+',\'unlike\')" />');
-		likes = likes+1;
-		break;
-		case "unlike":
-		$('#tutorial-'+id+' .btn-likes').html('<input type="button" title="Like" class="like"  onClick="addLikes('+id+',\'like\')" />')
-		likes = likes-1;
-		break;
-	}
-	$('#likes-'+id).val(likes);
-	if(likes>0) {
-		$('#tutorial-'+id+' .label-likes').html(likes+" Like(s)");
-	} else {
-		$('#tutorial-'+id+' .label-likes').html('');
-	}
-	}
-	});
-}
-</script>
 <script>
 $( function() {
 	$( "#accordion" ).accordion();
@@ -249,35 +180,24 @@ $( function() {
 		</div>
 		<div class="grid-inner width">
 			<?php
-			$projectsquery = "SELECT * FROM project_test ORDER BY $sort";
+			$projectsquery = "SELECT * FROM project_test";
 			$allprojects = $conn->query($projectsquery);
 			while($projectsrow = $allprojects->fetch_assoc()){
 				$planquery = "SELECT * FROM plans WHERE id = '" . $projectsrow['plan_id'] . "'";
 				$allplans = $conn->query($planquery);
 				while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
-
-
+			
 				<div class="idea">
+					<hr>
 					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
-					<input type="hidden" id="likes-<?php echo $projectsrow["id"]; ?>" value="<?php echo $projectsrow["likes"]; ?>">
-						<?php
-							if (isset($_SESSION["user"])){
-							$likeduser = $_SESSION['user']['id'];
-							$query ="SELECT * FROM projects_likes_map WHERE tutorial_id = '" . $projectsrow["id"] . "' and ip_address = '" . $likeduser . "'";
-							$count = $db_handle->numRows($query);
-							$str_like = "like";
-							if(!empty($count)) {
-							$str_like = "unlike";
-							}
-							}
-						?>
-						<div id="tutorial-<?php echo $projectsrow["id"]; ?>">
-								<?php if (isset($_SESSION["user"])){ ?>
-								<div class="btn-likes"><input type="button" title="<?php echo ucwords($str_like); ?>" class="<?php echo $str_like; ?>" onClick="addLikes(<?php echo $projectsrow["id"]; ?>,'<?php echo $str_like; ?>')" /></div>
-								<?php } else{?>
-								<?php } ?>
-								<div class="label-likes"><?php if(!empty($projectsrow["likes"])) { echo $projectsrow["likes"] . " Like(s)"; } ?></div>					
+						<div class="vote">
+							<div class="upvote">
+								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+							</div>
+							<div class="downvote">
+								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+							</div>
 						</div>
 						<?php
 							$ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
@@ -320,17 +240,34 @@ $( function() {
 							<div class="location">
 								<div class="plan-buttons options btn-group">
 									<?php
+										if (isset($_SESSION['user'])){
+										$manquery = "SELECT * FROM manager_of WHERE plan_id = '" . $planrow['id'] . "' AND user_id = '" . $_SESSION['user']['id'] . "' ";
+										$allmanage = $conn->query($manquery);
+										 if ($allmanage->num_rows > 0) {
+											$indicator = 1;
+										}
+										else
+											$inidicator = 0;
+										}
 										/*if user is manager display tasks if not display become a project manager*/
 										if (!isset($_SESSION["user"])){ ?>
 											<div class="btn op-1"><a href="../login">login to edit task progress</a></div>
-										<?php } elseif (isset($_SESSION["user"]) &&  $projectsrow['manager_id'] ==  $_SESSION["user"]["id"]){ ?>
+										<?php } elseif (isset($_SESSION["user"]) && $_SESSION["user"]["manager"] == 1 && $indicator = 1){ ?>
 											<div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
 										<?php } else { ?>
+											<div class="btn op-1"><a href="tasktable.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
 										<?php }
 									?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
-								
+								<div class="vote">
+									<div class="upvote">
+										<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+									</div>
+									<div class="downvote">
+										<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+									</div>
+								</div>
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
@@ -339,13 +276,9 @@ $( function() {
 
 							<?php } ?>
 					</div>
-
-
-
+		 	<?php }}
+			?>
 		</div>
-		<hr>
-		<?php }}
-		?>
 	</div>
 		<div id="pagination">
 			<div class="grid-inner">

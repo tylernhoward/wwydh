@@ -1,21 +1,24 @@
 <?php
 session_start();
+include "../../helpers/conn.php";
 require_once "../../helpers/vars.php";
-if(isset($_GET["location"])) {
-  require_once "../../helpers/conn.php";
-  $locationid = $_GET["location"];
-  $q = $conn->prepare("SELECT l.*, COUNT(DISTINCT i.id) AS plans, GROUP_CONCAT(DISTINCT f.feature SEPARATOR '[-]')
-  AS features FROM locations l
-  LEFT JOIN plans i ON i.location_id = l.id
-  LEFT JOIN location_features f ON f.location_id = l.id
-  WHERE l.id=? GROUP BY l.id");
-  $q->bind_param("s", $locationid);
-  $q->execute();
-  $location = $q->get_result()->fetch_array(MYSQLI_ASSOC);
-}
-if (isset($_GET["plan"])) {
-  //BACKEND:40 handle editing an plan here, EG change title, retrieve entry completion from database and set that pane as active, populate
-}
+
+//Nick, your calls to the database were riduculously complicated to understand shame on you.
+//Gonna run really sloppy with parallel arrays lmao.
+$ideaIds = [];
+$ideaTitles = [];
+$query = "SELECT id, title FROM ideas";
+$result = $conn->query($query);
+
+
+$q = "SELECT id, building_address FROM locations";
+$result2 = $conn->query($q);
+
+//ARBITRARY LIMIT FOR MEMORY, can remove..
+$limit=30;
+
+$conn->close();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +38,7 @@ if (isset($_GET["plan"])) {
   <script>$( function() {$( "#accordion" ).accordion();} );</script>
 </head>
 <body>
-  <div class="width">
+   <div class="width">
     <div id="nav">
       <div class="nav-inner width clearfix <?php if (isset($_SESSION['user'])) echo 'loggedin' ?>">
         <a href="../../home">
