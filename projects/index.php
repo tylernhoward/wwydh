@@ -265,7 +265,7 @@ $( function() {
 							if (isset($_SESSION["user"])){
 							$likeduser = $_SESSION['user']['id'];
 							$query ="SELECT * FROM projects_likes_map WHERE tutorial_id = '" . $projectsrow["id"] . "' and ip_address = '" . $likeduser . "'";
-							$count = $db_handle->numRows($query);
+							$count = $db_handle->numRows($conn, $query);
 							$str_like = "like";
 							if(!empty($count)) {
 							$str_like = "unlike";
