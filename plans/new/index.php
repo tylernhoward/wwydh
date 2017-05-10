@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "../../helpers/vars.php";
-require_once "../../helpers/conn.php";
+include "../../helpers/conn.php";
 
 //Nick, your calls to the database were riduculously complicated to understand shame on you.
 //Gonna run really sloppy with parallel arrays lmao.
