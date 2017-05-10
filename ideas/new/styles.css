@@ -157,7 +157,7 @@ body {
 }
 
 .pane textarea {
-    height: 170px;
+    height: 60px;
 }
 
 .pane input:focus, .pane textarea:focus {
@@ -250,6 +250,17 @@ body {
     max-width: 400px;
     margin: auto;
     margin-bottom: 15px;
+}
+
+input[name="uploaded_file"]{
+  -webkit-appearance: none;
+  background-color: white;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 .pane .login input[type="submit"] {
