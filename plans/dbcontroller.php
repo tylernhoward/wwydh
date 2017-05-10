@@ -4,7 +4,8 @@ class DBController {
 	private $user = "wwydh";
 	private $password = "foucheisbae";
 	private $database = "wwydh";
-	
+	//private $conn = new mysqli("mysql.winnerdigital.net", "wwydh", "foucheisbae", "wwydh");
+	//mysqli_select_db($database,$conn);
 	function __construct() {
 		$conn = $this->connectDB();
 		if(!empty($conn)) {
@@ -21,8 +22,8 @@ class DBController {
 		mysqli_select_db($this->database,$conn);
 	}
 	
-	function runQuery($query) {
-		$result = mysqli_query($query);
+	function runQuery($conn, $query) {
+		$result = mysqli_query($conn, $query);
 		while($row=mysqli_fetch_assoc($result)) {
 			$resultset[] = $row;
 		}		
@@ -30,14 +31,14 @@ class DBController {
 			return $resultset;
 	}
 	
-	function numRows($query) {
-		$result  = mysqli_query($query);
+	function numRows($conn, $query) {
+		$result  = mysqli_query($conn, $query);
 		$rowcount = mysqli_num_rows($result);
 		return $rowcount;	
 	}
 	
-	function updateQuery($query) {
-		$result = mysqli_query($query);
+	function updateQuery($conn, $query) {
+		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die('Invalid query: ' . mysqli_error());
 		} else {
@@ -45,8 +46,8 @@ class DBController {
 		}
 	}
 	
-	function insertQuery($query) {
-		$result = mysqli_query($query);
+	function insertQuery($conn, $query) {
+		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die('Invalid query: ' . mysqli_error());
 		} else {
@@ -54,8 +55,8 @@ class DBController {
 		}
 	}
 	
-	function deleteQuery($query) {
-		$result = mysqli_query($query);
+	function deleteQuery($conn, $query) {
+		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die('Invalid query: ' . mysqli_error());
 		} else {
