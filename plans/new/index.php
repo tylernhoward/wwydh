@@ -158,7 +158,7 @@ $conn->close();
                   <div class="pane-content-intro">Preview</div>
                   <div class="preview">
                   </div>
-				  
+
 				  <div class="pane-content-intro">Would you like credit for your idea?</div>
 
 				  <div class="button active" data-leader="1">
@@ -216,8 +216,8 @@ $conn->close();
               </div>
         </div>
         <!-- Once backend works can redirect to created Plan -->
-        <a href="../../home">
-          <div class="next">Return to homepage <i class="fa fa-home" aria-hidden="true"></i></div>
+        <a href="../../plans">
+          <div class="next">Return to Plans <i class="fa fa-home" aria-hidden="true"></i></div>
           </a>
       </div>
     </div>

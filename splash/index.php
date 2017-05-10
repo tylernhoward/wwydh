@@ -173,7 +173,7 @@
               <br>
               <h3>And it all started with you!</h3>
               <br>
-              <li><a href="../Home" class="button big special">Get Started</a></li>
+              <li><a href="../home" class="button big special">Get Started</a></li>
             </ul>
   				</div>
   			</section>
