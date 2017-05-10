@@ -50,7 +50,7 @@
 		}
 	}
 	*/
-	
+
 	if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc"){
 		$sort = "`likes` ASC";
 	}
@@ -102,7 +102,7 @@ function addLikes(id,action) {
 		$(this).addClass('selected');
 		$('#tutorial-'+id+' #rating').val((index+1));
 		if(index == $('.demo-table #tutorial-'+id+' li').index(obj)) {
-			return false;	
+			return false;
 		}
 	});
 	$.ajax({
@@ -277,7 +277,7 @@ $( function() {
 								<div class="btn-likes"><input type="button" title="<?php echo ucwords($str_like); ?>" class="<?php echo $str_like; ?>" onClick="addLikes(<?php echo $projectsrow["id"]; ?>,'<?php echo $str_like; ?>')" /></div>
 								<?php } else{?>
 								<?php } ?>
-								<div class="label-likes"><?php if(!empty($projectsrow["likes"])) { echo $projectsrow["likes"] . " Like(s)"; } ?></div>					
+								<div class="label-likes"><?php if(!empty($projectsrow["likes"])) { echo $projectsrow["likes"] . " Like(s)"; } ?></div>
 						</div>
 						<?php
 							$ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
@@ -330,7 +330,7 @@ $( function() {
 									?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
-								
+
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
@@ -343,7 +343,6 @@ $( function() {
 
 
 		</div>
-		<hr>
 		<?php }}
 		?>
 	</div>

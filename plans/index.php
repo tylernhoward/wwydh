@@ -16,7 +16,7 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-	
+
 	if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc"){
 		$sort = "`likes` ASC";
 	}
@@ -28,7 +28,7 @@
 	} else{
 		$sort = "`likes` DESC";
 	}
-	
+
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
 	if (isset($_GET["isSearch"])) {
@@ -63,10 +63,10 @@
 	}
 	*/
 	if (isset($_GET["simple_search"])) {
-				$simple = $_GET['simple_search']; 
-				//$simple = htmlspecialchars($simple); 
+				$simple = $_GET['simple_search'];
+				//$simple = htmlspecialchars($simple);
 				// changes characters used in html to their equivalents, for example: < to &gt;
-         
+
 				//$simple = mysql_real_escape_string($simple);
 				// makes sure nobody uses SQL injection
 				$planquery = "SELECT * FROM plans WHERE `title` LIKE '%".$simple."%' ORDER BY $sort";
@@ -114,7 +114,7 @@ function addLikes(id,action) {
 		$(this).addClass('selected');
 		$('#tutorial-'+id+' #rating').val((index+1));
 		if(index == $('.demo-table #tutorial-'+id+' li').index(obj)) {
-			return false;	
+			return false;
 		}
 	});
 	$.ajax({
@@ -260,7 +260,7 @@ $( function() {
 		</div>
 		<div class="grid-inner width">
 			<?php
-			
+
 			$allplans = $conn->query($planquery);
 			while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
 
@@ -285,7 +285,7 @@ $( function() {
 								<div class="btn-likes"><input type="button" title="<?php echo ucwords($str_like); ?>" class="<?php echo $str_like; ?>" onClick="addLikes(<?php echo $planrow["id"]; ?>,'<?php echo $str_like; ?>')" /></div>
 								<?php } else{?>
 								<?php } ?>
-								<div class="label-likes"><?php if(!empty($planrow["likes"])) { echo $planrow["likes"] . " Like(s)"; } ?></div>					
+								<div class="label-likes"><?php if(!empty($planrow["likes"])) { echo $planrow["likes"] . " Like(s)"; } ?></div>
 						</div>
 						<?php
 							$ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";
@@ -336,7 +336,7 @@ $( function() {
 										<?php } ?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
-								
+
 								<div class="location_image" style="background-image: url(https://maps.googleapis.com/maps/api/streetview?size=600x300&location=<?php $str = $location['building_address']; $cit = $location['city']; $addURL = rawurlencode("$str $cit"); echo $addURL ?>&key=AIzaSyBHg5BuXXzfu2Wiz4QTiUjCXUTpaUCWUN0)";></div>
 								<div class="location_address"><?php echo $location["building_address"]." ".$location["city"].", Maryland ".$location["zip_code"] ?></div>
 								<!-- <div class="location_features"><?php echo $location["features"] . "\nWant Complete by: " . date("F j, Y", strtotime($row["date"])) ?></div> -->
@@ -347,7 +347,6 @@ $( function() {
 					</div>
 
 		</div>
-		<hr>
 		<?php }
 		?>
 	</div>
