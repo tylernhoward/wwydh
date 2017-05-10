@@ -328,7 +328,7 @@ $( function() {
 										<?php }else { ?>
 											<div class="btn op-1"><a href="redirectnomanage.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
 										<?php }?>
-									?>
+								
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>
 

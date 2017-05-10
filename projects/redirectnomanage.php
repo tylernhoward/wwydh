@@ -25,6 +25,6 @@
 		<title>WWYDH Project Manager</title>
 	</head>
 	<body>
-	<a href="../lwkanban/nonmanager.php">Your browser will redirect you to Project Manager view in 3 seconds. If it does not then click this.</a>
+	<a href="../lwkanban/nonmanager.php">Your browser will redirect you to Task Board view in 3 seconds. If it does not then click this.</a>
 	</body>
 </html>
