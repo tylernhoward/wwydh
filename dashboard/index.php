@@ -228,7 +228,7 @@ AS `projects contributed to`, (SELECT COUNT(p.id) AS count FROM projects p INNER
                                         <table>
                                             <div class="empty-table">
                                                 You don't have any plans in this category!
-                                                <div class="btn new-plan">Make a plan</div>
+                                                <div class="btn new-plan"><a href="../plans/new">Make a plan</a></div>
                                             </div>
                                             <tr>
                                                 <th> </th>
