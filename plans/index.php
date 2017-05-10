@@ -1,8 +1,7 @@
 <?php
 
 	session_start();
-	require_once("dbcontroller.php");
-	$db_handle = new DBController();
+
 	include "../helpers/paginate.php";
 	include "../helpers/vars.php";
 	include "../helpers/conn.php";
@@ -16,19 +15,9 @@
 
 	$total = $q->get_result()->fetch_array(MYSQLI_ASSOC)["total"];
 	$offset = $itemCount * ($page - 1);
-	
-	if (isset($_GET["sort"]) && $_GET["sort"] == "upvotes-asc"){
-		$sort = "`likes` ASC";
-	}
-	elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-desc"){
-		$sort = "`date_created` DESC";
-	}
-	elseif (isset($_GET["sort"]) && $_GET["sort"] == "date-asc"){
-		$sort = "`date_created` ASC";
-	} else{
-		$sort = "`likes` DESC";
-	}
-	
+
+	$planquery = "SELECT * FROM plans WHERE published <> 1";
+	$allplans = $conn->query($planquery);
 	// BACKEND:10 change locations search code to prepared statements to prevent SQL injection
 	/*
 	if (isset($_GET["isSearch"])) {
@@ -62,18 +51,6 @@
 		}
 	}
 	*/
-	if (isset($_GET["simple_search"])) {
-				$simple = $_GET['simple_search']; 
-				//$simple = htmlspecialchars($simple); 
-				// changes characters used in html to their equivalents, for example: < to &gt;
-         
-				//$simple = mysql_real_escape_string($simple);
-				// makes sure nobody uses SQL injection
-				$planquery = "SELECT * FROM plans WHERE `title` LIKE '%".$simple."%' ORDER BY $sort";
-			}
-			else{
-			$planquery = "SELECT * FROM plans WHERE published <> 1 ORDER BY $sort";
-			}
 ?>
 
 <!DOCTYPE html>
@@ -90,63 +67,6 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style>
-body{width:610;}
-.demo-table {width: 100%;border-spacing: initial;margin: 20px 0px;word-break: break-word;table-layout: auto;line-height:1.8em;color:#333;}
-.demo-table th {background: #81CBFD;padding: 5px;text-align: left;color:#FFF;}
-.demo-table td {border-bottom: #f0f0f0 1px solid;background-color: #ffffff;padding: 5px;}
-.demo-table td div.feed_title{text-decoration: none;color:#40CD22;font-weight:bold;}
-.demo-table ul{margin:0;padding:0;}
-.demo-table li{cursor:pointer;list-style-type: none;display: inline-block;color: #F0F0F0;text-shadow: 0 0 1px #666666;font-size:20px;}
-.demo-table .highlight, .demo-table .selected {color:#F4B30A;text-shadow: 0 0 1px #F48F0A;}
-.btn-likes {float:left; padding: 0px 5px;cursor:pointer;}
-.btn-likes input[type="button"]{width:20px;height:20px;border:0;cursor:pointer;}
-.like {background:url('like.png')}
-.unlike {background:url('unlike.png')}
-.label-likes {font-size:12px;color:#2F529B;height:20px;}
-.desc {clear:both;color:#999;}
-
-</style>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-function addLikes(id,action) {
-	$('.demo-table #tutorial-'+id+' li').each(function(index) {
-		$(this).addClass('selected');
-		$('#tutorial-'+id+' #rating').val((index+1));
-		if(index == $('.demo-table #tutorial-'+id+' li').index(obj)) {
-			return false;	
-		}
-	});
-	$.ajax({
-	url: "add_likes.php",
-	data:'id='+id+'&action='+action,
-	type: "POST",
-	beforeSend: function(){
-		$('#tutorial-'+id+' .btn-likes').html("<img src='LoaderIcon.gif' />");
-	},
-	success: function(data){
-	var likes = parseInt($('#likes-'+id).val());
-	switch(action) {
-		case "like":
-		$('#tutorial-'+id+' .btn-likes').html('<input type="button" title="Unlike" class="unlike" onClick="addLikes('+id+',\'unlike\')" />');
-		likes = likes+1;
-		break;
-		case "unlike":
-		$('#tutorial-'+id+' .btn-likes').html('<input type="button" title="Like" class="like"  onClick="addLikes('+id+',\'like\')" />')
-		likes = likes-1;
-		break;
-	}
-	$('#likes-'+id).val(likes);
-	if(likes>0) {
-		$('#tutorial-'+id+' .label-likes').html(likes+" Like(s)");
-	} else {
-		$('#tutorial-'+id+' .label-likes').html('');
-	}
-	}
-	});
-}
-</script>
-
 <script>
 $( function() {
 	$( "#accordion" ).accordion();
@@ -260,32 +180,19 @@ $( function() {
 		</div>
 		<div class="grid-inner width">
 			<?php
-			
-			$allplans = $conn->query($planquery);
 			while($planrow = $allplans->fetch_assoc()){				// selects the first element to use as the idea row since all rows have the same idea information xD ?>
 
 				<div class="idea">
 
 					<div style="font-size: 30px; margin-left: 30px; padding:20px;  text-decoration: underline;"><?php echo $planrow["title"] ?></div>
 					<div class="grid-item width">
-					<input type="hidden" id="likes-<?php echo $planrow["id"]; ?>" value="<?php echo $planrow["likes"]; ?>">
-						<?php
-							if (isset($_SESSION["user"])){
-							$likeduser = $_SESSION['user']['id'];
-							$query ="SELECT * FROM ipaddress_likes_map WHERE tutorial_id = '" . $planrow["id"] . "' and ip_address = '" . $likeduser . "'";
-							$count = $db_handle->numRows($query);
-							$str_like = "like";
-							if(!empty($count)) {
-							$str_like = "unlike";
-							}
-							}
-						?>
-						<div id="tutorial-<?php echo $planrow["id"]; ?>">
-								<?php if (isset($_SESSION["user"])){ ?>
-								<div class="btn-likes"><input type="button" title="<?php echo ucwords($str_like); ?>" class="<?php echo $str_like; ?>" onClick="addLikes(<?php echo $planrow["id"]; ?>,'<?php echo $str_like; ?>')" /></div>
-								<?php } else{?>
-								<?php } ?>
-								<div class="label-likes"><?php if(!empty($planrow["likes"])) { echo $planrow["likes"] . " Like(s)"; } ?></div>					
+						<div class="vote">
+							<div class="upvote">
+								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+							</div>
+							<div class="downvote">
+								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+							</div>
 						</div>
 						<?php
 							$ideaquery = "SELECT * FROM ideas WHERE id = '" . $planrow['idea_id'] . "' LIMIT 1";

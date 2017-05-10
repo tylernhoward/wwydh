@@ -157,7 +157,7 @@ body {
 }
 
 .pane textarea {
-    height: 175px;
+    height: 230px;
 }
 
 .pane input:focus, .pane textarea:focus {
