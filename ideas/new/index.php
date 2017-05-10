@@ -100,9 +100,14 @@ if (isset($_GET["idea"])) {
         <button class="accordion active">Title</button>
         <!-- <label for="title">Title</label> -->
         <input name="title" type="text" placeholder="What is your idea? Be specific!" />
+
+
+        <button class="accordion active">Description</button>
+        <div class="panel">
         <label for='uploaded_file'>Attach an image:</label>
         <input type="file" name="uploaded_file">
         <input type="submit" value="Submit image" name='submit'>
+      </div>
 
         <button class="accordion active">Category</button>
         <!-- <label>Category</label> -->
