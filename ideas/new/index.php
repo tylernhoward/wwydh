@@ -178,7 +178,7 @@ if (isset($_GET["idea"])) {
         <div class="advance" data-target="-1">
           <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
         </div>
-        <div class="retreat" data-target="1">
+        <div class="retreat" data-target="2">
           <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
         </div>
 
