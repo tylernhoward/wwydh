@@ -92,18 +92,18 @@
 						<div class="6u">
 							<section class="special">
 								<a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-									<h3>The Problem</h3>
+
 							</section>
 						</div>
 						<div class="6u">
 							<section class="special">
 								<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-								<h3>The Goal</h3>
 							</section>
 						</div>
 					</div>
 					<div class="12u">
 						<section class="special">
+							<h3>The Problem</h3>
 							<p>You have seen vacant lots and empty building spaces doing nothing but just sit there.
 							This website is designed to bring back a sense of community to these areas.
 							By having creative imaginative citizens create projects in this unused land, people's dreams can become reality and neighborhoods will be empowered.
@@ -148,14 +148,14 @@
   							<section class="special box">
   								<i class="icon 5"><img src="../images/implementation.png" /></i>
   								<h3>Projects</h3>
-  								<p>Each project task's progres is via a manager board. Community involvement is necessary to make a sucessful project.</p>
+  								<p>Each project task's progress is via a manager board. Community involvement is necessary to make a sucessful project.</p>
   							</section>
   						</div>
 						<div class="4u">
   							<section class="special box">
   								<i class="icon 4"><img src="../images/team.png" /></i>
   								<h3>Community</h3>
-  								<p>Citizens can upvote for which idea/ plan they would like to see made. Users logged in can contribute to projects by
+  								<p>Citizens can upvote for which idea / plan they would like to see made. Users logged in can contribute to projects by
 								volunteering to fill the item requirements of the plan and donating their time and complete tasks for the project.</p>
   							</section>
 						</div>
