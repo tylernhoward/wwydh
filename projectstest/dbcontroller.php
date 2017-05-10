@@ -13,17 +13,17 @@ class DBController {
 	}
 	
 	function connectDB() {
-		$conn = mysql_connect($this->host,$this->user,$this->password);
+		$conn = mysqli_connect($this->host,$this->user,$this->password);
 		return $conn;
 	}
 	
 	function selectDB($conn) {
-		mysql_select_db($this->database,$conn);
+		mysqli_select_db($this->database,$conn);
 	}
 	
 	function runQuery($query) {
-		$result = mysql_query($query);
-		while($row=mysql_fetch_assoc($result)) {
+		$result = mysqli_query($query);
+		while($row=mysqli_fetch_assoc($result)) {
 			$resultset[] = $row;
 		}		
 		if(!empty($resultset))
@@ -31,33 +31,33 @@ class DBController {
 	}
 	
 	function numRows($query) {
-		$result  = mysql_query($query);
-		$rowcount = mysql_num_rows($result);
+		$result  = mysqli_query($query);
+		$rowcount = mysqli_num_rows($result);
 		return $rowcount;	
 	}
 	
 	function updateQuery($query) {
-		$result = mysql_query($query);
+		$result = mysqli_query($query);
 		if (!$result) {
-			die('Invalid query: ' . mysql_error());
+			die('Invalid query: ' . mysqli_error());
 		} else {
 			return $result;
 		}
 	}
 	
 	function insertQuery($query) {
-		$result = mysql_query($query);
+		$result = mysqli_query($query);
 		if (!$result) {
-			die('Invalid query: ' . mysql_error());
+			die('Invalid query: ' . mysqli_error());
 		} else {
 			return $result;
 		}
 	}
 	
 	function deleteQuery($query) {
-		$result = mysql_query($query);
+		$result = mysqli_query($query);
 		if (!$result) {
-			die('Invalid query: ' . mysql_error());
+			die('Invalid query: ' . mysqli_error());
 		} else {
 			return $result;
 		}
