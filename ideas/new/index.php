@@ -114,95 +114,40 @@ if (isset($_GET["idea"])) {
           <button class="accordion active">Description</button>
           <textarea name="description" placeholder="Describe your idea in detail."></textarea>
 
-
-          <!-- Start of page two combination -->
-
-          <button class="accordion active">Location Requirements</button>
-          <div class="panel">
-            <div class="checklist">
-              <div class=location-checklist>
-                <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-                <div class="checklist-item">
-                  <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="accordion active">Supplies Needed</button>
-          <div class="panel">
-            <div class="checklist">
-              <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-              <div class="checklist-item">
-                <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
-              </div>
-            </div>
-          </div>
-
         </div>
 
         <!-- Keep next button out of pane content so it stays aligned with bottom -->
-        <div class="advance" data-target="3">
+        <div class="advance" data-target="2">
           <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
         </div>
 
       </div>
-      <!-- Skipped over -->
+
       <div class="pane" data-index="2">
-        <!-- <div class="pane-title">
-        <div class="advance" data-target="3"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
-        <div class="retreat" data-target="1"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-        <div class="title">Location Requirements</div>
-      </div> -->
-
       <div class="pane-content">
-        <div class="pane-content-intro">Let's start off with just the basics</div>
-        <!-- <button class="accordion active">Title</button> -->
-        <label for="title">Title</label>
-        <input name="title" type="text" placeholder="What is your idea? Be specific!" />
-        <!-- <button class="accordion active">Category</button> -->
-        <label>Category</label>
-        <select name="category">
-          <option disabled selected>Choose one...</option>
-          <?php foreach ($idea_categories as $key => $lc) { ?>
-            <option value="<?php echo $key ?>"><?php echo $lc["title"] ?></option>
-            <?php } ?>
-
-          </select>
-
-          <label for="description">Description</label>
-          <!-- <button class="accordion active">Description</button> -->
-          <textarea name="description" placeholder="Describe your idea in detail."></textarea>
-
-
-          <!-- Start of page two combination -->
-
-          <!-- <button class="accordion active">Location Requirements</button> -->
-          <label>Location Requirements</label>
-          <div class="panel">
-
-            <div class="location-checklist">
-              <div class="checklist">
-                <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-                <div class="checklist-item">
-                  <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- <button class="accordion active">Supplies Needed</button> -->
-          <label>Supplies Needed</label>
-
-          <div class="panel">
-            <div class="checklist">
+        <button class="accordion active">Location Requirements</button>
+        <div class="panel">
+          <div class="checklist">
+            <div class=location-checklist>
               <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
               <div class="checklist-item">
-                <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
+                <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
               </div>
             </div>
           </div>
         </div>
+
+        <button class="accordion active">Supplies Needed</button>
+        <div class="panel">
+          <div class="checklist">
+            <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
+            <div class="checklist-item">
+              <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
+            </div>
+          </div>
+        </div>
+
+      </div>
 
         <div class="advance" data-target="3">
           <div class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
@@ -233,7 +178,7 @@ if (isset($_GET["idea"])) {
         <div class="advance" data-target="-1">
           <div class="next">Publish <i class="fa fa-check-circle" aria-hidden="true"></i></div>
         </div>
-        <div class="retreat" data-target="1">
+        <div class="retreat" data-target="2">
           <div class="back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</div>
         </div>
 
@@ -250,6 +195,10 @@ if (isset($_GET["idea"])) {
 
   <div class="pane" data-index="-1">
     <!-- Login Required -->
+    <!-- <div class="pane-title">
+    <div class="retreat" data-target="3"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+    <div class="title">Login Required!</div>
+  </div> -->
   <div class="pane-content">
     <div class="pane-content-intro error">
       You must be logged in to receive credit for this idea!
@@ -271,16 +220,23 @@ if (isset($_GET["idea"])) {
 
 <div class="pane" data-index="-2">
   <!-- Successful Submission -->
-<div class="pane-content">
-  <div class="panel">
+  <!-- <div class="pane-title">
+    <div class="title">Idea Submitted!</div>
+  </div> -->
+  <div class="pane-content">
+    <div class="panel">
     <div class="pane-content-intro">
       Your idea was submitted successfully! Great!
     </div>
     <div class="success-marker">
       <i class="fa fa-check" aria-hidden="true"></i>
     </div>
+    <!-- <div class="next-steps">
+      <div class="sub-intro">
+        What's next?
+      </div> -->
+    </div>
   </div>
-</div>
 <!-- Once backend works can redirect to created Idea -->
 <a href="../../home">
   <div class="next">Return to homepage <i class="fa fa-home" aria-hidden="true"></i></div>
