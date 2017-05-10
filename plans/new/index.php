@@ -205,11 +205,6 @@ if (isset($_GET["plan"])) {
   </div>
 
         <div class="pane" data-index="-1">
-          <!-- Login Required -->
-          <!-- <div class="pane-title">
-            <div class="retreat" data-target="5"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-            <div class="title">Login Required!</div>
-          </div> -->
           <div class="pane-content">
             <div class="pane-content-intro error">
               You must be logged in to receive credit for this plan!

@@ -114,31 +114,6 @@ if (isset($_GET["idea"])) {
           <button class="accordion active">Description</button>
           <textarea name="description" placeholder="Describe your idea in detail."></textarea>
 
-
-          <!-- Start of page two combination -->
-
-          <!-- <button class="accordion active">Location Requirements</button>
-          <div class="panel">
-            <div class="checklist">
-              <div class=location-checklist>
-                <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-                <div class="checklist-item">
-                  <input type="text" placeholder="Enter a location requirement here. EG: Electricity" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="accordion active">Supplies Needed</button>
-          <div class="panel">
-            <div class="checklist">
-              <div class="add-checklist-item"><i class="fa fa-plus" aria-hidden="true"></i> Add item</div>
-              <div class="checklist-item">
-                <input type="text" placeholder="Enter a requirement here. EG: Truck x 4" />
-              </div>
-            </div>
-          </div> -->
-
         </div>
 
         <!-- Keep next button out of pane content so it stays aligned with bottom -->
