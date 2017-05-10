@@ -100,7 +100,10 @@
 						<div class="12u">
 							<section class="special">
                 <h3>The Goal</h3>
-								<p>Our goal is to make use of existing resources by having the imaginative citizens of Baltimore create projects in the vacant lots and underused buildings in their communities. By empowering neighbors to make a change, dreams will be realized and the community will be brought closer together. So Baltimore, look around and ask "What would you do here?"</p>
+								<p>You have seen vacant lots and empty buildings doing nothing but just sit there.
+								This website is designed to bring back a sense of community to these areas.
+								By having the creative, imaginative citizens create projects in this unused land, people's dreams can become reality and neighborhoods will be empowered.
+								So Baltimore citizens, look around and ask "What would you do here?           Our goal is to make use of existing resources by having the imaginative citizens of Baltimore create projects in the vacant lots and underused buildings in their communities. By empowering neighbors to make a change, dreams will be realized and the community will be brought closer together. So Baltimore, look around and ask "What would you do here?"</p>
 							</section>
 						</div>
 					</div>
