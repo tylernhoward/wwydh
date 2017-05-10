@@ -109,7 +109,7 @@ jQuery(document).ready(function($) {
                 // successfully inserted idea
                 $(elem).parents(".pane").addClass("done").removeClass("active");
                 $(".pane[data-index=-2]").addClass("active");
-            }
+            
         }, "text");
     }
 
