@@ -2,14 +2,13 @@
 
 <html>
 	<head>
-		<title>WWYDH Welcome</title>
+		<title>WWYDH | Welcome</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="https://use.fontawesome.com/42543b711d.js"></script>
-		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
-    <link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
+
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -17,7 +16,10 @@
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+		<link href="../helpers/header_footer.css" type="text/css" rel="stylesheet" />
+		<link href="../helpers/splash.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body id="top">
 
@@ -103,7 +105,7 @@
 					</div>
 					<div class="12u">
 						<section class="special">
-							<h3>The Problem</h3>
+							<h3>The Goal</h3>
 							<p>You have seen vacant lots and empty building spaces doing nothing but just sit there.
 							This website is designed to bring back a sense of community to these areas.
 							By having creative imaginative citizens create projects in this unused land, people's dreams can become reality and neighborhoods will be empowered.
@@ -171,7 +173,7 @@
               <br>
               <h3>And it all started with you!</h3>
               <br>
-              <li><a href="../Home" class="button big special">Get Started</a></li>
+              <li><a href="../home" class="button big special">Get Started</a></li>
             </ul>
   				</div>
   			</section>
@@ -186,4 +188,4 @@
 	</footer>
 
 	</body>
-</html>
+	</html>
