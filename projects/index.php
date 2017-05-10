@@ -325,8 +325,9 @@ $( function() {
 											<div class="btn op-1"><a href="../login">login to edit task progress</a></div>
 										<?php } elseif (isset($_SESSION["user"]) &&  $projectsrow['manager_id'] ==  $_SESSION["user"]["id"]){ ?>
 											<div class="btn op-1"><a href="redirect.php?id=<?php echo $projectsrow['id']; ?>">Edit Task Progress</a></div>
-										<?php } else { ?>
-										<?php }
+										<?php }else { ?>
+											<div class="btn op-1"><a href="redirectnomanage.php?id=<?php echo $planrow['id']; ?>">See Task Progress</a></div>
+										<?php }?>
 									?>
 									<div class="btn op-2"><a href="planinfo.php?id=<?php echo $planrow["id"] ?>">More Info</a></div>
 								</div>

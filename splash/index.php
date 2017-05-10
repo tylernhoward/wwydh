@@ -105,7 +105,7 @@
 					</div>
 					<div class="12u">
 						<section class="special">
-							<h3>The Problem</h3>
+							<h3>The Goal</h3>
 							<p>You have seen vacant lots and empty building spaces doing nothing but just sit there.
 							This website is designed to bring back a sense of community to these areas.
 							By having creative imaginative citizens create projects in this unused land, people's dreams can become reality and neighborhoods will be empowered.

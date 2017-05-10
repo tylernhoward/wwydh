@@ -95,8 +95,8 @@
 				<h1><a href="">WWYDH Project Manager</a></h1>
 				<nav>
 					<ul>
-						<li><a href="#" id="new"><i class="glyphicon glyphicon-plus-sign"></i> New</a></li>
-						<li><a href="#helpModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+						<!--<li><a href="#" id="new"><i class="glyphicon glyphicon-plus-sign"></i> New</a></li>-->
+						<!--<li><a href="#helpModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>-->
 					</ul>
 				</nav>
 			</header>
