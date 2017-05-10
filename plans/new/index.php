@@ -100,7 +100,7 @@ $conn->close();
 
       <button class="accordion active">Idea</button>
       <div>
-        <select name="Ideas">
+        <select name="idea">
           <option disabled selected>Choose one...</option>
           <?php if($result->num_rows > 0){ while($ideas = $result->fetch_assoc()){ ?>
             <option value="<?php echo $ideas["id"] ?>"><?php echo $ideas["title"] ?></option>
@@ -114,7 +114,7 @@ $conn->close();
 
         <button class="accordion active">Location</button>
         <div>
-          <select name="Location">
+          <select name="location">
             <option disabled selected>Choose one...</option>
             <!-- This isnt right-->
             <?php if( $result2->num_rows > 0){ while(($row = $result2->fetch_assoc()) && $limit > 0){ ?>
@@ -244,6 +244,9 @@ $conn->close();
               <i class="fa fa-check" aria-hidden="true"></i>
             </div>
           </div>
+          <a href="../../home">
+            <div class="next">Return to homepage <i class="fa fa-home" aria-hidden="true"></i></div>
+            </a>
             <!-- <div class="next-steps">
               <div class="sub-intro">
                 What's next?
